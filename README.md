@@ -44,13 +44,12 @@ The clips are already set up in `js/data.js` (`preview: 'assets/video/NAME.mp4'`
 | `assets/video/padala.mp4` | Pick a folder → "only 2 files changed" → transfer with Dala flying the package |
 | `assets/video/booktrack.mp4` | Member searches a book → borrows it → it shows in "My loans" |
 | `assets/video/servease.mp4` | Customer picks a service → selects a pro → books it |
-| `assets/video/katribo.mp4` | Home → menu → a drink's details page |
 
 **Recording tips**
 
 - Use a clean browser window: 100% zoom, no bookmarks bar, demo data that looks real.
 - TeachWise, BookTrack, Servease: make the page area about **1280 × 768** (the frame is wide, and the clip is trimmed from the bottom if it is taller).
-- Padala and Dokyu: record a tall phone-shaped view, about **400 × 610** (Chrome DevTools → device toolbar → Responsive).
+- Padala: record a tall phone-shaped view, about **400 × 610** (Chrome DevTools → device toolbar → Responsive).
 - Start on the same screen as the project's first screenshot and end near where you started, so the loop and the fade-in look smooth.
 - Move the mouse slowly and pause half a second after each click. No sound is needed (it is removed anyway).
 - Windows: Snipping Tool (`Win + Shift + S` → Record) or Xbox Game Bar (`Win + G`) both work; OBS gives the most control.
@@ -61,7 +60,7 @@ The clips are already set up in `js/data.js` (`preview: 'assets/video/NAME.mp4'`
 ffmpeg -i raw.mp4 -t 10 -vf "scale=1280:-2,fps=30" -an -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -movflags +faststart teachwise.mp4
 ```
 
-For Padala and Dokyu use `scale=600:-2`. Keep the file names exactly as in the table.
+For Padala use `scale=600:-2`. Keep the file names exactly as in the table.
 To show a clip in a different Padala phone window, change `previewShot` (0, 1 or 2) in `js/data.js`.
 
 ## Animation libraries

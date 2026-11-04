@@ -19,7 +19,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link rel="preload" as="image" href="assets/img/hero.webp" fetchpriority="high">
+<link rel="stylesheet" href="css/interior.css?v=20261030-8">
+<link rel="preload" as="image" href="assets/img/hero-enhanced-v2.webp" imagesrcset="assets/img/hero-enhanced-v2-sm.webp 430w, assets/img/hero-enhanced-v2.webp 860w" imagesizes="(max-width: 980px) 245px, 302px" fetchpriority="high">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <script>(function(d){d.classList.add('js');try{if(localStorage.getItem('mk-booted')==='1')d.classList.add('booted');}catch(e){}})(document.documentElement);</script>
 </head>
@@ -40,10 +41,11 @@
 
 <div class="cursor" aria-hidden="true"><span class="cursor__ring"><span class="cursor__label"></span></span><span class="cursor__dot"></span></div>
 <div class="noise" aria-hidden="true"></div>
+<div class="page-scroll" role="scrollbar" tabindex="0" aria-label="Page scroll position" aria-controls="portfolio-content" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="page-scroll__track"><span class="page-scroll__fill"></span></span></div>
 
 <a class="skip" href="#about">Skip to content</a>
 <div class="toast" role="status" aria-live="polite"></div>
-<button type="button" class="totop" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+<button type="button" class="totop" aria-label="Previous section"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
 <div class="term" hidden role="dialog" aria-label="Terminal">
   <div class="term__bar"><i></i><i></i><i></i><span>guest@mukramin.dev — terminal</span><button type="button" class="term__close" aria-label="Close terminal"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
   <div class="term__out" aria-live="polite"></div>
@@ -65,24 +67,28 @@
 <!-- ============ SIDE RAIL ============ -->
 <aside class="rail" aria-label="Social links and progress">
   <div class="rail__dots" aria-hidden="true"><i></i><i class="on"></i><i></i><i></i></div>
-  <div class="rail__mid">
+  <div class="rail__tools"><a href="#home" aria-label="Go to Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="4"/></svg></a><a class="rail__security" href="#certifications" aria-label="View security certificates"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4v6c0 4-4 7-8 8-4-1-8-4-8-8V7z"/><path d="m8 12 3 3 5-6"/></svg></a><span class="rail__energy" aria-hidden="true"></span></div>
+  <div class="rail__mid" id="rail-links">
     <button type="button" class="rail__toggle" aria-expanded="false" aria-controls="rail-links" aria-label="Show social links"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg><span>FOLLOW</span></button>
     <span class="rail__rule"></span>
-    <span class="rail__label rail__label--desk">FOLLOW ME</span>
+    <span class="rail__label rail__label--desk">SYS CORE ONLINE</span>
     <a class="rail__icon" data-link="github" aria-label="GitHub" href="#"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
     <a class="rail__icon" data-link="linkedin" aria-label="LinkedIn" href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg></a>
     <a class="rail__icon" data-link="facebook" aria-label="Facebook" href="#"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
     <a class="rail__icon" data-link="email" aria-label="Email" href="#"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+    <a class="rail__icon" href="assets/Mukramin_Ansao_CV.pdf" target="_blank" rel="noopener" aria-label="View CV"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg></a>
   </div>
+  <div class="rail__route" aria-hidden="true"><i></i><span></span><i></i></div>
   <div class="rail__bottom">
-    <span class="rail__num" data-section-num>01</span>
+    <span class="rail__hatch" aria-hidden="true"></span><span class="rail__num" data-section-num>01</span>
     <span class="rail__track"><span class="rail__progress"></span></span>
-    <span class="rail__label">SCROLL</span>
+    <span class="rail__label">SCROLL</span><span class="rail__footmark" aria-hidden="true">▪</span>
   </div>
 </aside>
 
 <!-- ============ NAV ============ -->
 <header class="nav">
+  <div class="nav__inner">
   <a class="brand" href="#home" aria-label="Back to top">
     <svg class="brand__mark" viewBox="0 0 34 34" aria-hidden="true"><path d="M3 4 L13 4 L17 11 L21 4 L31 4 L22 17 L31 30 L21 30 L17 23 L13 30 L3 30 L12 17 Z"/></svg>
     <span>MUKRAMIN<b>.</b>DEV</span>
@@ -100,6 +106,7 @@
   <a class="btn btn--solid nav__cta" href="#contact" data-magnetic>HIRE ME <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
   <a class="btn btn--solid nav__hire" href="#contact">HIRE ME</a>
   <button class="burger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
 </header>
 
 <div class="menu" aria-hidden="true">
@@ -116,7 +123,7 @@
   <div class="menu__foot"><div class="socials socials--menu" aria-label="Social links"><a data-link="github" href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a><a data-link="linkedin" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg></a><a data-link="facebook" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a data-link="email" href="#" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></div><span data-text="email"></span><span>PASIG CITY, PH</span></div>
 </div>
 
-<main>
+<main id="portfolio-content">
 
 <!-- ============ 01 HERO ============ -->
 <section class="hero" id="home" data-section="01">
@@ -144,7 +151,7 @@
   </h1>
 
   <div class="hero__figure">
-    <img src="assets/img/hero.webp" alt="Mukramin Ansao" width="401" height="854" fetchpriority="high">
+    <img src="assets/img/hero-enhanced-v2.webp" srcset="assets/img/hero-enhanced-v2-sm.webp 430w, assets/img/hero-enhanced-v2.webp 860w" sizes="(max-width: 980px) 245px, 302px" alt="Mukramin Ansao" width="860" height="1829" fetchpriority="high">
   </div>
 
   <div class="hero__copy hero__copy--l" data-hero-copy>
@@ -160,14 +167,14 @@
   <div class="hero__copy hero__copy--r" data-hero-copy>
     <h2 class="hero__role">WEB &amp; APP DEV</h2>
     <p>Laravel · PHP · MySQL · React Native, built with AI coding tools. I love turning ideas into working software. Open to web and app developer roles and freelance projects.</p>
-    <a class="btn btn--line" href="assets/Mukramin_Ansao_CV.pdf?v=2026-10-27k" download data-magnetic><span class="btn__ring"><svg viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6"/></svg></span>DOWNLOAD CV</a>
+    <a class="btn btn--line" href="assets/Mukramin_Ansao_CV.pdf?v=2026-10-26h" download data-magnetic><span class="btn__ring"><svg viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6"/></svg></span>DOWNLOAD CV</a>
   </div>
 
   <div class="statbar" data-statbar>
     <div class="statbar__cell">
       <svg class="statbar__radar" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="27" class="r1"/><circle cx="30" cy="30" r="20" class="r2"/><path d="m25 26-4 4 4 4M35 26l4 4-4 4"/></svg>
       <span class="statbar__label">PROJECTS<br>BUILT</span>
-      <span class="statbar__num"><b data-stat="projects">05</b><small>AND COUNTING</small></span>
+      <span class="statbar__num"><b data-stat="projects">06</b><small>AND COUNTING</small></span>
     </div>
     <div class="statbar__cell">
       <svg class="statbar__medal" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.8 7 22l5-3 5 3-1.5-8.2"/></svg>
@@ -185,23 +192,29 @@
 </section>
 
 <!-- ============ 02 ABOUT ============ -->
-<section class="section about" id="about" data-section="02">
+<section class="section about" id="about" data-section="02" aria-labelledby="about-title">
+  <span class="section__word" aria-hidden="true">PROFILE</span>
   <div class="section__head">
     <div>
-      <p class="eyebrow hop"><span></span><b>hop 02</b><i>about</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
-      <h2 class="h2" data-split>I turn ideas into<br><em>working software</em></h2>
+      <p class="eyebrow hop"><span></span><b>02</b><i>about</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
+      <p class="section__signal">DEVELOPER × PROBLEM SOLVER<br>BASED IN PASIG CITY<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
     </div>
     <p class="hud-tag">PROFILE.DAT<br>STATUS <b>● ONLINE</b></p>
   </div>
   <div class="about__grid">
-    <figure class="about__photo" data-reveal="clip">
-      <img src="assets/img/about.webp" alt="Mukramin Ansao in a black suit" width="520" height="650" loading="lazy">
-      <figcaption><span><small>ID // ROLE</small>WEB &amp; APP DEV</span><em>PASIG · PH</em></figcaption>
-      <i class="about__bar about__bar--l"></i><i class="about__bar about__bar--r"></i>
+    <figure class="profile__portrait">
+      <img src="assets/img/about-enhanced-v2.webp" srcset="assets/img/about-enhanced-v2-sm.webp 538w, assets/img/about-enhanced-v2.webp 1076w" sizes="(max-width: 700px) 270px, (max-width: 980px) 33vw, 490px" alt="Mukramin Ansao in a black suit" width="1076" height="1462" loading="lazy">
+      <figcaption class="profile__caption"><span>WEB &amp; APP DEVELOPER</span><span>PASIG / PH</span></figcaption>
     </figure>
     <div class="about__text">
-      <p class="about__lead" data-reveal>I'm Mukramin Ansao, a web and app developer based in <b>Pasig City</b>, originally from Jolo, Sulu. I build websites, full web systems and Android apps — with Laravel, PHP, MySQL and React Native.</p>
-      <p data-reveal>I graduated <b>Cum Laude</b> in BS Information Technology. I'm passionate about web and app development and love turning ideas into interactive software. I build with AI coding tools like Claude Code: I plan each system, guide the AI, then review, test and fix every change myself. My projects are TeachWise, Dokyu, BookTrack and the KATRIBO coffee shop website, all complete, plus Servease and Padala, which are in active development.</p>
+      <h2 class="h2" id="about-title">I turn ideas into<br><em>working software.</em></h2>
+      <div class="profile__details">
+      <div class="profile__summary">
+      <p class="profile__identity"><strong>Mukramin Ansao</strong><span>Web &amp; App Developer · UI/UX Designer</span><span>Blue Team / SOC Analyst Enthusiast</span></p>
+      <p class="about__lead" data-reveal>I'm Mukramin Ansao, a web and app developer and UI/UX designer based in <b>Pasig City</b>, originally from Jolo, Sulu. I design interfaces and build websites, full web systems and Android apps with Laravel, PHP, MySQL and React Native. I'm also a blue-team cybersecurity enthusiast, focused on SOC analysis, threat detection and incident response.</p>
+      <p class="profile__honor">BSIT <span> / </span> CUM LAUDE <span> / </span> 2026</p>
+      <details class="profile__story"><summary>More about my approach</summary><p>I graduated <b>Cum Laude</b> in BS Information Technology. I'm passionate about web and app development and love turning ideas into interactive software. I build with AI coding tools like Claude Code: I plan each system, guide the AI, then review, test and fix every change myself. My projects include TeachWise, BookTrack and the KATRIBO coffee shop website, all complete; FORM/TECH, a verified local e-commerce release candidate; and Servease and Padala, which are in active development.</p></details>
+      </div>
       <dl class="facts" data-reveal-group>
         <div><dt>MAIN STACK</dt><dd>Laravel · React Native</dd></div>
         <div><dt>LOCATION</dt><dd>Pasig City, PH</dd></div>
@@ -210,24 +223,27 @@
         <div><dt>LANGUAGES</dt><dd data-d="languages"></dd></div>
         <div class="facts__hot"><dt>STATUS</dt><dd>Open to developer roles &amp; freelance</dd></div>
       </dl>
-      <div class="now" data-reveal>
-        <p class="now__head"><i></i>NOW // WHAT I'M WORKING ON</p>
-        <ul class="now__list" data-now></ul>
       </div>
       <div class="about__actions" data-reveal>
-        <a class="btn btn--solid" href="assets/Mukramin_Ansao_CV.pdf?v=2026-10-27k" download data-magnetic>DOWNLOAD CV <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg></span></a>
-        <a class="btn btn--ghost" href="assets/Mukramin_Ansao_CV.pdf?v=2026-10-27k" target="_blank" rel="noopener" data-magnetic>VIEW CV <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span></a>
+        <a class="btn btn--solid btn--primary" href="assets/Mukramin_Ansao_CV.pdf?v=2026-10-26h" download>DOWNLOAD CV <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg></span></a>
+        <a class="btn btn--ghost" href="assets/Mukramin_Ansao_CV.pdf?v=2026-10-26h" target="_blank" rel="noopener" data-magnetic>VIEW CV <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span></a>
       </div>
     </div>
+  </div>
+  <div class="now profile__now">
+    <p class="now__head"><i></i>NOW <span>/ WHAT I'M WORKING ON</span></p>
+    <ul class="now__list" data-now></ul>
   </div>
 </section>
 
 <!-- ============ 03 SKILLS ============ -->
-<section class="section skills" id="skills" data-section="03">
+<section class="section skills" id="skills" data-section="03" aria-labelledby="skills-title">
+  <p class="section__signal section__signal--corner">TOOLS × TECHNOLOGIES<br>TURNING IDEAS INTO REAL PRODUCTS<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
+  <span class="section__word" aria-hidden="true">SKILLS</span>
   <div class="section__head">
     <div>
-      <p class="eyebrow hop"><span></span><b>hop 03</b><i>skills</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
-      <h2 class="h2" data-split>Skills that ship<br><em>real projects</em></h2>
+      <p class="eyebrow hop"><span></span><b>03</b><i>skills</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
+      <h2 class="h2" id="skills-title">Skills that ship<br><em>real projects</em></h2>
     </div>
     <p class="lead" data-reveal>From the interface people click to the database behind it — I build complete web and app projects end to end, with AI as my pair programmer.</p>
   </div>
@@ -239,11 +255,12 @@
 </section>
 
 <!-- ============ 04 PROJECTS ============ -->
-<section class="section projects" id="projects" data-section="04">
+<section class="section projects" id="projects" data-section="04" aria-labelledby="projects-title">
+  <p class="section__signal section__signal--corner">REAL PROJECTS<br>SOLVING REAL PROBLEMS<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
   <div class="section__head">
     <div>
-      <p class="eyebrow hop"><span></span><b>hop 04</b><i>projects</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
-      <h2 class="h2" data-split>Things I've<br><em>built</em></h2>
+      <p class="eyebrow hop"><span></span><b>04</b><i>projects</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
+      <h2 class="h2" id="projects-title">Things I've<br><em>built</em></h2>
     </div>
     <p class="lead" data-reveal>Web systems and apps with real user roles, real data and dashboards — designed, coded and tested end to end by me.</p>
   </div>
@@ -251,11 +268,12 @@
 </section>
 
 <!-- ============ 05 JOURNEY ============ -->
-<section class="section journey" id="journey" data-section="05">
+<section class="section journey" id="journey" data-section="05" aria-labelledby="journey-title">
+  <p class="section__signal section__signal--corner">EDUCATION × EXPERIENCE<br>A CONTINUOUS JOURNEY<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
   <div class="section__head">
     <div>
-      <p class="eyebrow hop"><span></span><b>hop 05</b><i>journey</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
-      <h2 class="h2" data-split>Education &amp;<br><em>experience</em></h2>
+      <p class="eyebrow hop"><span></span><b>05</b><i>journey</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
+      <h2 class="h2" id="journey-title">Education &amp;<br><em>experience</em></h2>
     </div>
     <p class="lead" data-reveal>IT graduate with a networking major, OJT experience at DICT, and ongoing coding and cybersecurity training.</p>
   </div>
@@ -266,11 +284,12 @@
 </section>
 
 <!-- ============ 06 CERTIFICATIONS ============ -->
-<section class="section certs" id="certifications" data-section="06">
+<section class="section certs" id="certifications" data-section="06" aria-labelledby="certifications-title">
+  <p class="section__signal section__signal--corner">LEARNING × GROWTH<br>BUILDING A STRONGER FOUNDATION<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
   <div class="section__head">
     <div>
-      <p class="eyebrow hop"><span></span><b>hop 06</b><i>certificates</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
-      <h2 class="h2" data-split>Verified<br><em>certificates</em></h2>
+      <p class="eyebrow hop"><span></span><b>06</b><i>certificates</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
+      <h2 class="h2" id="certifications-title">Verified<br><em>certificates</em></h2>
     </div>
     <p class="lead" data-reveal>Security training I completed alongside my degree. Each one links to the official page that proves it.</p>
   </div>
@@ -278,27 +297,24 @@
 </section>
 
 <!-- ============ 07 WHY ME ============ -->
-<section class="section why" id="why" data-section="07">
+<section class="section why" id="why" data-section="07" aria-labelledby="why-title">
   <div class="section__head">
     <div>
-      <p class="eyebrow hop"><span></span><b>hop 07</b><i>why-me</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
-      <h2 class="h2" data-split>What I bring<br><em>to your team</em></h2>
+      <p class="eyebrow hop"><span></span><b>07</b><i>why-me</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
+      <h2 class="h2" id="why-title">What I bring<br><em>to your team</em></h2>
     </div>
     <p class="lead" data-reveal>Three things I can back up — every point links to the proof on this page.</p>
   </div>
   <div class="why__grid" data-why></div>
-  <div class="why__cta" data-reveal>
-    <p><i></i><span data-d="availability"></span></p>
-    <button type="button" class="btn btn--solid" data-copy="email" data-magnetic>COPY MY EMAIL <span class="btn__ico"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg></span></button>
-  </div>
 </section>
 
 <!-- ============ 08 CONTACT ============ -->
-<section class="section contact" id="contact" data-section="08">
+<section class="section contact" id="contact" data-section="08" aria-labelledby="contact-title">
+  <p class="section__signal section__signal--corner">LET’S CONNECT<br>IDEAS × OPPORTUNITIES × COLLABORATIONS<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
   <div class="contact__grid">
     <div class="contact__info">
-      <p class="eyebrow hop"><span></span><b>hop 08</b><i>contact</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
-      <h2 class="h2 h2--xl" data-split>Let's build<br><em>something</em></h2>
+      <p class="eyebrow hop"><span></span><b>08</b><i>contact</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
+      <h2 class="h2 h2--xl" id="contact-title">Let's build<br><em>something</em></h2>
       <p class="contact__lead" data-reveal>Hiring a web or app developer, or need a website or system built? I can start immediately, on-site, hybrid or remote. Send me a message — I usually reply within a day.</p>
       <p class="pill" data-reveal><i></i>OPEN TO DEVELOPER ROLES &amp; FREELANCE</p>
       <ul class="links" data-reveal-group>
@@ -355,7 +371,7 @@
           <p class="field__error" id="err-message" aria-live="polite"></p>
         </div>
         <input class="form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn btn--solid btn--block form__submit" type="submit"><span class="form__submit-label">Send message</span><span class="btn__ico"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span></button>
+        <button class="btn btn--solid btn--block btn--primary form__submit" type="submit"><span class="form__submit-label">Send message</span><span class="btn__ico"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span></button>
         <p class="form__note"><span class="req" aria-hidden="true">*</span> Required fields. Your details are used only to reply to your message.</p>
         <p class="form__status" role="status" aria-live="polite"></p>
       </form>
@@ -384,7 +400,7 @@
     ['js/vendor/gsap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'],
     ['js/vendor/ScrollTrigger.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'],
     ['js/vendor/lenis.min.js', 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js'],
-    ['js/data.js'], ['js/main.js']
+    ['js/data.js?v=20261030-8'], ['js/main.js?v=20261030-8']
   ];
   function add(src, ok, fail) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.body.appendChild(s); }
   function next(i) {

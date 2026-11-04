@@ -245,7 +245,7 @@
     if (p.layout === 'app') {
       var pShot = Math.min(p.previewShot == null ? 1 : p.previewShot, p.shots.length - 1);
       media = '<div class="apps">' + p.shots.map(function (s, j) {
-        return '<figure class="app"><div class="cut"><div class="cut__in"><button type="button" class="app__open" data-app-shot="' + j + '" aria-label="Enlarge ' + esc(s.label) + ' screenshot"><img src="' + esc(s.src) + '" alt="' + esc(p.name + ' — ' + s.label) + '" loading="lazy"></button>' + (j === pShot ? previewHtml(p) : '') + '</div></div><span>' + esc(s.label) + '</span></figure>';
+        return '<figure class="app" data-reveal-item><div class="cut"><div class="cut__in"><button type="button" class="app__open" data-app-shot="' + j + '" aria-label="Enlarge ' + esc(s.label) + ' screenshot"><img src="' + esc(s.src) + '" alt="' + esc(p.name + ' — ' + s.label) + '" loading="lazy"></button>' + (j === pShot ? previewHtml(p) : '') + '</div></div><span>' + esc(s.label) + '</span></figure>';
       }).join('') + '</div>';
     } else {
       media = '<div class="frame cut" data-frame><div class="cut__in">' +
@@ -260,17 +260,18 @@
     }
     // With a live demo, "Live demo" is the main button and the code link sits beside it.
     var live = p.live
-      ? '<a class="btn btn--solid" href="' + esc(p.live) + '" target="_blank" rel="noopener" data-magnetic>LIVE DEMO <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>'
+      ? '<a class="btn btn--solid btn--primary" href="' + esc(p.live) + '" target="_blank" rel="noopener">LIVE DEMO <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>'
       : '';
     var action = live + (p.github
-      ? '<a class="btn ' + (p.live ? 'btn--ghost' : 'btn--solid') + '" href="' + esc(p.github) + '" target="_blank" rel="noopener" data-magnetic>' + GH + ' VIEW CODE</a>'
-      : '<span class="soon">REPO COMING SOON</span>');
-    if (p.live && p.liveNote) action += '<span class="project__note">' + esc(p.liveNote) + '</span>';
-    return '<article class="project' + (p.layout === 'app' ? ' project--app' : '') + (p.featured ? ' project--featured' : '') + '" data-project>' +
+      ? '<a class="btn btn--ghost" href="' + esc(p.github) + '" target="_blank" rel="noopener">' + GH + ' SOURCE CODE</a>'
+      : '<span class="soon">SOURCE CODE COMING SOON</span>');
+    if (p.liveNote) action += '<span class="project__note">' + esc(p.liveNote) + '</span>';
+    var statusClass = p.status === 'In development' ? 'development' : p.status === 'Local release candidate' ? 'local' : 'complete';
+    return '<article class="project' + (p.layout === 'app' ? ' project--app' : '') + (p.featured ? ' project--featured' : '') + '" id="project-panel-' + i + '" data-project>' +
       '<div class="project__media">' + media + '</div>' +
       '<div class="project__body">' +
         '<div class="project__meta"><span class="project__num">' + pad(i + 1) + '</span>' + (p.featured ? '<span class="project__feat">FEATURED</span>' : '') + '<span class="project__kind">' + esc(p.kind) + '</span>' +
-          (p.status ? '<span class="project__status"><i></i>' + esc(p.status) + '</span>' : '') + '</div>' +
+          '<span class="project__status project__status--' + statusClass + '"><i></i>' + esc(p.status || 'Complete') + '</span></div>' +
         '<h3 data-scramble-view>' + esc(p.name) + '</h3>' +
         '<p class="project__desc">' + esc(p.desc) + '</p>' +
         (p.facts ? '<ul class="pfacts">' + p.facts.map(function (f) { return '<li><b>' + esc(f[0]) + '</b><span>' + esc(f[1]) + '</span></li>'; }).join('') + '</ul>' : '') +
@@ -281,6 +282,47 @@
       (p.learned ? '<div class="learned"><span>WHAT I LEARNED //</span><p>' + esc(p.learned) + '</p></div>' : '') +
     '</article>';
   }).join('');
+
+  // Keep every real project and gallery mounted, with a keyboard-accessible index.
+  var projectPanels = $$('[data-project]');
+  if (projectPanels.length > 1) {
+    var projectIndex = document.createElement('div');
+    projectIndex.className = 'project-index';
+    projectIndex.innerHTML = '<p class="project-index__label" id="project-index-label">PROJECT INDEX / SELECT A PROJECT</p><div class="project-index__list" role="tablist" aria-labelledby="project-index-label">' + D.projects.map(function (p, i) {
+      return '<button type="button" class="project-index__item" role="tab" id="project-tab-' + i + '" aria-controls="project-panel-' + i + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? '0' : '-1') + '"><img src="' + esc(p.shots[0].src) + '" alt="" width="240" height="135" loading="lazy"><strong>' + esc(p.name) + '</strong><span>' + esc(p.kind) + '</span><small>' + esc(p.status || 'Complete') + '</small></button>';
+    }).join('') + '</div>';
+    $('[data-projects]').insertAdjacentElement('afterend', projectIndex);
+    var projectTabs = $$('.project-index__item', projectIndex);
+    projectPanels.forEach(function (p, i) {
+      p.setAttribute('role', 'tabpanel');
+      p.setAttribute('aria-labelledby', 'project-tab-' + i);
+      p.setAttribute('tabindex', '0');
+      p.hidden = i !== 0;
+    });
+    var selectProject = function (index, showPreview) {
+      projectPanels.forEach(function (p, i) {
+        p.hidden = i !== index;
+        if (i !== index) $$('[data-preview]', p).forEach(function (v) { v.pause(); });
+      });
+      projectTabs.forEach(function (b, i) {
+        b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+        b.tabIndex = i === index ? 0 : -1;
+      });
+      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+      if (showPreview) requestAnimationFrame(function () {
+        projectPanels[index].focus({ preventScroll: true });
+        goToSection($('#projects'), $('#projects-title'));
+      });
+    };
+    projectTabs.forEach(function (b, i) {
+      b.addEventListener('click', function () { selectProject(i, true); });
+      b.addEventListener('keydown', function (e) {
+        var next = e.key === 'ArrowRight' ? (i + 1) % projectTabs.length : e.key === 'ArrowLeft' ? (i + projectTabs.length - 1) % projectTabs.length : e.key === 'Home' ? 0 : e.key === 'End' ? projectTabs.length - 1 : -1;
+        if (next < 0) return;
+        e.preventDefault(); selectProject(next, false); projectTabs[next].focus({ preventScroll: true });
+      });
+    });
+  }
 
   // Feature list toggle (phones)
   $$('.feats__more').forEach(function (b) {
@@ -305,10 +347,20 @@
     thumbs.forEach(function (t) {
       t.addEventListener('click', function () {
         var j = +t.getAttribute('data-shot'); activeShot[pi] = j;
-        imgs.forEach(function (im, k) { im.classList.toggle('is-on', k === j); });
+        imgs.forEach(function (im, k) { im.classList.toggle('is-on', k === j); im.setAttribute('aria-hidden', k === j ? 'false' : 'true'); });
         thumbs.forEach(function (b, k) { b.classList.toggle('is-on', k === j); b.setAttribute('aria-selected', k === j); });
         var txt = D.projects[pi].shots[j].label;
         if (animate) scramble(label, txt.toUpperCase(), 0.5); else label.textContent = txt;
+      });
+    });
+    imgs.forEach(function (im, k) { im.setAttribute('aria-hidden', k === 0 ? 'false' : 'true'); });
+    thumbs.forEach(function (t, i) {
+      t.tabIndex = i === 0 ? 0 : -1;
+      t.addEventListener('click', function () { thumbs.forEach(function (b) { b.tabIndex = b === t ? 0 : -1; }); });
+      t.addEventListener('keydown', function (e) {
+        var j = e.key === 'ArrowRight' ? (i + 1) % thumbs.length : e.key === 'ArrowLeft' ? (i + thumbs.length - 1) % thumbs.length : e.key === 'Home' ? 0 : e.key === 'End' ? thumbs.length - 1 : -1;
+        if (j < 0) return;
+        e.preventDefault(); thumbs[j].click(); thumbs[j].focus();
       });
     });
   });
@@ -337,6 +389,7 @@
       if (label) label.textContent = on ? '● LIVE PREVIEW' : D.projects[pi].shots[activeShot[pi] || 0].label;
     };
     pv.play = function (byUser) {
+      if (proj.hidden) return;
       if (byUser) held = false;
       if (held) return;
       wanted = true; load();
@@ -645,9 +698,15 @@
     keysBox.addEventListener('click', function (e) { if (e.target === keysBox) closeKeys(); });
   }
   $$('[data-open-keys]').forEach(function (b) { b.addEventListener('click', openKeys); });
-  function goToSection(sec) {
-    if (lenis) lenis.scrollTo(sec, { offset: sec.id === 'home' ? 0 : -10, duration: 1 });
-    else sec.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+  function goToSection(sec, destination) {
+    if (!sec) return;
+    var hash = '#' + sec.id;
+    if (location.hash !== hash) history.pushState(null, '', hash);
+    var target = destination || sec;
+    var offset = sec.id === 'home' ? 0 : -80;
+    if (destination) offset = -($('.nav').offsetHeight + 6);
+    if (lenis) lenis.scrollTo(target, { offset: offset, duration: 1 });
+    else window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top + offset, behavior: reduced ? 'instant' : 'smooth' });
   }
   document.addEventListener('keydown', function (e) {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -682,15 +741,30 @@
     if (!rail.classList.contains('is-open')) { railY = window.scrollY; return; }
     if (Math.abs(window.scrollY - railY) > 160) setRail(false);
   }, { passive: true });
-  // phones: the side tab and the back-to-top button only appear after the hero
+  // The floating arrow goes back one section; Contact completes the loop to Home.
   var heroEl = $('#home'), toTop = $('.totop');
+  var currentSection = heroEl;
+  function previousSection() {
+    var index = sectionsByKey.indexOf(currentSection);
+    return currentSection && currentSection.id === 'contact' ? heroEl : sectionsByKey[Math.max(0, index - 1)];
+  }
+  function updateSectionArrow() {
+    if (!toTop) return;
+    var previous = previousSection();
+    var name = previous ? previous.id : 'home';
+    name = name === 'why' ? 'Why Me' : name.charAt(0).toUpperCase() + name.slice(1);
+    var label = currentSection && currentSection.id === 'contact' ? 'Back to Home' : 'Previous section: ' + name;
+    toTop.setAttribute('aria-label', label);
+    toTop.setAttribute('title', label);
+    toTop.classList.toggle('is-on', !!currentSection && currentSection.id !== 'home');
+  }
   var onScrollPast = function () {
     var past = window.scrollY > (heroEl ? heroEl.offsetHeight * 0.8 : 600);
     document.body.classList.toggle('past-hero', past);
-    if (toTop) toTop.classList.toggle('is-on', window.scrollY > window.innerHeight * 1.2);
+    updateSectionArrow();
   };
   window.addEventListener('scroll', onScrollPast, { passive: true }); onScrollPast();
-  if (toTop) toTop.addEventListener('click', function () { if (lenis) lenis.scrollTo(0, { duration: 1 }); else window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }); });
+  if (toTop) toTop.addEventListener('click', function () { goToSection(previousSection()); });
 
   /* ---------------- nav, menu ---------------- */
   var nav = $('.nav'), burger = $('.burger'), menu = $('.menu');
@@ -703,10 +777,17 @@
     menu.setAttribute('aria-hidden', !open);
     document.body.style.overflow = open ? 'hidden' : '';
     if (lenis) open ? lenis.stop() : lenis.start();
+    if (open) $('.menu__links a', menu).focus(); else burger.focus();
   };
   burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
   $$('.menu a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('is-open')) setMenu(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab' || !menu.classList.contains('is-open')) return;
+    var links = $$('a', menu), last = links[links.length - 1];
+    if (e.shiftKey && document.activeElement === burger) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); burger.focus(); }
+  });
   var onScrollNav = function () { nav.classList.toggle('is-scrolled', window.scrollY > 40); };
   window.addEventListener('scroll', onScrollNav, { passive: true }); onScrollNav();
 
@@ -714,6 +795,9 @@
   var sections = $$('[data-section]'), numEl = $('[data-section-num]');
   var setActive = function (sec) {
     var id = sec.id, num = sec.getAttribute('data-section');
+    currentSection = sec;
+    updateSectionArrow();
+    document.body.classList.toggle('interior-active', id !== 'home');
     $$('[data-nav]').forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('data-nav') === id); });
     if (numEl && numEl.textContent !== num && numEl.textContent && id !== 'projects') SFX.play('ping');
     if (numEl && numEl.textContent !== num) { if (animate) scramble(numEl, num, 0.35); else numEl.textContent = num; }
@@ -854,6 +938,101 @@
   /* ---------------- no-animation path ---------------- */
   var lenis = null;
   var loader = $('.loader');
+  /* One scroll value drives the sidebar and the interactive right-edge bar.
+     Keep this outside the animation branch so reduced motion works too. */
+  (function () {
+    var control = $('.page-scroll'), track = $('.page-scroll__track');
+    var leftFill = $('.rail__progress');
+    if (!control || !track) return;
+    var queued = false, pointer = null;
+    function range() { return Math.max(0, document.documentElement.scrollHeight - window.innerHeight); }
+    function update() {
+      queued = false;
+      var total = range();
+      var progress = total ? Math.max(0, Math.min(1, window.scrollY / total)) : 0;
+      var percent = Math.round(progress * 100);
+      document.documentElement.style.setProperty('--page-progress', progress);
+      if (leftFill) leftFill.style.transform = 'scaleY(' + progress + ')';
+      control.setAttribute('aria-valuenow', percent);
+      control.setAttribute('aria-valuetext', percent + '% of page');
+      control.setAttribute('aria-disabled', total ? 'false' : 'true');
+      control.tabIndex = total ? 0 : -1;
+    }
+    function schedule() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(update);
+    }
+    function moveTo(y, immediate) {
+      var top = Math.max(0, Math.min(range(), y));
+      if (lenis) lenis.scrollTo(top, { immediate: immediate, duration: 0.35 });
+      else window.scrollTo({ top: top, behavior: immediate || reduced ? 'instant' : 'smooth' });
+      schedule();
+    }
+    function seek(clientY) {
+      var rect = track.getBoundingClientRect();
+      if (rect.height) moveTo((clientY - rect.top) / rect.height * range(), true);
+    }
+    control.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      control.focus({ preventScroll: true });
+      pointer = e.pointerId;
+      control.setPointerCapture(pointer);
+      control.classList.add('is-dragging');
+      seek(e.clientY);
+    });
+    control.addEventListener('pointermove', function (e) {
+      if (pointer === e.pointerId) seek(e.clientY);
+    });
+    function release(e) {
+      if (pointer !== e.pointerId) return;
+      if (e.type === 'pointerup') seek(e.clientY);
+      if (control.hasPointerCapture(pointer)) control.releasePointerCapture(pointer);
+      pointer = null;
+      control.classList.remove('is-dragging');
+    }
+    control.addEventListener('pointerup', release);
+    control.addEventListener('pointercancel', release);
+    control.addEventListener('lostpointercapture', function () { pointer = null; control.classList.remove('is-dragging'); });
+    control.addEventListener('keydown', function (e) {
+      var next;
+      if (e.key === 'Home') next = 0;
+      else if (e.key === 'End') next = range();
+      else if (e.key === 'ArrowUp') next = window.scrollY - 80;
+      else if (e.key === 'ArrowDown') next = window.scrollY + 80;
+      else if (e.key === 'PageUp') next = window.scrollY - window.innerHeight * 0.85;
+      else if (e.key === 'PageDown') next = window.scrollY + window.innerHeight * 0.85;
+      else return;
+      e.preventDefault();
+      e.stopPropagation();
+      moveTo(next, reduced);
+    });
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+    window.addEventListener('load', schedule, { once: true });
+    if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(document.body);
+    document.documentElement.classList.add('has-page-scroll');
+    update();
+  })();
+  // Restore section links after the dynamic content and scroll engine are ready.
+  // Native anchor restoration can otherwise run before Lenis initializes.
+  function restoreSectionFromHash() {
+    var target = document.getElementById(location.hash.slice(1) || 'home');
+    if (!target || !target.hasAttribute('data-section')) return;
+    setActive(target);
+    requestAnimationFrame(function () {
+      if (lenis) lenis.scrollTo(target, { offset: target.id === 'home' ? 0 : -80, immediate: true });
+      else target.scrollIntoView({ behavior: 'instant', block: 'start' });
+    });
+  }
+  function scheduleSectionRestoration() {
+    var fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    fontsReady.then(function () { requestAnimationFrame(restoreSectionFromHash); });
+  }
+  if (document.readyState === 'complete') scheduleSectionRestoration();
+  else window.addEventListener('load', scheduleSectionRestoration, { once: true });
+  window.addEventListener('popstate', restoreSectionFromHash);
   if (!animate) {
     if (loader) loader.remove();
     return;
@@ -868,6 +1047,7 @@
 
   // smooth scrolling
   if (window.Lenis) {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     lenis = new window.Lenis({ lerp: 0.15, smoothWheel: true, wheelMultiplier: 1.05 });
     lenis.on('scroll', ST.update);
     gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
@@ -876,7 +1056,9 @@
       a.addEventListener('click', function (e) {
         var id = a.getAttribute('href'); if (id.length < 2) return;
         var t = $(id); if (!t) return;
-        e.preventDefault(); lenis.scrollTo(t, { offset: id === '#home' ? 0 : -10, duration: 1 });
+        e.preventDefault();
+        if (t.hasAttribute('data-section') && location.hash !== id) history.pushState(null, '', id);
+        lenis.scrollTo(t, { offset: id === '#home' ? 0 : -80, duration: 1 });
       });
     });
   }
@@ -973,102 +1155,10 @@
     gsap.fromTo('.hero__copy, .hero__hud', { opacity: 1, y: 0 }, { opacity: 0, y: -40, ease: 'none', immediateRender: false, scrollTrigger: { trigger: '.hero', start: '20% top', end: '60% top', scrub: true } });
   });
 
-  // rail progress
-  gsap.to('.rail__progress', { scaleY: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
+  // Both edge progress bars are updated together by the shared scroll control.
 
-  /* ---------- section heads ---------- */
-  $$('.section').forEach(function (sec) {
-    var eye = $('.eyebrow span', sec), lines = $$('.split-line > span', sec);
-    var tl = gsap.timeline({ scrollTrigger: { trigger: sec, start: 'top 78%' } });
-    if (eye) tl.from(eye, { scaleX: 0, duration: 0.8, ease: 'expo.out' }, 0);
-    tl.from($$('.eyebrow', sec), { opacity: 0, x: -14, duration: 0.6 }, 0);
-    tl.from(lines, { yPercent: 110, duration: 1, ease: 'expo.out', stagger: 0.1 }, 0.1);
-  });
-
-  // generic reveals
-  $$('[data-reveal]').forEach(function (el) {
-    var clip = el.getAttribute('data-reveal') === 'clip';
-    if (clip) gsap.fromTo(el, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1.3, ease: 'expo.inOut', clearProps: 'clipPath', scrollTrigger: { trigger: el, start: 'top 82%' } });
-    else gsap.from(el, { opacity: 0, y: 34, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 86%' } });
-  });
-  $$('[data-reveal-group]').forEach(function (g) {
-    gsap.from(g.children, { opacity: 0, y: 24, duration: 0.8, ease: 'power3.out', stagger: 0.08, scrollTrigger: { trigger: g, start: 'top 86%' } });
-  });
-  $$('[data-reveal-item]').forEach(function (el, i) {
-    gsap.from(el, { opacity: 0, y: 40, duration: 1, ease: 'power3.out', delay: (i % 3) * 0.1, scrollTrigger: { trigger: el, start: 'top 88%' } });
-  });
-
-  // skill cards
-
-  // scroll speed, so fast scrolling past the projects stays silent
-  var lastY = window.scrollY, lastT = performance.now(), scrollSpeed = 0;
-  window.addEventListener('scroll', function () {
-    var now = performance.now(), dt = now - lastT || 16;
-    scrollSpeed = Math.abs(window.scrollY - lastY) / dt; lastY = window.scrollY; lastT = now;
-  }, { passive: true });
-
-  // projects: frame wipe + inner image zoom + body stagger + title scramble
-  $$('[data-project]').forEach(function (p, i) {
-    var frame = $('[data-frame]', p), body = $('.project__body', p);
-    var tl = gsap.timeline({ scrollTrigger: { trigger: p, start: 'top 75%' } });
-    tl.add(function () { if (scrollSpeed < 2.5) SFX.play('materialize'); }, 0);
-    if (frame) {
-      tl.fromTo(frame, { clipPath: i % 2 ? 'inset(0 0% 0 100%)' : 'inset(0 100% 0 0%)' }, { clipPath: 'inset(0 0% 0 0%)', duration: 1.3, ease: 'expo.inOut', clearProps: 'clipPath' }, 0)
-        .from($('.frame__screen', frame), { scale: 1.15, duration: 1.8, ease: 'expo.out' }, 0.3)
-        .from($$('.thumb', p), { opacity: 0, y: 14, stagger: 0.06, duration: 0.6 }, 0.8);
-    }
-    tl.from(body.children, { opacity: 0, x: i % 2 ? -30 : 30, duration: 0.9, ease: 'power3.out', stagger: 0.07 }, 0.25)
-      .add(function () { var h = $('[data-scramble-view]', p); if (h) scramble(h, h.textContent, 0.8); }, 0.35);
-  });
-  // Phone screenshots have their own entrance here (not data-reveal-item: two "from" tweens on the
-  // same element would leave it at opacity 0).
-  $$('.apps').forEach(function (a) {
-    gsap.from($$('.app', a), { opacity: 0, y: 80, rotate: function (k) { return [-4, 0, 4][k] || 0; }, duration: 1.2, ease: 'expo.out', stagger: 0.12, scrollTrigger: { trigger: a, start: 'top 80%' } });
-    gsap.to($$('.app', a), { y: function (k) { return [-24, 18, -12][k] || 0; }, ease: 'none', scrollTrigger: { trigger: a, start: 'top bottom', end: 'bottom top', scrub: true } });
-  });
-
-  // project numbers count up when they scroll into view (only whole numbers like 44, 72)
-  $$('.pfacts b').forEach(function (b) {
-    var txt = b.textContent; if (!/^\d+$/.test(txt) || +txt < 3) return;
-    var n = { v: 0 }, end = +txt; b.textContent = '0';
-    ST.create({ trigger: b, start: 'top 90%', once: true, onEnter: function () {
-      gsap.to(n, { v: end, duration: 1.3, ease: 'power2.out', onUpdate: function () { b.textContent = Math.round(n.v); } });
-    } });
-  });
-
-  // the "Now" list types itself out like a terminal
-  var nowItems = $$('.now__list li');
-  if (nowItems.length) {
-    var full = nowItems.map(function (li) { return li.textContent; });
-    // an invisible copy keeps each line's space, so nothing jumps while the text types in
-    var live = nowItems.map(function (li, k) {
-      li.innerHTML = '<span class="ty__ghost">' + esc(full[k]) + '</span><span class="ty__live" aria-hidden="true"></span>';
-      li.classList.add('is-typing-wait'); return $('.ty__live', li);
-    });
-    ST.create({ trigger: '.now', start: 'top 82%', once: true, onEnter: function () {
-      var i = 0;
-      (function nextLine() {
-        if (i >= nowItems.length) return;
-        var li = nowItems[i], out = live[i], text = full[i], c = 0;
-        li.classList.remove('is-typing-wait'); li.classList.add('is-typing');
-        (function typeChar() {
-          c += 2; out.textContent = text.slice(0, c);
-          if (c < text.length) setTimeout(typeChar, 16);
-          else { li.classList.remove('is-typing'); li.classList.add('is-typed'); i++; setTimeout(nextLine, 90); }
-        })();
-      })();
-    } });
-  }
-
-  // timeline line draws with scroll, dots light up
-  gsap.fromTo('.timeline__line span', { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '.timeline', start: 'top 70%', end: 'bottom 60%', scrub: 0.4 } });
-  $$('[data-tl]').forEach(function (li) {
-    ST.create({ trigger: li, start: 'top 68%', onEnter: function () { li.classList.add('is-on'); }, onLeaveBack: function () { li.classList.remove('is-on'); } });
-    gsap.from(li, { opacity: 0, x: 30, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: li, start: 'top 86%' } });
-  });
-
-  // background line art in sections drifts slightly
+  // Interior sections use normal document flow and stay visible immediately.
+  // Keep Home animation above; hidden project panels must not receive reveal states.
   gsap.to('.hero__glow', { opacity: 0.55, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-
   window.addEventListener('load', function () { ST.refresh(); });
 })();
