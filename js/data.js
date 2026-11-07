@@ -118,7 +118,7 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'FORM/TECH', kind: 'E-commerce · technical apparel', layout: 'desktop', path: 'form-tech', status: 'Local release candidate',
+      name: 'FORM/TECH', kind: 'E-commerce · technical apparel', layout: 'desktop', path: 'form-tech', status: 'Release candidate',
       facts: [['30', 'products'], ['218', 'size & color variants'], ['8', 'collections'], ['Staff', 'protected management']],
       desc: 'A full-stack storefront for a fictional technical-apparel brand. Customers browse curated Men and Women collections, search and filter products, choose size and color, and use a persistent shopping bag and guest demo checkout. A protected staff area manages the catalogue, inventory, demo orders and homepage content.',
       features: [
@@ -128,8 +128,8 @@ window.PORTFOLIO = {
         'Responsive editorial storefront with recently viewed items, accessible menus and reduced-motion support, tested in Chromium, Firefox and WebKit'
       ],
       tags: ['Laravel', 'React', 'TypeScript', 'Inertia', 'PostgreSQL', 'Tailwind CSS', 'Docker'],
-      github: 'https://github.com/mukraminbariwa5-create/form-tech-apparel', live: '',
-      liveNote: 'Built and verified locally. A public demo is coming. Checkout is a demo and does not take payments.',
+      github: 'https://github.com/mukraminbariwa5-create/form-tech-apparel', live: 'https://form-tech-demo.onrender.com',
+      liveNote: 'Staff area: sign in at /login with staff@formtech.demo and formtech-demo-staff. Checkout is a demo and takes no payments. Free hosting: the first visit can take about a minute to wake up.',
       preview: 'assets/video/formtech.mp4',
       learned: 'Building a database-backed storefront taught me to keep product variants, prices and inventory consistent from the catalogue to checkout, separate staff permissions from guest sessions, and package a Laravel and React application with PostgreSQL in Docker.',
       shots: [
@@ -268,7 +268,7 @@ window.PORTFOLIO = {
     { title: 'I build with AI and own the result', text: 'I use AI coding tools like Claude Code to move fast, but I plan each system, review and test every change, and can explain how it works. 251 automated tests across TeachWise, Dokyu and Padala back that up.', link: 'https://github.com/mukraminbariwa5-create', linkText: 'See my GitHub' }
   ],
   journey: [
-    { when: 'Now', kind: 'Projects', title: 'Building projects with AI-driven development', org: 'Personal projects · ongoing', text: 'Seven projects so far: TeachWise, KATRIBO and BookTrack are complete; FORM/TECH has a verified local release candidate; Servease, Dokyu and Padala are in development. I plan, build with Claude Code, review and test each project.', live: true },
+    { when: 'Now', kind: 'Projects', title: 'Building projects with AI-driven development', org: 'Personal projects · ongoing', text: 'Seven projects so far: TeachWise, KATRIBO and BookTrack are complete; FORM/TECH is a release candidate with a live demo; Servease, Dokyu and Padala are in development. I plan, build with Claude Code, review and test each project.', live: true },
     { when: 'Feb – May 2026', kind: 'OJT', title: 'On-the-Job Trainee', org: 'Department of Information and Communications Technology (DICT) · Jolo, Sulu', text: 'Hands-on work across deployment, networking and development:',
       bullets: [
         'Facilitated the rollout of a DICT free internet connectivity program to partner schools, coordinating on-site deployment and orienting students and staff',
