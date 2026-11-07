@@ -186,7 +186,7 @@ html.has-page-scroll::-webkit-scrollbar { display:none; width:0; height:0; }
 .section .app:nth-child(odd) { margin-top:20px; }
 .project-index { margin-top:32px; padding-top:20px; border-top:1px solid var(--line-2); }
 .project-index__label { margin:0 0 14px; color:var(--dim); font:10px/1.5 var(--hud); letter-spacing:.15em; }
-.project-index__list { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:10px; }
+.project-index__list { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:10px; }
 .project-index__item { min-width:0; display:flex; flex-direction:column; gap:10px; text-align:left; padding:12px; color:var(--ink); background:rgba(255,255,255,.02); border:1px solid var(--line-2); cursor:pointer; }
 .project-index__item:hover,.project-index__item[aria-selected="true"] { border-color:#d1ced7; background:rgba(255,255,255,.055); }
 .project-index__item img { width:100%; aspect-ratio:16/9; object-fit:cover; object-position:top; background:#15151c; }
@@ -273,7 +273,7 @@ html.has-page-scroll::-webkit-scrollbar { display:none; width:0; height:0; }
   .section .contact__grid { gap:28px; }
   .section .project,.section .project:nth-child(even) { grid-template-columns:minmax(0,1fr); grid-template-areas:"media" "body" "learned"; }
   .section .journey__grid { gap:28px; }
-  .project-index__list { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .project-index__list { grid-template-columns:repeat(4,minmax(0,1fr)); }
   .section .certs__grid { gap:12px; }
   .section .certcard__body { padding:20px 16px; }
 }

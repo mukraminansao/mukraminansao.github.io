@@ -44,6 +44,9 @@ The clips are already set up in `js/data.js` (`preview: 'assets/video/NAME.mp4'`
 | `assets/video/padala.mp4` | Pick a folder → "only 2 files changed" → transfer with Dala flying the package |
 | `assets/video/booktrack.mp4` | Member searches a book → borrows it → it shows in "My loans" |
 | `assets/video/servease.mp4` | Customer picks a service → selects a pro → books it |
+| `assets/video/katribo.mp4` | Home → menu → milkshakes → a drink's sizes |
+| `assets/video/formtech.mp4` | Scroll through the storefront home page |
+| `assets/video/dokyu.mp4` | Doki's guided tour on the home screen (phone-shaped, 600 × 960) |
 
 **Recording tips**
 
