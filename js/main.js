@@ -288,10 +288,10 @@
   if (projectPanels.length > 1) {
     var projectIndex = document.createElement('div');
     projectIndex.className = 'project-index';
-    projectIndex.innerHTML = '<p class="project-index__label" id="project-index-label">PROJECT INDEX / SELECT A PROJECT</p><div class="project-index__list" role="tablist" aria-labelledby="project-index-label">' + D.projects.map(function (p, i) {
+    projectIndex.innerHTML = '<p class="project-index__label" id="project-index-label">SELECT A PROJECT <span aria-hidden="true">' + pad(projectPanels.length) + ' PROJECTS</span></p><div class="project-index__list" role="tablist" aria-labelledby="project-index-label">' + D.projects.map(function (p, i) {
       return '<button type="button" class="project-index__item" role="tab" id="project-tab-' + i + '" aria-controls="project-panel-' + i + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? '0' : '-1') + '"><img src="' + esc(p.shots[0].src) + '" alt="" width="240" height="135" loading="lazy"><strong>' + esc(p.name) + '</strong><span>' + esc(p.kind) + '</span><small>' + esc(p.status || 'Complete') + '</small></button>';
     }).join('') + '</div>';
-    $('[data-projects]').insertAdjacentElement('afterend', projectIndex);
+    $('[data-projects]').insertAdjacentElement('beforebegin', projectIndex);
     var projectTabs = $$('.project-index__item', projectIndex);
     projectPanels.forEach(function (p, i) {
       p.setAttribute('role', 'tabpanel');
@@ -299,7 +299,7 @@
       p.setAttribute('tabindex', '0');
       p.hidden = i !== 0;
     });
-    var selectProject = function (index, showPreview) {
+    var selectProject = function (index) {
       projectPanels.forEach(function (p, i) {
         p.hidden = i !== index;
         if (i !== index) $$('[data-preview]', p).forEach(function (v) { v.pause(); });
@@ -309,17 +309,13 @@
         b.tabIndex = i === index ? 0 : -1;
       });
       if (window.ScrollTrigger) window.ScrollTrigger.refresh();
-      if (showPreview) requestAnimationFrame(function () {
-        projectPanels[index].focus({ preventScroll: true });
-        goToSection($('#projects'), $('#projects-title'));
-      });
     };
     projectTabs.forEach(function (b, i) {
-      b.addEventListener('click', function () { selectProject(i, true); });
+      b.addEventListener('click', function () { selectProject(i); });
       b.addEventListener('keydown', function (e) {
         var next = e.key === 'ArrowRight' ? (i + 1) % projectTabs.length : e.key === 'ArrowLeft' ? (i + projectTabs.length - 1) % projectTabs.length : e.key === 'Home' ? 0 : e.key === 'End' ? projectTabs.length - 1 : -1;
         if (next < 0) return;
-        e.preventDefault(); selectProject(next, false); projectTabs[next].focus({ preventScroll: true });
+        e.preventDefault(); selectProject(next); projectTabs[next].focus();
       });
     });
   }
@@ -466,7 +462,7 @@
       '<div class="certcard__body"><p class="certcard__meta"><span>' + esc(c.issuer) + '</span><b>' + esc(c.date) + '</b></p>' +
       '<h3>' + esc(c.title) + '</h3><p class="certcard__note">' + esc(c.note) + '</p>' +
       '<div class="card__tags">' + tags(c.tags) + '</div>' +
-      (c.verify ? '<a class="btn btn--line certcard__verify" href="' + esc(c.verify) + '" target="_blank" rel="noopener"><span class="btn__ring">' + EXT + '</span>VERIFY</a>' : '') +
+      (c.verify ? '<a class="btn btn--line certcard__verify" href="' + esc(c.verify) + '" target="_blank" rel="noopener" aria-label="Verify ' + esc(c.title) + '"><span class="btn__ring">' + EXT + '</span>VERIFY CREDENTIAL</a>' : '') +
       '</div></div></article>';
   }).join('');
 
@@ -506,7 +502,6 @@
   function openViewer(p, i, from) { openList(D.projects[p].name, D.projects[p].shots, i, from); }
   function step(d) { var n = lbState.list.length; lbState.i = (lbState.i + d + n) % n; showShot(); }
   var certShots = CE.map(function (c) { return { src: c.img, label: c.issuer + ' · ' + c.date, name: c.title }; });
-  $$('.frame__screen, .app__open, .certcard__img').forEach(function (el) { el.setAttribute('data-cursor', 'view'); });
   $$('[data-cert]').forEach(function (b) { b.addEventListener('click', function () { openList('Certificates', certShots, +b.getAttribute('data-cert'), b); }); });
   $('.lightbox__close', lb).addEventListener('click', closeViewer);
   var tx = 0, ty = 0, tOn = false;
@@ -698,15 +693,16 @@
     keysBox.addEventListener('click', function (e) { if (e.target === keysBox) closeKeys(); });
   }
   $$('[data-open-keys]').forEach(function (b) { b.addEventListener('click', openKeys); });
-  function goToSection(sec, destination) {
+  function sectionOffset(id) {
+    return id === 'home' || id === 'about' ? 0 : -80;
+  }
+  function goToSection(sec) {
     if (!sec) return;
     var hash = '#' + sec.id;
     if (location.hash !== hash) history.pushState(null, '', hash);
-    var target = destination || sec;
-    var offset = sec.id === 'home' ? 0 : -80;
-    if (destination) offset = -($('.nav').offsetHeight + 6);
-    if (lenis) lenis.scrollTo(target, { offset: offset, duration: 1 });
-    else window.scrollTo({ top: window.scrollY + target.getBoundingClientRect().top + offset, behavior: reduced ? 'instant' : 'smooth' });
+    var offset = sectionOffset(sec.id);
+    if (lenis) lenis.scrollTo(sec, { offset: offset, duration: 1 });
+    else window.scrollTo({ top: window.scrollY + sec.getBoundingClientRect().top + offset, behavior: reduced ? 'instant' : 'smooth' });
   }
   document.addEventListener('keydown', function (e) {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -798,6 +794,7 @@
     currentSection = sec;
     updateSectionArrow();
     document.body.classList.toggle('interior-active', id !== 'home');
+    document.body.classList.toggle('about-active', id === 'about');
     $$('[data-nav]').forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('data-nav') === id); });
     if (numEl && numEl.textContent !== num && numEl.textContent && id !== 'projects') SFX.play('ping');
     if (numEl && numEl.textContent !== num) { if (animate) scramble(numEl, num, 0.35); else numEl.textContent = num; }
@@ -1022,7 +1019,7 @@
     if (!target || !target.hasAttribute('data-section')) return;
     setActive(target);
     requestAnimationFrame(function () {
-      if (lenis) lenis.scrollTo(target, { offset: target.id === 'home' ? 0 : -80, immediate: true });
+      if (lenis) lenis.scrollTo(target, { offset: sectionOffset(target.id), immediate: true });
       else target.scrollIntoView({ behavior: 'instant', block: 'start' });
     });
   }
@@ -1058,15 +1055,14 @@
         var t = $(id); if (!t) return;
         e.preventDefault();
         if (t.hasAttribute('data-section') && location.hash !== id) history.pushState(null, '', id);
-        lenis.scrollTo(t, { offset: id === '#home' ? 0 : -80, duration: 1 });
+        lenis.scrollTo(t, { offset: sectionOffset(t.id), duration: 1 });
       });
     });
   }
 
   // click ripple + magnetic buttons + tilt (desktop pointers only)
   if (finePointer) {
-    // the cursor is the normal system arrow (bigger, set in CSS, cyan over anything clickable);
-    // every click sends out a small cyan ripple from the tip
+    // A mouse click sends out a small ripple.
     window.addEventListener('pointerdown', function (e) {
       if (e.pointerType !== 'mouse' || e.button !== 0) return;
       var r = document.createElement('span');
@@ -1107,23 +1103,23 @@
   /* ---------- initial hidden states ---------- */
   var heroLetters = $$('.hero__letter');
   gsap.set(heroLetters, { yPercent: 110, opacity: 0 });
-  gsap.set('.hero__figure img', { opacity: 0, y: 60, filter: 'blur(14px) drop-shadow(0 0 16px rgba(34,229,255,.25))' });
+  gsap.set('.hero__figure img', { opacity: 0, y: 60, filter: 'blur(14px)' });
   gsap.set('[data-hero-copy]', { opacity: 0, y: 30 });
   gsap.set('[data-hero-hud]', { opacity: 0 });
   gsap.set('[data-statbar]', { opacity: 0, y: 40 });
   gsap.set('.nav, .rail', { opacity: 0 });
-  gsap.set('.lineart path, .lineart rect', { strokeDasharray: 1400, strokeDashoffset: 1400 });
+  gsap.set('.lineart path', { strokeDasharray: 1400, strokeDashoffset: 1400 });
 
   /* ---------- loader → hero intro ---------- */
   var count = { v: 0 }, countEl = $('[data-count]');
   var intro = gsap.timeline({ paused: true });
   intro
-    .to('.lineart path, .lineart rect', { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut', stagger: 0.03, clearProps: 'strokeDasharray,strokeDashoffset' }, 0)
+    .to('.lineart path', { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut', stagger: 0.03, clearProps: 'strokeDasharray,strokeDashoffset' }, 0)
     .to(heroLetters, { yPercent: 0, opacity: 1, duration: 1.1, ease: 'expo.out', stagger: 0.07 }, 0.05)
     .to(heroLetters, { keyframes: [{ x: -6, skewX: 8, duration: 0.05 }, { x: 4, skewX: -6, duration: 0.05 }, { x: 0, skewX: 0, duration: 0.06 }], stagger: { each: 0.04, from: 'random' } }, 0.75)
     .to('.hero__figure img', { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.4, ease: 'expo.out' }, 0.35)
     .to('.nav, .rail', { opacity: 1, duration: 0.8 }, 0.6)
-    .to('[data-hero-hud]', { opacity: 1, duration: 0.4, onStart: function () { var s = $('[data-scramble-in]'); if (s) scramble(s, s.textContent, 0.9); } }, 0.8)
+    .to('[data-hero-hud]', { opacity: 1, duration: 0.4 }, 0.8)
     .to('[data-hero-copy]', { opacity: 1, y: 0, duration: 1, ease: 'power3.out', stagger: 0.12 }, 0.85)
     .to('[data-statbar]', { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, 1.0)
     .add(function () {
@@ -1159,6 +1155,5 @@
 
   // Interior sections use normal document flow and stay visible immediately.
   // Keep Home animation above; hidden project panels must not receive reveal states.
-  gsap.to('.hero__glow', { opacity: 0.55, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
   window.addEventListener('load', function () { ST.refresh(); });
 })();

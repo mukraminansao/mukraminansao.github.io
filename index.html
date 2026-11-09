@@ -18,9 +18,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/interior.css?v=20261107-1">
-<link rel="preload" as="image" href="assets/img/hero-enhanced-v2.webp" imagesrcset="assets/img/hero-enhanced-v2-sm.webp 430w, assets/img/hero-enhanced-v2.webp 860w" imagesizes="(max-width: 980px) 245px, 302px" fetchpriority="high">
+<link rel="stylesheet" href="css/style.css?v=20261109-native-cursor">
+<link rel="stylesheet" href="css/interior.css?v=20261109-chapters">
+<link rel="stylesheet" href="css/mobile-editorial.css?v=20261109-mobile-detail">
+<link rel="preload" as="image" href="assets/img/hero-graphite-portrait-v2.webp" fetchpriority="high">
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <script>(function(d){d.classList.add('js');try{if(localStorage.getItem('mk-booted')==='1')d.classList.add('booted');}catch(e){}})(document.documentElement);</script>
 </head>
@@ -39,7 +40,6 @@
   </div>
 </div>
 
-<div class="cursor" aria-hidden="true"><span class="cursor__ring"><span class="cursor__label"></span></span><span class="cursor__dot"></span></div>
 <div class="noise" aria-hidden="true"></div>
 <div class="page-scroll" role="scrollbar" tabindex="0" aria-label="Page scroll position" aria-controls="portfolio-content" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="page-scroll__track"><span class="page-scroll__fill"></span></span></div>
 
@@ -94,7 +94,7 @@
     <span>MUKRAMIN<b>.</b>DEV</span>
   </a>
   <nav class="nav__links" aria-label="Main">
-    <a href="#home" data-nav="home" data-scramble>HOME</a><i></i>
+    <a href="#home" class="is-active" data-nav="home" data-scramble>HOME</a><i></i>
     <a href="#about" data-nav="about" data-scramble>ABOUT</a><i></i>
     <a href="#skills" data-nav="skills" data-scramble>SKILLS</a><i></i>
     <a href="#projects" data-nav="projects" data-scramble>PROJECTS</a><i></i>
@@ -104,7 +104,7 @@
   </nav>
   
   <a class="btn btn--solid nav__cta" href="#contact" data-magnetic>HIRE ME <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-  <a class="btn btn--solid nav__hire" href="#contact">HIRE ME</a>
+  <a class="btn btn--solid nav__hire" href="#contact">HIRE ME <svg class="phone-only" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
   <button class="burger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
@@ -127,87 +127,128 @@
 
 <!-- ============ 01 HERO ============ -->
 <section class="hero" id="home" data-section="01">
-  <svg class="lineart" viewBox="0 0 1280 820" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <g class="lineart__grey">
-      <path d="M64 160 H360 L392 128 H560"/><path d="M720 128 H888 L920 160 H1280"/>
-      <path d="M64 420 H220 L250 450 H330"/><path d="M950 450 H1030 L1060 420 H1280"/>
-      <path d="M150 230 V380 L180 410"/><path d="M1130 230 V380 L1100 410"/>
-      <path d="M300 560 L340 520 H460"/><path d="M980 560 L940 520 H820"/>
-      <rect x="96" y="250" width="40" height="120"/><rect x="1144" y="250" width="40" height="120"/>
-      <path d="M380 96 H900" stroke-dasharray="2 8"/><path d="M64 600 H1280" stroke-dasharray="1 6"/>
-    </g>
-    <g class="lineart__accent"><path d="M560 128 H600"/><path d="M680 128 H720"/><path d="M150 380 V410"/><path d="M1130 380 V410"/></g>
+  <svg class="lineart" viewBox="0 0 1576 941" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 170H36l23-21h407l29-27h96M1125 137h143l13 12h216l22 21h57M1510 505h41V314m0 191v20"/>
   </svg>
-  <div class="hero__glow" aria-hidden="true"></div>
 
-  <div class="hero__hud hero__hud--l" data-hero-hud><span data-scramble-in>traceroute mukramin.dev · 8 hops</span></div>
-  <div class="hero__hud hero__hud--r" data-hero-hud>
-    <span>WHERE CODE<br>MEETS DESIGN</span>
-    <span class="hero__pager"><b>01</b><i class="on"></i><i></i><i></i></span>
+  <div class="hero__meta">
+    <div class="hero__hud hero__hud--l" data-hero-hud>
+      <span>DEVELOPER</span><span aria-hidden="true">/</span><span>CREATOR</span><span aria-hidden="true">/</span><span>TECH ENTHUSIAST</span>
+    </div>
+    <div class="hero__hud hero__hud--r" data-hero-hud>
+      <span>PASIG CITY, PH</span><span aria-hidden="true">/</span><span class="hero__online">ONLINE</span>
+    </div>
   </div>
 
   <h1 class="hero__title" aria-label="Mukramin Ansao">
-    <span class="hero__letter">A</span><span class="hero__letter">N</span><span class="hero__letter">S</span><span class="hero__letter">A</span><span class="hero__letter">O</span>
+    <svg viewBox="0 0 1468 305" preserveAspectRatio="none" aria-hidden="true">
+      <path class="hero__letter" fill-rule="evenodd" d="M0 305 107 0h73l112 305h-70l-25-64H91l-23 64zm108-125h73l-36-108z"/>
+      <path class="hero__letter" d="M299 305V0h75l108 184V0h68v305h-72L365 114v191z"/>
+      <path class="hero__letter" d="M589 40 630 0h267l41 40v46h-64V66l-9-9H666l-12 12v13l257 55 28 28v90l-42 50H681l-42-43v-50h64v17l12 11h149l10-10v-36l-256-64-29-29z"/>
+      <path class="hero__letter" fill-rule="evenodd" d="M941 305 1048 0h69l113 305h-71l-23-64h-107l-23 64zm108-125h71l-36-107z"/>
+      <path class="hero__letter" fill-rule="evenodd" d="M1231 48 1279 0h142l47 48v208l-46 49h-142l-49-49zm65 25v155l15 15h78l14-15V73l-14-14h-78z"/>
+    </svg>
   </h1>
 
   <div class="hero__figure">
-    <img src="assets/img/hero-enhanced-v2.webp" srcset="assets/img/hero-enhanced-v2-sm.webp 430w, assets/img/hero-enhanced-v2.webp 860w" sizes="(max-width: 980px) 245px, 302px" alt="Mukramin Ansao" width="860" height="1829" fetchpriority="high">
+    <img src="assets/img/hero-graphite-portrait-v2.webp" alt="Mukramin Ansao wearing a graphite jacket and cyber-tech glasses" width="1024" height="1536" fetchpriority="high">
   </div>
 
+  <svg class="phone-only hero__phone-trace" viewBox="0 0 96 132" aria-hidden="true">
+    <path d="M8 0v132M0 8h16M8 69h25l15-15h48M30 103l23-36m-17 36 23-36m-17 36 23-36m-17 36 23-36m-17 36 23-36m-17 36 23-36m-17 36 23-36"/>
+  </svg>
+  <svg class="phone-only hero__phone-edge" viewBox="0 0 22 122" aria-hidden="true" focusable="false">
+    <path d="M3 4h9l6 6v65l-7 7H4M18 38h-5m5 7h-3M9 118l9-9" stroke="currentColor" opacity=".55"/>
+    <path d="M18 12v20M5 106l9-9m-7 15 9-9" stroke="var(--phone-cyan)"/>
+  </svg>
+
   <div class="hero__copy hero__copy--l" data-hero-copy>
-    <h2 class="hero__name">MUKRAMIN ANSAO</h2>
-    <p>Web and app developer based in Pasig City. I build web systems, websites and Android apps, from the database to the screen.</p>
+    <div class="hero__intro">
+      <p class="phone-only hero__phone-kicker">01 / HELLO WORLD</p>
+      <h2 class="hero__name">MUKRAMIN ANSAO</h2>
+      <p class="phone-only hero__phone-role">WEB &amp; APP DEV</p>
+      <p><span class="editorial-wide">Building web and mobile experiences.</span><span class="phone-only">I build web systems and mobile experiences.</span></p>
+    </div>
     <div class="hero__actions">
-      <a class="btn btn--solid" href="#projects" data-magnetic>VIEW PROJECTS</a>
-      <svg class="slashes" viewBox="0 0 42 14" aria-hidden="true"><path d="M0 14 L7 0 H12 L5 14Z"/><path d="M14 14 L21 0 H26 L19 14Z" opacity=".6"/><path d="M28 14 L35 0 H40 L33 14Z" opacity=".3"/></svg>
+      <a class="btn btn--line hero__button" href="#projects" data-magnetic>VIEW PROJECTS <span class="btn__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <svg class="hero__slashes" viewBox="0 0 82 56" aria-hidden="true"><path d="M1 55 29 1h20L21 55Zm32 0L61 1h20L53 55Z"/></svg>
     </div>
     <div class="socials socials--hero" aria-label="Social links"><a data-link="github" href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a><a data-link="linkedin" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg></a><a data-link="facebook" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a data-link="email" href="#" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></div>
   </div>
 
   <div class="hero__copy hero__copy--r" data-hero-copy>
     <h2 class="hero__role">WEB &amp; APP DEV</h2>
-    <p>Laravel · PHP · MySQL · React Native, built with AI coding tools. I love turning ideas into working software. Open to web and app developer roles and freelance projects.</p>
-    <a class="btn btn--line" href="assets/Mukramin_Ansao_CV.pdf?v=2026-11-09b" download data-magnetic><span class="btn__ring"><svg viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6"/></svg></span>DOWNLOAD CV</a>
+    <p>Laravel · PHP · MySQL · React Native<br>Building modern web and mobile apps.</p>
+    <a class="btn btn--line hero__button hero__button--cv" href="assets/Mukramin_Ansao_CV.pdf?v=2026-11-09b" download data-magnetic><span class="btn__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M3 16v5h18v-5"/></svg></span>DOWNLOAD CV</a>
   </div>
 
   <div class="statbar" data-statbar>
+    <svg class="statbar__frame" viewBox="0 0 1514 144" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <path id="statbar-outline" d="M24 0H90l6 5h1336l6-5h52l24 20v104l-24 20h-52l-6-5H72l-7 5H24L0 124V20Z"/>
+        <clipPath id="statbar-clip" clipPathUnits="objectBoundingBox">
+          <use href="#statbar-outline" transform="scale(.000660502 .006944444)"/>
+        </clipPath>
+      </defs>
+      <use href="#statbar-outline" vector-effect="non-scaling-stroke"/>
+    </svg>
     <div class="statbar__cell">
-      <svg class="statbar__radar" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="27" class="r1"/><circle cx="30" cy="30" r="20" class="r2"/><path d="m25 26-4 4 4 4M35 26l4 4-4 4"/></svg>
-      <span class="statbar__label">PROJECTS<br>BUILT</span>
-      <span class="statbar__num"><b data-stat="projects">06</b><small>AND COUNTING</small></span>
+      <svg class="statbar__radar" viewBox="0 0 80 74" aria-hidden="true">
+        <path class="statbar__brackets" d="M1 16V6l5-5h10m48 0h10l5 5v10m0 42v10l-5 5H64m-48 0H6l-5-5V58"/>
+        <circle class="r1" cx="40" cy="37" r="29"/><circle class="r2" cx="40" cy="37" r="29"/>
+        <path class="statbar__symbol" d="m21 32 19-10 19 10-19 10-19-10Zm0 8 19 10 19-10m-38 8 19 10 19-10"/>
+      </svg>
+      <span class="statbar__projects"><b data-stat="projects">07</b><span class="statbar__label">PROJECTS<span class="editorial-wide"><br>BUILT</span></span></span>
     </div>
     <div class="statbar__cell">
-      <svg class="statbar__medal" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.8 7 22l5-3 5 3-1.5-8.2"/></svg>
-      <span class="statbar__honor"><b data-decode="CUM LAUDE">CUM LAUDE</b><small>BS INFO TECH · 2026</small></span>
+      <svg class="statbar__medal" viewBox="3 1 18 23" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.8 7 22l5-3 5 3-1.5-8.2"/></svg>
+      <span class="statbar__honor"><b data-decode="CUM LAUDE">CUM LAUDE</b><small><span class="editorial-wide">BS INFO TECH · </span>2026</small></span>
     </div>
     <div class="statbar__cell">
-      <span class="statbar__code">&lt;/&gt;</span>
-      <span class="statbar__avail"><b>AVAILABLE FOR WORK</b><small>Start now · on-site, hybrid or remote.</small></span>
+      <svg class="statbar__code" viewBox="0 0 80 74" aria-hidden="true">
+        <path class="statbar__brackets" d="M1 16V6l5-5h10m48 0h10l5 5v10m0 42v10l-5 5H64m-48 0H6l-5-5V58"/>
+        <path class="statbar__symbol" d="m30 31-11 6 11 6m20-12 11 6-11 6m-6-17-8 22"/>
+      </svg>
+      <span class="statbar__avail"><b class="editorial-wide">AVAILABLE FOR WORK</b><small class="editorial-wide">Start now · on-site, hybrid or remote.</small><b class="phone-only">OPEN</b><small class="phone-only">FOR WORK</small></span>
     </div>
     <a class="statbar__go" href="#about" aria-label="Scroll to about">
-      <svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="34" class="g1"/><path d="M36 2 A34 34 0 0 1 70 36" class="g2"/><path d="M36 70 A34 34 0 0 1 2 36" class="g2"/><circle cx="36" cy="36" r="28" class="g3"/></svg>
-      <span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="34" class="g1"/><path d="M36 2a34 34 0 0 1 13 65" class="g2"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7"/></svg>
     </a>
   </div>
+  <a class="phone-only editorial-scroll" href="#about" aria-label="Scroll to About"><span>SCROLL / 01</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg></a>
 </section>
 
 <!-- ============ 02 ABOUT ============ -->
 <section class="section about" id="about" data-section="02" aria-labelledby="about-title">
-  <span class="section__word" aria-hidden="true">PROFILE</span>
-  <div class="section__head">
-    <div>
-      <p class="eyebrow hop"><span></span><b>02</b><i>about</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
-      <p class="section__signal">DEVELOPER × PROBLEM SOLVER<br>BASED IN PASIG CITY<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
+  <div class="about-hero">
+    <span class="about-hero__ghost" aria-hidden="true">ABOUT</span>
+    <div class="about-hero__meta">
+      <p class="about-hero__kicker"><b>02</b><span aria-hidden="true">/</span> ABOUT ME</p>
+      <p class="about-hero__tagline">THE PERSON BEHIND THE PROJECTS</p>
     </div>
-    <p class="hud-tag">PROFILE.DAT<br>STATUS <b>● ONLINE</b></p>
-  </div>
-  <div class="about__grid">
-    <figure class="profile__portrait">
-      <img src="assets/img/about-enhanced-v2.webp" srcset="assets/img/about-enhanced-v2-sm.webp 538w, assets/img/about-enhanced-v2.webp 1076w" sizes="(max-width: 700px) 270px, (max-width: 980px) 33vw, 490px" alt="Mukramin Ansao in a black suit" width="1076" height="1462" loading="lazy">
-      <figcaption class="profile__caption"><span>WEB &amp; APP DEVELOPER</span><span>PASIG / PH</span></figcaption>
+    <figure class="about-portrait">
+      <div class="about-portrait__crop">
+        <img src="assets/img/about-editorial-portrait.webp" alt="Editorial portrait of Mukramin Ansao in a black three-piece suit" width="1024" height="1536" loading="lazy">
+      </div>
     </figure>
+    <div class="about-hero__copy">
+      <h2 class="about-hero__title" id="about-title"><span>MORE</span><br><span>THAN</span><br>THE CODE.</h2>
+      <div class="about-hero__bio">
+        <p class="about-hero__profile-role">WEB &amp; MOBILE DEVELOPMENT</p>
+        <p class="about-hero__name">Hello, I’m Mukramin.</p>
+        <p class="about-hero__intro">I build web systems and Android apps, from the interface to the database.</p>
+      </div>
+      <dl class="about-hero__facts" aria-label="Profile at a glance">
+        <div><dt>Based in</dt><dd>Pasig City, PH</dd></div>
+        <div><dt>Education</dt><dd>BSIT · Cum Laude, 2026</dd></div>
+      </dl>
+      <a class="about-hero__journey" href="#journey">EXPLORE MY JOURNEY <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11"/></svg></a>
+    </div>
+  </div>
+  <div class="about-more">
     <div class="about__text">
-      <h2 class="h2" id="about-title">I turn ideas into<br><em>working software.</em></h2>
+      <h3 class="h2">More about my work</h3>
       <div class="profile__details">
       <div class="profile__summary">
       <p class="profile__identity"><strong>Mukramin Ansao</strong><span>Web &amp; App Developer · UI/UX Designer</span><span>Blue Team / SOC Analyst Enthusiast</span></p>
@@ -224,22 +265,18 @@
         <div class="facts__hot"><dt>STATUS</dt><dd>Open to developer roles &amp; freelance</dd></div>
       </dl>
       </div>
-      <div class="about__actions" data-reveal>
-        <a class="btn btn--solid btn--primary" href="assets/Mukramin_Ansao_CV.pdf?v=2026-11-09b" download>DOWNLOAD CV <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg></span></a>
-        <a class="btn btn--ghost" href="assets/Mukramin_Ansao_CV.pdf?v=2026-11-09b" target="_blank" rel="noopener" data-magnetic>VIEW CV <span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span></a>
-      </div>
     </div>
-  </div>
-  <div class="now profile__now">
-    <p class="now__head"><i></i>NOW <span>/ WHAT I'M WORKING ON</span></p>
-    <ul class="now__list" data-now></ul>
+    <div class="now profile__now">
+      <p class="now__head"><i></i>NOW <span>/ WHAT I'M WORKING ON</span></p>
+      <ul class="now__list" data-now></ul>
+    </div>
   </div>
 </section>
 
 <!-- ============ 03 SKILLS ============ -->
-<section class="section skills" id="skills" data-section="03" aria-labelledby="skills-title">
+<section class="section section--chapter skills" id="skills" data-section="03" aria-labelledby="skills-title">
   <p class="section__signal section__signal--corner">TOOLS × TECHNOLOGIES<br>TURNING IDEAS INTO REAL PRODUCTS<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
-  <span class="section__word" aria-hidden="true">SKILLS</span>
+  <span class="chapter__ghost" aria-hidden="true">SKILLS</span>
   <div class="section__head">
     <div>
       <p class="eyebrow hop"><span></span><b>03</b><i>skills</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
@@ -255,8 +292,9 @@
 </section>
 
 <!-- ============ 04 PROJECTS ============ -->
-<section class="section projects" id="projects" data-section="04" aria-labelledby="projects-title">
+<section class="section section--chapter projects" id="projects" data-section="04" aria-labelledby="projects-title">
   <p class="section__signal section__signal--corner">REAL PROJECTS<br>SOLVING REAL PROBLEMS<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
+  <span class="chapter__ghost" aria-hidden="true">WORK</span>
   <div class="section__head">
     <div>
       <p class="eyebrow hop"><span></span><b>04</b><i>projects</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
@@ -268,7 +306,7 @@
 </section>
 
 <!-- ============ 05 JOURNEY ============ -->
-<section class="section journey" id="journey" data-section="05" aria-labelledby="journey-title">
+<section class="section section--chapter journey" id="journey" data-section="05" aria-labelledby="journey-title">
   <p class="section__signal section__signal--corner">EDUCATION × EXPERIENCE<br>A CONTINUOUS JOURNEY<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
   <div class="section__head">
     <div>
@@ -284,7 +322,7 @@
 </section>
 
 <!-- ============ 06 CERTIFICATIONS ============ -->
-<section class="section certs" id="certifications" data-section="06" aria-labelledby="certifications-title">
+<section class="section section--chapter certs" id="certifications" data-section="06" aria-labelledby="certifications-title">
   <p class="section__signal section__signal--corner">LEARNING × GROWTH<br>BUILDING A STRONGER FOUNDATION<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
   <div class="section__head">
     <div>
@@ -297,7 +335,8 @@
 </section>
 
 <!-- ============ 07 WHY ME ============ -->
-<section class="section why" id="why" data-section="07" aria-labelledby="why-title">
+<section class="section section--chapter why" id="why" data-section="07" aria-labelledby="why-title">
+  <p class="section__signal section__signal--corner">DELIVERY × SECURITY<br>OWNERSHIP<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
   <div class="section__head">
     <div>
       <p class="eyebrow hop"><span></span><b>07</b><i>why-me</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
@@ -309,27 +348,23 @@
 </section>
 
 <!-- ============ 08 CONTACT ============ -->
-<section class="section contact" id="contact" data-section="08" aria-labelledby="contact-title">
+<section class="section section--chapter contact" id="contact" data-section="08" aria-labelledby="contact-title">
   <p class="section__signal section__signal--corner">LET’S CONNECT<br>IDEAS × OPPORTUNITIES × COLLABORATIONS<span class="signal__squares" aria-hidden="true">▪ ▫</span></p>
-  <div class="contact__grid">
-    <div class="contact__info">
+  <span class="chapter__ghost" aria-hidden="true">CONTACT</span>
+  <div class="section__head">
+    <div>
       <p class="eyebrow hop"><span></span><b>08</b><i>contact</i><span class="hop__lead"></span><em title="How long it took you to reach this section">* * *</em></p>
-      <h2 class="h2 h2--xl" id="contact-title">Let's build<br><em>something</em></h2>
-      <p class="contact__lead" data-reveal>Hiring a web or app developer, or need a website or system built? I can start immediately, on-site, hybrid or remote. Send me a message — I usually reply within a day.</p>
-      <p class="pill" data-reveal><i></i>OPEN TO DEVELOPER ROLES &amp; FREELANCE</p>
-      <ul class="links" data-reveal-group>
-        <li class="links__row"><a data-link="email" href="#"><span class="links__ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><small>EMAIL</small><b data-text="email"></b></span><svg class="links__arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a><button type="button" class="copybtn" data-copy="email" aria-label="Copy email address"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></li>
-        <li><a data-link="linkedin" href="#" target="_blank" rel="noopener"><span class="links__ico"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg></span><span><small>LINKEDIN</small><b>Mukramin Ansao</b></span><svg class="links__arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
-        <li><a data-link="github" href="#" target="_blank" rel="noopener"><span class="links__ico"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></span><span><small>GITHUB</small><b>mukraminansao</b></span><svg class="links__arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
-        <li><div class="links__static"><span class="links__ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span><small>LOCATION</small><b data-text="location"></b></span></div></li>
-      </ul>
+      <h2 class="h2" id="contact-title">Let's build<br><em>something</em></h2>
     </div>
+    <p class="lead">Hiring a developer or need a system built? I’m available for on-site, hybrid, or remote work and usually reply within a day.</p>
+  </div>
 
+  <div class="contact__grid">
     <div class="form-wrap" data-reveal="clip">
       <form class="form" novalidate aria-labelledby="form-title">
         <div class="form__head">
           <h3 id="form-title">Send a message</h3>
-          <p>Fill in the form and I'll get back to you within a day.</p>
+          <p>Tell me about the role or project you have in mind.</p>
         </div>
         <div class="form__row">
           <div class="field">
@@ -382,6 +417,16 @@
         <button type="button" class="btn btn--ghost" data-send-another>Send another message</button>
       </div>
     </div>
+    <div class="contact__info">
+      <h3 class="contact__method-label">Direct channels</h3>
+      <p class="pill" data-reveal><i></i>OPEN TO DEVELOPER ROLES &amp; FREELANCE</p>
+      <ul class="links" data-reveal-group>
+        <li class="links__row"><a data-link="email" href="#"><span class="links__ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><small>EMAIL</small><b data-text="email"></b></span><svg class="links__arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a><button type="button" class="copybtn" data-copy="email" aria-label="Copy email address"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></li>
+        <li><a data-link="linkedin" href="#" target="_blank" rel="noopener"><span class="links__ico"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg></span><span><small>LINKEDIN</small><b>Mukramin Ansao</b></span><svg class="links__arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+        <li><a data-link="github" href="#" target="_blank" rel="noopener"><span class="links__ico"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></span><span><small>GITHUB</small><b>mukraminansao</b></span><svg class="links__arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a></li>
+        <li><div class="links__static"><span class="links__ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span><small>LOCATION</small><b data-text="location"></b></span></div></li>
+      </ul>
+    </div>
   </div>
 
   <footer class="footer">
@@ -400,7 +445,7 @@
     ['js/vendor/gsap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'],
     ['js/vendor/ScrollTrigger.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'],
     ['js/vendor/lenis.min.js', 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js'],
-    ['js/data.js?v=20261109-1'], ['js/main.js?v=20261109-1']
+    ['js/data.js?v=20261109-1'], ['js/main.js?v=20261109-chapters']
   ];
   function add(src, ok, fail) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.body.appendChild(s); }
   function next(i) {
