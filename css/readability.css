@@ -1,0 +1,116 @@
+/* ==========================================================
+   READABILITY — larger, brighter text across every section.
+   Loaded last so it overrides the sizes in the other sheets.
+   Body copy: 16–17px. Small labels: 12–13px minimum.
+   ========================================================== */
+
+:root{
+  --read-body:#D9D4DC;   /* paragraphs and lists */
+  --read-label:#C4BEC9;  /* small uppercase labels */
+}
+
+/* ---------- Section intros ---------- */
+body .section .lead{font-size:clamp(17px,1.35vw,20px)!important;line-height:1.6;color:var(--read-body)}
+body .eyebrow.hop b,body .eyebrow.hop i,body .eyebrow.hop em{font-size:13px!important}
+body .section__signal{font-size:12px!important;color:var(--read-label)}
+
+/* ---------- About ---------- */
+body .about-hero__tagline{font-size:13px!important}
+body .about-hero__meta dt,body .about-hero dt{font-size:13px!important}
+body .about-hero__profile-role,body .about-hero__journey{font-size:15px!important}
+body .profile__identity span{font-size:15px!important;color:var(--read-label)}
+body .about__lead,body .about__lead b{font-size:17px!important;line-height:1.7}
+body .about__lead{color:var(--read-body)}
+body .profile__honor{font-size:12px!important}
+body .profile__story summary{font-size:14px!important}
+body .profile__story p,body .profile__story p b{font-size:16px!important;line-height:1.7}
+body .profile__story p{color:var(--read-body)}
+body .facts dt,body .facts__hot dt,body .profile dl dt{font-size:12px!important;color:var(--read-label)}
+body .facts dd,body .facts dd a,body .facts__hot dd,body .profile dl dd,body .profile dl dd a{font-size:15px!important}
+body .now__head,body .now__head span{font-size:13px!important}
+body .now__list li{font-size:16px!important;line-height:1.6;color:var(--read-body)}
+
+/* ---------- Skills ---------- */
+body .sk p{font-size:16px!important;line-height:1.65;color:var(--read-body)}
+body .sk__checks li{font-size:15px!important;line-height:1.55;color:var(--read-body)}
+body .sk__num,body .sk__badge{font-size:12px!important}
+body .stack__label{font-size:13px!important}
+body .tk__head h4{font-size:15px!important}
+body .tk__head h4 small,body .tk__count small{font-size:12px!important}
+body .stack ul li,body .stack ul li.is-fam{font-size:13.5px!important}
+body .stack__legend span{font-size:13px!important}
+body .tag{font-size:12px!important}
+
+/* ---------- Projects ---------- */
+body .project-index__label,body .project-index__label span{font-size:12px!important}
+body .project-index__item strong{font-size:17px!important}
+body .project-index__item span{font-size:13px!important;color:var(--read-label)}
+body .project-index__item small{font-size:12px!important}
+body .frame__path{font-size:12px!important}
+body .frame__label{font-size:12px!important}
+body .frame__zoom{font-size:12px!important}
+body .preview__txt{font-size:12px!important}
+body .project__kind,body .project__status,body .project__feat{font-size:12px!important}
+body .project__kind{color:var(--read-label)}
+body .project__desc{font-size:17px!important;line-height:1.7;color:var(--read-body)}
+body .project__facts li span,body .project li > span{font-size:13px!important}
+body .feats li{font-size:16px!important;line-height:1.6;color:var(--read-body)}
+body .feats__more{font-size:13px!important}
+body .project__actions .btn{font-size:13px!important}
+body .project__note{font-size:14px!important;line-height:1.55;color:var(--read-label)}
+body .learned span{font-size:12px!important}
+body .learned p{font-size:16px!important;line-height:1.65;color:var(--read-body)}
+body figure.app > span{font-size:12px!important}
+
+/* ---------- Journey ---------- */
+body .edu__top span{font-size:12px!important}
+body .edu__top b{font-size:13px!important}
+body .journey .cut__in p{font-size:16px!important;line-height:1.6;color:var(--read-body)}
+body .journey small{font-size:14px!important}
+body .awards span{font-size:14px!important;color:var(--read-body)}
+body .tl__when{font-size:13px!important}
+body .tl__kind{font-size:12px!important}
+body .tl__org{font-size:14px!important;color:var(--read-label)}
+body .tl__text,body .tl__bullets li{font-size:16px!important;line-height:1.65;color:var(--read-body)}
+
+/* ---------- Certifications ---------- */
+body .certcard__stamp{font-size:12px!important}
+body .certcard__meta span,body .certcard__meta b{font-size:13px!important}
+body .certcard__meta span{color:var(--read-label)}
+body .certcard__note{font-size:16px!important;line-height:1.6;color:var(--read-body)}
+body .certcard__verify{font-size:13px!important}
+
+/* ---------- Why me ---------- */
+body .whycard p{font-size:16.5px!important;line-height:1.65;color:var(--read-body)}
+body .whycard__link{font-size:13px!important}
+
+/* ---------- Contact + footer ---------- */
+body .contact .pill{font-size:12px!important}
+body .contact__info span > small{font-size:12px!important}
+body .contact__info span > b{font-size:16px!important}
+body .form__head p{font-size:16px!important;color:var(--read-body)}
+body .field label,body .field label .opt,body .field__labelrow label{font-size:15px!important}
+body .field__count,body .field__hint,body .form__note{font-size:13.5px!important;color:var(--read-label)}
+body .form__submit-label{font-size:14px!important}
+body .form-done p{font-size:16px!important}
+body .form-done .btn{font-size:13px!important}
+body .footer__links a{font-size:12px!important}
+body .footer__end span,body .footer__live span,body .footer__commit,body .footer__commit a{font-size:12.5px!important}
+body .term-hint,body .term-hint span{font-size:12px!important}
+
+/* ---------- Phones ---------- */
+@media (max-width:700px){
+  body .section .lead{font-size:16.5px!important}
+  body .section__signal{font-size:11px!important}
+  body .about__lead,body .about__lead b{font-size:16px!important}
+  body .project__desc,body .feats li,body .learned p,body .sk p,
+  body .tl__text,body .tl__bullets li,body .certcard__note,body .whycard p,
+  body .now__list li,body .profile__story p{font-size:16px!important}
+  body .about-hero__tagline{font-size:12px!important}
+  /* stack the About details in one column so the email fits on one line */
+  body .facts{grid-template-columns:1fr!important;column-count:1!important}
+  body .facts > div{grid-column:auto!important}
+  body .about .facts__email{flex-wrap:nowrap!important;align-items:center;justify-content:space-between}
+  body .about .facts__email a{flex-basis:auto!important}
+  body .contact__info span > b{font-size:clamp(13px,3.75vw,14.5px)!important;word-break:keep-all;overflow-wrap:normal}
+}
