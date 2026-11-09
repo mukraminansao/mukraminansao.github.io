@@ -16,7 +16,10 @@ window.PORTFOLIO = {
     // Paste a Formspree endpoint here (e.g. 'https://formspree.io/f/abcdwxyz')
     // to receive form messages by email. Left empty, the form opens the
     // visitor's email app with the message filled in.
-    formEndpoint: 'https://formspree.io/f/xljgvrer'
+    formEndpoint: 'https://formspree.io/f/xljgvrer',
+    // Address of the portfolio assistant (the Cloudflare Worker in worker/portfolio-chat.js),
+    // e.g. 'https://portfolio-chat.yourname.workers.dev'. Left empty, the chat button stays hidden.
+    chatEndpoint: ''
   },
 
   /* ---------- Hero stat bar ---------- */

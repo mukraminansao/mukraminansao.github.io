@@ -13,6 +13,9 @@ js/main.js            renders data.js + animations
 assets/img/           photos and project screenshots (WebP)
 assets/video/         short live-preview clips of each project (MP4)
 assets/Mukramin_Ansao_CV.pdf   the "Download CV" file
+js/chat.js, css/chat.css       the "Ask about me" AI assistant
+ai/knowledge.md       facts the assistant may use (built by scripts/build-knowledge.mjs)
+worker/               the Cloudflare Worker behind the assistant (setup: worker/README.md)
 ```
 
 ## Updating content
@@ -26,6 +29,7 @@ Open `js/data.js`:
 - **Availability and languages:** edit `availability` and `languages`. They appear in About, the "Why work with me" box and Contact.
 - **Why work with me:** edit the three points in `why`. Keep each one backed by something on the page and link to it.
 - **Hero project count:** change `stats.projects`.
+- **AI assistant:** after editing `js/data.js` or the About text, run `node scripts/build-knowledge.mjs` so the assistant knows the change. Setup steps are in `worker/README.md`.
 - **New CV:** replace `assets/Mukramin_Ansao_CV.pdf` (keep the same file name).
 
 ## Live preview clips (screenshots that move)
