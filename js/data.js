@@ -19,7 +19,7 @@ window.PORTFOLIO = {
     formEndpoint: 'https://formspree.io/f/xljgvrer',
     // Address of the portfolio assistant (the Cloudflare Worker in worker/portfolio-chat.js),
     // e.g. 'https://portfolio-chat.yourname.workers.dev'. Left empty, the chat button stays hidden.
-    chatEndpoint: ''
+    chatEndpoint: 'https://portfolio-chat.mukraminbariwa5.workers.dev'
   },
 
   /* ---------- Hero stat bar ---------- */
