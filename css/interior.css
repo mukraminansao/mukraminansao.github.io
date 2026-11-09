@@ -172,8 +172,17 @@ html.has-page-scroll::-webkit-scrollbar { display:none; width:0; height:0; }
 }
 .about-more { max-width:1280px;margin-inline:auto;padding:clamp(32px,5vw,80px) clamp(38px,5vw,80px); }
 @media (min-width:768px) {
-  body.about-active .nav.is-scrolled {
+  /* same header on every section: no bar or line, just a soft fade; a little denser where text scrolls under it */
+  body .nav.is-scrolled {
     background:linear-gradient(#0b1014cf,transparent);border-bottom-color:transparent;backdrop-filter:none;
+  }
+  body.interior-active:not(.about-active) .nav.is-scrolled {
+    background:linear-gradient(#0b1014 0%,#0b1014 72%,rgba(11,16,20,.9) 86%,rgba(11,16,20,0) 100%);
+  }
+  /* a short soft fade below the header so text slides under it gently */
+  body.interior-active:not(.about-active) .nav.is-scrolled::before {
+    content:"";position:absolute;left:0;right:0;top:100%;height:26px;pointer-events:none;
+    background:linear-gradient(rgba(11,16,20,.75),rgba(11,16,20,0));
   }
 }
 body.about-active .totop { width:34px;height:34px;bottom:6px;right:22px; }
@@ -577,45 +586,45 @@ body.about-active .totop { width:34px;height:34px;bottom:6px;right:22px; }
   .rail__track { height:24px; }
 }
 
-/* Shared graphite chrome for Home and About. */
-body:is(:not(.interior-active),.about-active) .rail { background:#0c1012; }
-body:is(:not(.interior-active),.about-active) .noise { opacity:.16; }
-body:is(:not(.interior-active),.about-active) .page-scroll__track { opacity:.35; }
-body:is(:not(.interior-active),.about-active) .page-scroll:is(:hover,:focus-visible,.is-dragging) .page-scroll__track { opacity:1; }
+/* Shared graphite chrome: the Home and About header and sidebar, used on every section. */
+body .rail { background:#0c1012; }
+body .noise { opacity:.16; }
+body .page-scroll__track { opacity:.35; }
+body .page-scroll:is(:hover,:focus-visible,.is-dragging) .page-scroll__track { opacity:1; }
 @media (min-width:981px) {
-  body:is(:not(.interior-active),.about-active) .nav {
+  body .nav {
     padding:clamp(10px,.95vw,16px) 2.3vw clamp(10px,.95vw,16px) 3.2vw;
     gap:clamp(12px,1.45vw,24px);
   }
-  body:is(:not(.interior-active),.about-active) .brand {
+  body .brand {
     gap:clamp(8px,.86vw,14px);color:#f5f5f7;font-size:clamp(17px,1.48vw,25px);letter-spacing:.095em;
   }
-  body:is(:not(.interior-active),.about-active) .brand b { color:inherit; }
-  body:is(:not(.interior-active),.about-active) .brand__mark { width:clamp(29px,2.35vw,39px);height:auto;stroke:#00e8f2; }
-  body:is(:not(.interior-active),.about-active) .nav__links {
+  body .brand b { color:inherit; }
+  body .brand__mark { width:clamp(29px,2.35vw,39px);height:auto;stroke:#00e8f2; }
+  body .nav__links {
     gap:clamp(14px,1.75vw,29px);font-size:clamp(12px,1.04vw,17.5px);letter-spacing:.11em;color:#f5f5f7;
   }
-  body:is(:not(.interior-active),.about-active) .nav__links a { padding:2px 0 12px; }
-  body:is(:not(.interior-active),.about-active) .nav__links a.is-active { color:#00e8f2; }
-  body:is(:not(.interior-active),.about-active) .nav__links a::after { height:3px;background:#00e8f2; }
-  body:is(:not(.interior-active),.about-active) .nav__links i { width:4px;height:4px;background:#8e9598; }
-  body:is(:not(.interior-active),.about-active) .nav__cta {
+  body .nav__links a { padding:2px 0 12px; }
+  body .nav__links a.is-active { color:#00e8f2; }
+  body .nav__links a::after { height:3px;background:#00e8f2; }
+  body .nav__links i { width:4px;height:4px;background:#8e9598; }
+  body .nav__cta {
     min-height:clamp(40px,2.8vw,47px);padding:0 clamp(16px,1.5vw,25px);
     background:#00e8f2;font-size:clamp(12px,1.02vw,17px);letter-spacing:.12em;
     clip-path:polygon(12px 0,100% 0,100% calc(100% - 14px),calc(100% - 12px) 100%,0 100%,0 14px);
   }
 }
 @media (min-width:981px) and (min-height:861px) {
-  body:is(:not(.interior-active),.about-active) .rail { padding:32px 0 43px 7px; }
-  body:is(:not(.interior-active),.about-active) .rail__dots { grid-template-columns:repeat(2,8px);gap:6px;margin-bottom:30px; }
-  body:is(:not(.interior-active),.about-active) .rail__dots i { width:8px;height:8px; }
-  body:is(:not(.interior-active),.about-active) .rail__dots i.on { background:#bcebf0;box-shadow:none; }
-  body:is(:not(.interior-active),.about-active) .rail__energy { height:54px; }
-  body:is(:not(.interior-active),.about-active) .rail__tools svg { width:24px;height:24px; }
-  body:is(:not(.interior-active),.about-active) .rail__mid { padding-top:18px;gap:17px; }
-  body:is(:not(.interior-active),.about-active) .rail__label--desk { margin-bottom:4px;font-size:10px; }
-  body:is(:not(.interior-active),.about-active) .rail__icon svg { width:21px;height:21px; }
-  body:is(:not(.interior-active),.about-active) .rail__track { height:22px; }
+  body .rail { padding:32px 0 43px 7px; }
+  body .rail__dots { grid-template-columns:repeat(2,8px);gap:6px;margin-bottom:30px; }
+  body .rail__dots i { width:8px;height:8px; }
+  body .rail__dots i.on { background:#bcebf0;box-shadow:none; }
+  body .rail__energy { height:54px; }
+  body .rail__tools svg { width:24px;height:24px; }
+  body .rail__mid { padding-top:18px;gap:17px; }
+  body .rail__label--desk { margin-bottom:4px;font-size:10px; }
+  body .rail__icon svg { width:21px;height:21px; }
+  body .rail__track { height:22px; }
 }
 
 /* Chapter headings and section-specific layouts. */
