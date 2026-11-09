@@ -1,0 +1,200 @@
+/* ==========================================================
+   CONTACT — premium two-pane panel.
+   Left: availability, email, channels and details.
+   Right: the message form with underline fields and subject chips.
+   Loaded after readability.css; everything is scoped to .contact.
+   ========================================================== */
+
+.section.contact{
+  --c-line:rgba(255,255,255,.09);
+  --c-line-2:rgba(255,255,255,.16);
+  --c-ink:#F3F0F4;
+  --c-body:#D6D1DA;
+  --c-soft:#ADA6B3;
+  --c-ok:#7CE0B3;
+}
+
+/* ---------- the panel ---------- */
+.section.contact .contact__stage{
+  position:relative;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:0;
+  margin-top:clamp(8px,1.5vw,20px);
+  border:1px solid var(--c-line-2);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0) 38%),
+    linear-gradient(135deg,#121219 0%,#0E0E13 55%,#0C0C10 100%);
+  box-shadow:0 40px 80px -40px rgba(0,0,0,.75);
+  align-items:stretch;overflow:hidden;
+}
+.section.contact .contact__stage > *{align-self:stretch}
+/* thin cyan rule on the top edge: the only accent on the panel */
+.section.contact .contact__stage::before{
+  content:"";position:absolute;left:0;top:-1px;width:min(220px,30%);height:2px;background:var(--acc);
+}
+
+/* ---------- left pane ---------- */
+.section.contact .contact__info{
+  display:flex;flex-direction:column;gap:0;
+  padding:clamp(28px,3.4vw,52px);
+  border-right:1px solid var(--c-line);
+  background:rgba(255,255,255,.012);
+}
+.section.contact .avail{
+  display:inline-flex;align-items:center;gap:10px;align-self:flex-start;margin:0 0 30px;
+  padding:7px 14px 7px 12px;border:1px solid var(--c-line-2);border-radius:999px;
+  font-family:var(--text);font-size:13.5px;font-weight:500;letter-spacing:0;color:var(--c-body);
+}
+.section.contact .avail i{position:relative;width:8px;height:8px;border-radius:50%;background:var(--c-ok)}
+.section.contact .avail i::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--c-ok);opacity:.5;animation:avail-ring 2.4s ease-out infinite}
+@keyframes avail-ring{0%{transform:scale(.6);opacity:.6}100%{transform:scale(1.6);opacity:0}}
+
+.section.contact .contact__pitch{margin:0 0 10px;font-size:15px;color:var(--c-soft)}
+
+/* the big email */
+.section.contact .contact__mail{display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding-bottom:30px;margin-bottom:6px;border-bottom:1px solid var(--c-line)}
+.section.contact .contact__email{
+  position:relative;flex:1 1 100%;min-width:0;display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--text);font-weight:600;font-size:clamp(19px,1.85vw,28px);letter-spacing:-.015em;line-height:1.2;
+  color:var(--c-ink);text-decoration:none;
+}
+.section.contact .contact__email span{
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;
+  transition:background-size .45s var(--ease),color .25s;padding-bottom:2px;
+}
+.section.contact .contact__email svg{flex:0 0 auto;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.6;transition:transform .3s var(--ease),opacity .3s}
+.section.contact .contact__email:hover span,.section.contact .contact__email:focus-visible span{background-size:100% 1px}
+.section.contact .contact__email:hover svg,.section.contact .contact__email:focus-visible svg{transform:translate(3px,-3px);opacity:1;color:var(--acc)}
+
+.section.contact .contact__copy{
+  width:auto;min-width:0;height:38px;padding:0 14px;gap:8px;display:inline-flex;align-items:center;
+  border:1px solid var(--c-line-2);border-radius:999px;background:transparent;color:var(--c-body);
+  font-family:var(--text);font-size:13px;font-weight:600;
+}
+.section.contact .contact__copy svg{width:15px;height:15px}
+.section.contact .contact__copy:hover,.section.contact .contact__copy:focus-visible{border-color:var(--c-ink);color:var(--c-ink);background:rgba(255,255,255,.04)}
+
+/* channels */
+.section.contact .channels{list-style:none;margin:0;padding:0}
+.section.contact .channels li{border-bottom:1px solid var(--c-line)}
+.section.contact .channels a{
+  display:grid;grid-template-columns:34px 110px minmax(0,1fr) 18px;align-items:center;gap:10px;
+  min-height:62px;padding:0 4px;text-decoration:none;color:var(--c-body);
+  transition:padding .35s var(--ease),background .3s;
+}
+.section.contact .channels__num{font-family:var(--hud);font-size:12px;letter-spacing:.12em;color:var(--c-soft)}
+.section.contact .channels__name{font-size:16px;font-weight:600;color:var(--c-ink)}
+.section.contact .channels__val{font-size:15px;color:var(--c-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.section.contact .channels svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;color:var(--c-soft);transition:transform .3s var(--ease),color .3s}
+.section.contact .channels a:hover,.section.contact .channels a:focus-visible{padding-left:12px;background:rgba(255,255,255,.025)}
+.section.contact .channels a:hover .channels__val{color:var(--c-body)}
+.section.contact .channels a:hover svg,.section.contact .channels a:focus-visible svg{color:var(--acc);transform:translate(2px,-2px)}
+
+/* details */
+.section.contact .contact__meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:auto 0 0;padding-top:34px}
+.section.contact .contact__meta div{min-width:0}
+.section.contact .contact__meta dt{margin:0 0 6px;font-family:var(--hud);font-size:11.5px!important;letter-spacing:.2em;text-transform:uppercase;color:var(--c-soft)}
+.section.contact .contact__meta dd{margin:0;font-size:14.5px;line-height:1.45;color:var(--c-ink)}
+
+/* ---------- right pane: the form ---------- */
+.section.contact .form-wrap{padding:0;background:none;clip-path:none}
+.section.contact .form,.section.contact .form-done{
+  padding:clamp(28px,3.4vw,52px);gap:26px;background:none;clip-path:none;border:0;
+}
+.section.contact .form__kicker{margin:0 0 10px;font-family:var(--hud);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc)}
+.section.contact .form__head h3{margin:0;font-family:var(--text);font-weight:600;font-size:clamp(26px,2.3vw,34px);letter-spacing:-.02em;text-transform:none;color:var(--c-ink)}
+.section.contact .form__head p{margin:10px 0 0;font-size:16px!important;line-height:1.6;color:var(--c-soft)}
+.section.contact .form__row{gap:28px}
+.section.contact .form__row--single{grid-template-columns:minmax(0,1fr)}
+
+.section.contact .field{gap:4px}
+.section.contact .field label,
+.section.contact .field__labelrow label,
+.section.contact .field__label{
+  font-family:var(--hud);font-size:12px!important;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--c-soft);
+}
+.section.contact .field label .opt{font-family:var(--text);font-size:12px!important;letter-spacing:0;text-transform:none;font-weight:400;color:var(--c-soft);opacity:.8}
+.section.contact .req{color:var(--acc)}
+
+/* underline fields */
+.section.contact .field input,
+.section.contact .field textarea{
+  height:50px;padding:0 0 2px;border:0;border-bottom:1px solid var(--c-line-2);border-radius:0;
+  background:transparent!important;box-shadow:none!important;
+  font-family:var(--text);font-size:17px;color:var(--c-ink);
+  transition:border-color .3s;
+}
+.section.contact .field textarea{height:auto;min-height:128px;padding:12px 0;line-height:1.6;resize:vertical}
+.section.contact .field input::placeholder,.section.contact .field textarea::placeholder{color:#6E6875}
+.section.contact .field input:hover,.section.contact .field textarea:hover{border-bottom-color:rgba(255,255,255,.3)}
+.section.contact .field input:focus,.section.contact .field textarea:focus{border-bottom-color:var(--acc)}
+/* the underline turning cyan is the focus signal, so the box outline isn't needed */
+.section.contact .field input:focus-visible,.section.contact .field textarea:focus-visible{outline:none;border-bottom-width:2px;padding-bottom:1px}
+.section.contact .field.is-invalid input,.section.contact .field.is-invalid textarea{border-bottom-color:var(--err-line)}
+.section.contact .field__count{font-family:var(--hud);letter-spacing:.08em}
+
+/* subject chips */
+.section.contact .topic-select{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.section.contact .field--topic{gap:12px}
+.section.contact .topic-chips{display:flex;flex-wrap:wrap;gap:10px}
+.section.contact .topic-chips button{
+  min-height:42px;padding:0 18px;border:1px solid var(--c-line-2);border-radius:999px;background:transparent;
+  font-family:var(--text);font-size:15px;font-weight:500;color:var(--c-body);cursor:pointer;
+  transition:border-color .25s,background .25s,color .25s;
+}
+.section.contact .topic-chips button:hover{border-color:rgba(255,255,255,.34);color:var(--c-ink)}
+.section.contact .topic-chips button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.section.contact .topic-chips button[aria-checked="true"]{background:var(--c-ink);border-color:var(--c-ink);color:#0B0A0F}
+.section.contact .field--topic.is-invalid .topic-chips button{border-color:rgba(255,92,122,.45)}
+
+/* send button: solid light, cyan on hover */
+.section.contact .form__submit{
+  min-height:58px;border-radius:999px;background:var(--c-ink);color:#0B0A0F;border:0;clip-path:none;
+  justify-content:center;gap:12px;transition:background .3s,transform .3s var(--ease);
+}
+.section.contact .form__submit .form__submit-label{font-family:var(--text);font-size:16px!important;font-weight:700;letter-spacing:.01em;text-transform:none;color:inherit}
+.section.contact .form__submit .btn__ico{color:inherit}
+.section.contact .form__submit:hover,.section.contact .form__submit:focus-visible{background:var(--acc);color:var(--on-acc);transform:translateY(-1px)}
+.section.contact .form__submit::before,.section.contact .form__submit::after{display:none}
+.section.contact .form__note{margin:-8px 0 0;text-align:center}
+
+/* sent state */
+.section.contact .form-done{justify-content:center;min-height:100%}
+.section.contact .form-done h3{font-family:var(--text);font-size:30px;letter-spacing:-.02em;color:var(--c-ink)}
+.section.contact .form-done__icon{border-color:var(--c-ok);color:var(--c-ok)}
+
+/* ---------- tablets ---------- */
+@media (max-width:1100px){
+  .section.contact .channels a{grid-template-columns:30px 96px minmax(0,1fr) 18px}
+  .section.contact .contact__meta{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .section.contact .contact__stage{grid-template-columns:minmax(0,1fr)}
+  .section.contact .contact__info{border-right:0;border-bottom:1px solid var(--c-line)}
+  .section.contact .contact__meta{grid-template-columns:repeat(3,minmax(0,1fr));padding-top:28px}
+  .section.contact .contact__email{font-size:clamp(19px,3.4vw,28px)}
+}
+
+/* ---------- phones ---------- */
+@media (max-width:600px){
+  .section.contact .contact__stage{margin-left:calc(var(--pad) * -.35);margin-right:calc(var(--pad) * -.35)}
+  .section.contact .contact__info,.section.contact .form,.section.contact .form-done{padding:26px 20px}
+  .section.contact .avail{font-size:13px;margin-bottom:24px;white-space:nowrap}
+  .section.contact .contact__mail{flex-wrap:wrap;gap:14px;padding-bottom:24px}
+  .section.contact .contact__email{flex-basis:100%;font-size:clamp(16px,4.9vw,21px);letter-spacing:-.02em}
+  .section.contact .contact__email span{overflow:visible;text-overflow:clip}
+  .section.contact .channels a{grid-template-columns:26px 1fr 18px;grid-template-rows:auto auto;column-gap:10px;row-gap:2px;min-height:68px;padding:10px 2px}
+  .section.contact .channels__num{grid-row:1 / span 2}
+  .section.contact .channels__name{grid-column:2}
+  .section.contact .channels__val{grid-column:2;font-size:14px}
+  .section.contact .channels svg{grid-column:3;grid-row:1 / span 2}
+  .section.contact .contact__meta{grid-template-columns:1fr 1fr;gap:18px 14px}
+  .section.contact .contact__meta div:last-child{grid-column:1 / -1}
+  .section.contact .form__row{grid-template-columns:minmax(0,1fr);gap:22px}
+  .section.contact .form__head h3{font-size:26px}
+  .section.contact .topic-chips{gap:8px}
+  .section.contact .topic-chips button{min-height:40px;padding:0 14px;font-size:14px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .section.contact .avail i::after{animation:none}
+}

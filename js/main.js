@@ -863,7 +863,7 @@
     status.textContent = ''; status.classList.remove('is-error');
     var firstBad = null;
     Object.keys(RULES).forEach(function (n) { if (!check(n) && !firstBad) firstBad = form[n]; });
-    if (firstBad) { firstBad.focus(); SFX.play('error'); return; }
+    if (firstBad) { if (firstBad === form.topic && chips.length) chips[0].focus(); else firstBad.focus(); SFX.play('error'); return; }
     if (form._gotcha.value) return; // spam bot filled the hidden field
     var data = { name: form.name.value.trim(), email: form.email.value.trim(), company: form.company.value.trim(), topic: form.topic.value, message: msg.value.trim() };
     if (C.formEndpoint) {
@@ -880,7 +880,43 @@
       status.textContent = 'Your email app should open with this message filled in. If it doesn\u2019t, email me at ' + C.email + '.';
     }
   });
-  $('[data-send-another]').addEventListener('click', function () { form.reset(); updateCount(); doneBox.hidden = true; form.hidden = false; form.name.focus(); });
+  $('[data-send-another]').addEventListener('click', function () { form.reset(); updateCount(); syncChips(); doneBox.hidden = true; form.hidden = false; form.name.focus(); });
+
+  /* subject chips: tapping one sets the (hidden) subject select the form already validates */
+  var chipBox = $('[data-topic-chips]'), chips = chipBox ? $$('[data-topic]', chipBox) : [];
+  function syncChips() {
+    var v = form.topic.value;
+    chips.forEach(function (c, i) {
+      var on = c.getAttribute('data-topic') === v;
+      c.setAttribute('aria-checked', on ? 'true' : 'false');
+      c.tabIndex = on || (!v && i === 0) ? 0 : -1;
+    });
+  }
+  function pickChip(c) {
+    form.topic.value = c.getAttribute('data-topic');
+    form.topic.dispatchEvent(new Event('input', { bubbles: true }));
+    form.topic.dispatchEvent(new Event('change', { bubbles: true }));
+    syncChips(); check('topic');
+  }
+  chips.forEach(function (c, i) {
+    c.addEventListener('click', function () { pickChip(c); });
+    c.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = chips[(i + d + chips.length) % chips.length]; n.focus(); pickChip(n);
+    });
+  });
+  syncChips();
+
+  /* contact panel: my local time, kept fresh */
+  (function () {
+    var el = $('[data-contact-time]'); if (!el) return;
+    var tick = function () {
+      try { el.textContent = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Manila', hour: 'numeric', minute: '2-digit' }).format(new Date()) + ' · UTC+8'; } catch (e) {}
+    };
+    tick(); setInterval(tick, 30000);
+  })();
 
   /* ---------------- text scramble ---------------- */
   var GLYPHS = '!<>-_\\/[]{}=+*^?#01ABXZ';
