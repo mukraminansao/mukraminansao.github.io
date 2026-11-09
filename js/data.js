@@ -21,7 +21,7 @@ window.PORTFOLIO = {
 
   /* ---------- Hero stat bar ---------- */
   stats: {
-    projects: 7
+    projects: 8
   },
 
   /* Shown in the footer as "Last updated". Change it whenever you update the site. */
@@ -138,6 +138,29 @@ window.PORTFOLIO = {
         { src: 'assets/img/ft_product.webp', label: 'Product details and colorways', tall: true },
         { src: 'assets/img/ft_admin.webp', label: 'Staff overview' },
         { src: 'assets/img/ft_mobile.webp', label: 'Phone storefront', tall: true }
+      ]
+    },
+    {
+      name: 'FAIRY', kind: 'Fashion & beauty store · virtual try-on', layout: 'desktop', path: 'fairy', status: 'In development',
+      facts: [['110', 'products'], ['9', 'shoppable sets'], ['2', 'studios · fitting room + beauty'], ['75', 'automated tests']],
+      desc: 'A fashion and beauty storefront where every product lives inside a styled photo. Visitors tap any item in a scene to see its details, build an outfit or makeup look from it, and try it on in a virtual fitting room or beauty studio before adding the whole look to the bag.',
+      features: [
+        'Shoppable scenes: tap any of the 12 products in a set photo for a close-up, shade and finish options, then add it to your look',
+        'Virtual fitting room with front and back views and head and hand close-ups; save outfits or add the whole outfit to the bag',
+        'Virtual Beauty Studio: pick shades, intensity and matte, satin or gloss finish for lips, cheeks, eyes and skin, with a before/after slider',
+        'Catalog with category filters, search, price and sort, with each product linking back to its spot in a shoppable set',
+        'PostgreSQL back end with customer accounts and a staff admin for prices, stock and scenes; the free demo runs from the local catalog'
+      ],
+      tags: ['Next.js', 'React', 'TypeScript', 'CSS Modules', 'PostgreSQL', 'Prisma', 'Playwright'],
+      github: 'https://github.com/mukraminansao/Fairy',
+      live: 'https://fairy-demo.onrender.com', liveNote: 'Bag and saved looks stay in your browser, and checkout is a demo with no payment. Free hosting: the first visit can take about a minute to wake up.',
+      learned: 'Building FAIRY taught me to map clickable hotspots onto product photos, keep one look in sync across scenes, the fitting room and the bag, and layer makeup effects on a face photo in the browser without sending images to a server.',
+      shots: [
+        { src: 'assets/img/fy_home.webp', label: 'Home' },
+        { src: 'assets/img/fy_look.webp', label: 'Shoppable look' },
+        { src: 'assets/img/fy_fitting.webp', label: 'Virtual fitting room' },
+        { src: 'assets/img/fy_studio.webp', label: 'Virtual Beauty Studio' },
+        { src: 'assets/img/fy_mobile.webp', label: 'Phone view', tall: true }
       ]
     },
     {
@@ -263,12 +286,12 @@ window.PORTFOLIO = {
 
   /* ---------- Why work with me: each point links to its proof ---------- */
   why: [
-    { title: 'I ship complete systems', text: 'Seven projects covering the full stack: the database, the API, the admin dashboards and the screens people use. TeachWise alone has 5 user roles, 120 API tests and runs on Android and the web.', link: '#projects', linkText: 'See the projects' },
+    { title: 'I ship complete systems', text: 'Eight projects covering the full stack: the database, the API, the admin dashboards and the screens people use. TeachWise alone has 5 user roles, 120 API tests and runs on Android and the web.', link: '#projects', linkText: 'See the projects' },
     { title: 'Security is built in, not added later', text: 'A networking major and three security certificates shape how I code: school-by-school data separation in TeachWise, role checks in every system and on-device encryption in Padala.', link: '#certifications', linkText: 'See the certificates' },
     { title: 'I build with AI and own the result', text: 'I use AI coding tools like Claude Code to move fast, but I plan each system, review and test every change, and can explain how it works. 251 automated tests across TeachWise, Dokyu and Padala back that up.', link: 'https://github.com/mukraminansao', linkText: 'See my GitHub' }
   ],
   journey: [
-    { when: 'Now', kind: 'Projects', title: 'Building projects with AI-driven development', org: 'Personal projects · ongoing', text: 'Seven projects so far: TeachWise, KATRIBO and BookTrack are complete; FORM/TECH is a release candidate with a live demo; Servease, Dokyu and Padala are in development. I plan, build with Claude Code, review and test each project.', live: true },
+    { when: 'Now', kind: 'Projects', title: 'Building projects with AI-driven development', org: 'Personal projects · ongoing', text: 'Eight projects so far: TeachWise, KATRIBO and BookTrack are complete; FORM/TECH is a release candidate with a live demo; FAIRY, Servease, Dokyu and Padala are in development. I plan, build with Claude Code, review and test each project.', live: true },
     { when: 'Feb – May 2026', kind: 'OJT', title: 'On-the-Job Trainee', org: 'Department of Information and Communications Technology (DICT) · Jolo, Sulu', text: 'Hands-on work across deployment, networking and development:',
       bullets: [
         'Facilitated the rollout of a DICT free internet connectivity program to partner schools, coordinating on-site deployment and orienting students and staff',
