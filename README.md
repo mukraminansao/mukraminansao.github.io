@@ -95,10 +95,11 @@ To receive messages directly in Gmail instead:
 2. Copy its endpoint (looks like `https://formspree.io/f/abcdwxyz`).
 3. Paste it into `contact.formEndpoint` in `js/data.js`.
 
-## Publishing (Netlify, connected to GitHub)
+## Publishing (GitHub Pages)
 
-The live site is **https://mukraminbariwaansao.netlify.app/**. Netlify rebuilds it automatically
-whenever the site's GitHub repository changes, usually within a minute.
+The live site is **https://mukraminbariwa5-create.github.io/**, served free by GitHub Pages from the
+`main` branch of this repository. GitHub republishes it automatically after every push, usually within a minute or two.
+The `.nojekyll` file tells GitHub to serve the files exactly as they are.
 
 To publish a change, update the files in the GitHub repository (commit and push, or upload them on github.com).
 
