@@ -97,7 +97,7 @@ To receive messages directly in Gmail instead:
 
 ## Publishing (GitHub Pages)
 
-The live site is **https://mukraminbariwa5-create.github.io/**, served free by GitHub Pages from the
+The live site is **https://mukraminansao.github.io/**, served free by GitHub Pages from the
 `main` branch of this repository. GitHub republishes it automatically after every push, usually within a minute or two.
 The `.nojekyll` file tells GitHub to serve the files exactly as they are.
 

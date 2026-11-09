@@ -10,7 +10,7 @@ window.PORTFOLIO = {
   contact: {
     email: 'mukraminansao@gmail.com',
     linkedin: 'https://www.linkedin.com/in/mukramin-a-001833333',
-    github: 'https://github.com/mukraminbariwa5-create',
+    github: 'https://github.com/mukraminansao',
     facebook: 'https://www.facebook.com/mukramin.bariwa',
     location: 'Pasig City, Metro Manila',
     // Paste a Formspree endpoint here (e.g. 'https://formspree.io/f/abcdwxyz')
@@ -82,7 +82,7 @@ window.PORTFOLIO = {
         'Privacy built in: answers stay anonymous, results hide below a minimum response count, Data Privacy Act ready'
       ],
       tags: ['Laravel', 'React Native', 'Expo', 'MySQL', 'TypeScript'],
-      github: 'https://github.com/mukraminbariwa5-create/TeachWise',
+      github: 'https://github.com/mukraminansao/TeachWise',
       live: 'https://teachwise-demo.onrender.com', liveNote: 'One-click demo accounts on the sign-in screen. Free hosting: the first visit can take about a minute to wake up.',
       preview: 'assets/video/teachwise.mp4',
       learned: 'Building one app for many schools taught me multi-tenant design: every record carries a school ID and is filtered on every request, so one school can never see another\'s data. It also pushed me from PHP pages to a REST API with a React Native app on Android and the web from a single codebase.',
@@ -105,7 +105,7 @@ window.PORTFOLIO = {
         'App-style phone layout with a bottom tab bar, gallery with a lightbox, and fast page transitions'
       ],
       tags: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PHP', 'MySQL'],
-      github: 'https://github.com/mukraminbariwa5-create/Katribo',
+      github: 'https://github.com/mukraminansao/Katribo',
       live: 'https://katribo-demo.onrender.com', liveNote: 'Checkout is a demo: orders are checked on the server but never charged or sent. Free hosting: the first visit can take about a minute to wake up.',
       preview: 'assets/video/katribo.mp4',
       learned: 'Rebuilding my first PHP version in React and TypeScript taught me to split a site into reusable components and never trust prices sent from the browser. Connecting it to a PHP and MySQL admin taught me order workflows with version checks, so two staff members can\'t overwrite each other\'s changes.',
@@ -128,7 +128,7 @@ window.PORTFOLIO = {
         'Responsive editorial storefront with recently viewed items, accessible menus and reduced-motion support, tested in Chromium, Firefox and WebKit'
       ],
       tags: ['Laravel', 'React', 'TypeScript', 'Inertia', 'PostgreSQL', 'Tailwind CSS', 'Docker'],
-      github: 'https://github.com/mukraminbariwa5-create/form-tech-apparel', live: 'https://form-tech-demo.onrender.com',
+      github: 'https://github.com/mukraminansao/form-tech-apparel', live: 'https://form-tech-demo.onrender.com',
       liveNote: 'Staff area: sign in at /login with staff@formtech.demo and formtech-demo-staff. Checkout is a demo and takes no payments. Free hosting: the first visit can take about a minute to wake up.',
       preview: 'assets/video/formtech.mp4',
       learned: 'Building a database-backed storefront taught me to keep product variants, prices and inventory consistent from the catalogue to checkout, separate staff permissions from guest sessions, and package a Laravel and React application with PostgreSQL in Docker.',
@@ -151,7 +151,7 @@ window.PORTFOLIO = {
         'Admins verify pros\' IDs, handle reported problems and track bookings, payments and ratings'
       ],
       tags: ['PHP', 'MySQL', 'JavaScript', 'PWA'],
-      github: 'https://github.com/mukraminbariwa5-create/Servease',
+      github: 'https://github.com/mukraminansao/Servease',
       live: 'https://servease-demo.onrender.com', liveNote: 'One-click Customer, Pro and Admin demo accounts. Free hosting: the first visit can take about a minute to wake up.',
       preview: 'assets/video/servease.mp4',
       learned: 'Designing role-based access so customers, pros and admins each see only their own data and actions, and keeping three different dashboards consistent in one system.',
@@ -173,7 +173,7 @@ window.PORTFOLIO = {
         'Guests can read every guide without an account; signing in adds the tracker, reminders and saved offices'
       ],
       tags: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma'],
-      github: 'https://github.com/mukraminbariwa5-create/Dokyu',
+      github: 'https://github.com/mukraminansao/Dokyu',
       live: 'https://dokyu.onrender.com', liveNote: 'Tap "Try the demo account" on the sign-in screen. Free hosting: the first visit can take about a minute to wake up. Not affiliated with any government agency.',
       preview: 'assets/video/dokyu.mp4', previewShot: 0,
       learned: 'Building Dokyu taught me to research and verify real-world content before shipping it, and to design one Expo codebase that works as a phone app and a desktop website, with an Express and Prisma API behind it.',
@@ -193,7 +193,7 @@ window.PORTFOLIO = {
         'Full catalogue and member management with search and filters'
       ],
       tags: ['PHP', 'MySQL', 'JavaScript', 'XAMPP'],
-      github: 'https://github.com/mukraminbariwa5-create/Booktrack',
+      github: 'https://github.com/mukraminansao/Booktrack',
       live: 'https://booktrack-demo.onrender.com', liveNote: 'One-click librarian and member demo accounts. Free hosting: the first visit can take about a minute to wake up.',
       preview: 'assets/video/booktrack.mp4',
       learned: 'Rebuilding my own capstone taught me to refactor older code, plan a cleaner relational database, and design for two very different users: members and librarians.',
@@ -215,7 +215,7 @@ window.PORTFOLIO = {
         'Dala, a built-in assistant that guides new users step by step'
       ],
       tags: ['Node.js', 'JavaScript', 'Encryption', 'Installable app'],
-      github: 'https://github.com/mukraminbariwa5-create/Padala',
+      github: 'https://github.com/mukraminansao/Padala',
       live: 'https://padala-demo.onrender.com', liveNote: 'Create a test account with any username. Demo data is erased whenever it restarts; the first visit can take about a minute to wake up.',
       preview: 'assets/video/padala.mp4', previewShot: 1,
       learned: 'Encrypting files on the device before upload, and sending only the files that changed, which taught me how sync tools save bandwidth on slow connections.',
@@ -265,7 +265,7 @@ window.PORTFOLIO = {
   why: [
     { title: 'I ship complete systems', text: 'Seven projects covering the full stack: the database, the API, the admin dashboards and the screens people use. TeachWise alone has 5 user roles, 120 API tests and runs on Android and the web.', link: '#projects', linkText: 'See the projects' },
     { title: 'Security is built in, not added later', text: 'A networking major and three security certificates shape how I code: school-by-school data separation in TeachWise, role checks in every system and on-device encryption in Padala.', link: '#certifications', linkText: 'See the certificates' },
-    { title: 'I build with AI and own the result', text: 'I use AI coding tools like Claude Code to move fast, but I plan each system, review and test every change, and can explain how it works. 251 automated tests across TeachWise, Dokyu and Padala back that up.', link: 'https://github.com/mukraminbariwa5-create', linkText: 'See my GitHub' }
+    { title: 'I build with AI and own the result', text: 'I use AI coding tools like Claude Code to move fast, but I plan each system, review and test every change, and can explain how it works. 251 automated tests across TeachWise, Dokyu and Padala back that up.', link: 'https://github.com/mukraminansao', linkText: 'See my GitHub' }
   ],
   journey: [
     { when: 'Now', kind: 'Projects', title: 'Building projects with AI-driven development', org: 'Personal projects · ongoing', text: 'Seven projects so far: TeachWise, KATRIBO and BookTrack are complete; FORM/TECH is a release candidate with a live demo; Servease, Dokyu and Padala are in development. I plan, build with Claude Code, review and test each project.', live: true },
