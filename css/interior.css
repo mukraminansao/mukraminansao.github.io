@@ -10,7 +10,7 @@ html.has-page-scroll::-webkit-scrollbar { display:none; width:0; height:0; }
 .has-page-scroll .page-scroll.is-dragging { cursor:grabbing; }
 .has-page-scroll .page-scroll[aria-disabled="true"] { cursor:default; }
 .page-scroll__track { position:absolute; top:96px; bottom:24px; left:6px; width:3px; background:rgba(255,255,255,.14); pointer-events:none; }
-.page-scroll__fill { display:block; width:100%; height:100%; background:var(--acc); transform:scaleY(var(--page-progress,0)); transform-origin:top; }
+.page-scroll__fill { display:block; width:100%; height:100%; background:var(--acc); transform:scaleY(0); transform-origin:top; will-change:transform; }
 .page-scroll:focus-visible .page-scroll__track { outline:1px solid var(--ink-hi); outline-offset:3px; }
 .page-scroll:hover .page-scroll__fill,.page-scroll.is-dragging .page-scroll__fill { background:#8cf3ff; }
 .menu-open .page-scroll { visibility:hidden; }

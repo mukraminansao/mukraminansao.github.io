@@ -245,17 +245,17 @@
     if (p.layout === 'app') {
       var pShot = Math.min(p.previewShot == null ? 1 : p.previewShot, p.shots.length - 1);
       media = '<div class="apps">' + p.shots.map(function (s, j) {
-        return '<figure class="app" data-reveal-item><div class="cut"><div class="cut__in"><button type="button" class="app__open" data-app-shot="' + j + '" aria-label="Enlarge ' + esc(s.label) + ' screenshot"><img src="' + esc(s.src) + '" alt="' + esc(p.name + ' — ' + s.label) + '" loading="lazy"></button>' + (j === pShot ? previewHtml(p) : '') + '</div></div><span>' + esc(s.label) + '</span></figure>';
+        return '<figure class="app" data-reveal-item><div class="cut"><div class="cut__in"><button type="button" class="app__open" data-app-shot="' + j + '" aria-label="Enlarge ' + esc(s.label) + ' screenshot"><img decoding="async" src="' + esc(s.src) + '" alt="' + esc(p.name + ' — ' + s.label) + '" loading="lazy"></button>' + (j === pShot ? previewHtml(p) : '') + '</div></div><span>' + esc(s.label) + '</span></figure>';
       }).join('') + '</div>';
     } else {
       media = '<div class="frame cut" data-frame><div class="cut__in">' +
         '<div class="frame__bar"><i></i><i></i><i></i><span class="frame__path">' + esc(p.path || '') + '</span><span class="frame__label" data-shot-label>' + esc(p.shots[0].label) + '</span></div>' +
         '<div class="frame__screen">' + p.shots.map(function (s, j) {
           var sm = s.tall ? '' : ' srcset="' + esc(s.src.replace('.webp', '-sm.webp')) + ' 640w, ' + esc(s.src) + ' 1200w" sizes="(max-width: 700px) 100vw, 640px"';
-          return '<img src="' + esc(s.src) + '"' + sm + ' alt="' + esc(p.name + ' — ' + s.label) + '" loading="lazy" class="' + (s.tall ? 'is-tall ' : '') + (j === 0 ? 'is-on' : '') + '">';
+          return '<img decoding="async" src="' + esc(s.src) + '"' + sm + ' alt="' + esc(p.name + ' — ' + s.label) + '" loading="lazy" class="' + (s.tall ? 'is-tall ' : '') + (j === 0 ? 'is-on' : '') + '">';
         }).join('') + previewHtml(p) + '<button type="button" class="frame__zoom" data-zoom aria-label="Enlarge screenshot"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>ENLARGE</button></div></div></div>' +
         '<div class="thumbs" role="tablist" aria-label="' + esc(p.name) + ' screenshots">' + p.shots.map(function (s, j) {
-          return '<button type="button" class="thumb' + (j === 0 ? ' is-on' : '') + '" data-shot="' + j + '" role="tab" aria-selected="' + (j === 0) + '" aria-label="Show ' + esc(s.label) + '"><img src="' + esc(s.src) + '" alt="" loading="lazy"></button>';
+          return '<button type="button" class="thumb' + (j === 0 ? ' is-on' : '') + '" data-shot="' + j + '" role="tab" aria-selected="' + (j === 0) + '" aria-label="Show ' + esc(s.label) + '"><img decoding="async" src="' + esc(s.src) + '" alt="" loading="lazy"></button>';
         }).join('') + '</div>';
     }
     // With a live demo, "Live demo" is the main button and the code link sits beside it.
@@ -289,7 +289,7 @@
     var projectIndex = document.createElement('div');
     projectIndex.className = 'project-index';
     projectIndex.innerHTML = '<p class="project-index__label" id="project-index-label">SELECT A PROJECT <span aria-hidden="true">' + pad(projectPanels.length) + ' PROJECTS</span></p><div class="project-index__list" role="tablist" aria-labelledby="project-index-label">' + D.projects.map(function (p, i) {
-      return '<button type="button" class="project-index__item" role="tab" id="project-tab-' + i + '" aria-controls="project-panel-' + i + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? '0' : '-1') + '"><img src="' + esc(p.shots[0].src) + '" alt="" width="240" height="135" loading="lazy"><strong>' + esc(p.name) + '</strong><span>' + esc(p.kind) + '</span><small>' + esc(p.status || 'Complete') + '</small></button>';
+      return '<button type="button" class="project-index__item" role="tab" id="project-tab-' + i + '" aria-controls="project-panel-' + i + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? '0' : '-1') + '"><img decoding="async" src="' + esc(p.shots[0].src) + '" alt="" width="240" height="135" loading="lazy"><strong>' + esc(p.name) + '</strong><span>' + esc(p.kind) + '</span><small>' + esc(p.status || 'Complete') + '</small></button>';
     }).join('') + '</div>';
     $('[data-projects]').insertAdjacentElement('beforebegin', projectIndex);
     var projectTabs = $$('.project-index__item', projectIndex);
@@ -457,7 +457,7 @@
   var EXT = '<svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
   $('[data-certs]').innerHTML = CE.map(function (c, i) {
     return '<article class="certcard cut" data-reveal-item><div class="cut__in">' +
-      '<button type="button" class="certcard__img" data-cert="' + i + '" aria-label="View the ' + esc(c.title) + ' certificate"><img src="' + esc(c.thumb) + '" alt="' + esc(c.title + ' certificate') + '" loading="lazy"><span class="frame__zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>VIEW</span></button>' +
+      '<button type="button" class="certcard__img" data-cert="' + i + '" aria-label="View the ' + esc(c.title) + ' certificate"><img decoding="async" src="' + esc(c.thumb) + '" alt="' + esc(c.title + ' certificate') + '" loading="lazy"><span class="frame__zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>VIEW</span></button>' +
       '<span class="certcard__stamp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 12 4 4 8-8"/></svg>VERIFIED</span>' +
       '<div class="certcard__body"><p class="certcard__meta"><span>' + esc(c.issuer) + '</span><b>' + esc(c.date) + '</b></p>' +
       '<h3>' + esc(c.title) + '</h3><p class="certcard__note">' + esc(c.note) + '</p>' +
@@ -696,13 +696,29 @@
   function sectionOffset(id) {
     return id === 'home' || id === 'about' ? 0 : -80;
   }
+  /* Smooth, light section jumps: short trips glide all the way; long trips skip the middle
+     instantly and glide the last stretch, so the browser never has to draw a dozen screens
+     of content in one second (that is what made long jumps stutter). */
+  function glideTo(el, offset) {
+    if (!lenis) return false;
+    var vh = window.innerHeight;
+    var target = window.scrollY + el.getBoundingClientRect().top + (offset || 0);
+    var dist = target - window.scrollY, far = vh * 1.6;
+    if (Math.abs(dist) > far * 1.25) {
+      lenis.scrollTo(target - (dist > 0 ? far : -far), { immediate: true, force: true });
+      dist = dist > 0 ? far : -far;
+    }
+    var duration = Math.min(0.85, Math.max(0.45, 0.35 + Math.abs(dist) / vh * 0.28));
+    lenis.scrollTo(target, { duration: duration, easing: function (t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }, force: true });
+    return true;
+  }
   function goToSection(sec) {
     if (!sec) return;
     var hash = '#' + sec.id;
     if (location.hash !== hash) history.pushState(null, '', hash);
     var offset = sectionOffset(sec.id);
-    if (lenis) lenis.scrollTo(sec, { offset: offset, duration: 1 });
-    else window.scrollTo({ top: window.scrollY + sec.getBoundingClientRect().top + offset, behavior: reduced ? 'instant' : 'smooth' });
+    if (glideTo(sec, offset)) return;
+    window.scrollTo({ top: window.scrollY + sec.getBoundingClientRect().top + offset, behavior: reduced ? 'instant' : 'smooth' });
   }
   document.addEventListener('keydown', function (e) {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -968,6 +984,16 @@
     stamps.forEach(function (c) { sio.observe(c); });
   } else stamps.forEach(function (c) { c.classList.add('is-stamped'); });
 
+  /* ---------------- stop the loading shimmer once a picture has loaded ----------------
+     The shimmer repaints its box every frame, so it must not keep running behind loaded images. */
+  (function () {
+    var BOX = '.frame__screen, .app .cut__in, .certcard__img, .thumb';
+    function done(img) { var box = img.closest(BOX); if (box) box.classList.add('is-loaded'); }
+    $$(BOX).forEach(function (box) { var img = box.querySelector('img'); if (img && img.complete && img.naturalWidth) box.classList.add('is-loaded'); });
+    document.addEventListener('load', function (e) { if (e.target.tagName === 'IMG') done(e.target); }, true);
+    document.addEventListener('error', function (e) { if (e.target.tagName === 'IMG') done(e.target); }, true);
+  })();
+
   /* ---------------- no-animation path ---------------- */
   var lenis = null;
   var loader = $('.loader');
@@ -975,7 +1001,8 @@
      Keep this outside the animation branch so reduced motion works too. */
   (function () {
     var control = $('.page-scroll'), track = $('.page-scroll__track');
-    var leftFill = $('.rail__progress');
+    var leftFill = $('.rail__progress'), rightFill = $('.page-scroll__fill');
+    var lastPercent = -1, lastTotal = -1;
     if (!control || !track) return;
     var queued = false, pointer = null;
     function range() { return Math.max(0, document.documentElement.scrollHeight - window.innerHeight); }
@@ -984,12 +1011,21 @@
       var total = range();
       var progress = total ? Math.max(0, Math.min(1, window.scrollY / total)) : 0;
       var percent = Math.round(progress * 100);
-      document.documentElement.style.setProperty('--page-progress', progress);
-      if (leftFill) leftFill.style.transform = 'scaleY(' + progress + ')';
-      control.setAttribute('aria-valuenow', percent);
-      control.setAttribute('aria-valuetext', percent + '% of page');
-      control.setAttribute('aria-disabled', total ? 'false' : 'true');
-      control.tabIndex = total ? 0 : -1;
+      // Move only the two bars (a transform needs no restyle of the rest of the page).
+      // Setting a CSS variable on <html> here made the browser restyle every element on every frame.
+      var scale = 'scaleY(' + progress + ')';
+      if (leftFill) leftFill.style.transform = scale;
+      if (rightFill) rightFill.style.transform = scale;
+      if (percent !== lastPercent) {
+        lastPercent = percent;
+        control.setAttribute('aria-valuenow', percent);
+        control.setAttribute('aria-valuetext', percent + '% of page');
+      }
+      if ((total > 0) !== (lastTotal > 0) || lastTotal < 0) {
+        control.setAttribute('aria-disabled', total ? 'false' : 'true');
+        control.tabIndex = total ? 0 : -1;
+      }
+      lastTotal = total;
     }
     function schedule() {
       if (queued) return;
@@ -1081,7 +1117,7 @@
   // smooth scrolling
   if (window.Lenis) {
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    lenis = new window.Lenis({ lerp: 0.15, smoothWheel: true, wheelMultiplier: 1.05 });
+    lenis = new window.Lenis({ lerp: 0.17, smoothWheel: true, wheelMultiplier: 1, autoRaf: false });
     lenis.on('scroll', ST.update);
     gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
     gsap.ticker.lagSmoothing(0);
@@ -1091,7 +1127,7 @@
         var t = $(id); if (!t) return;
         e.preventDefault();
         if (t.hasAttribute('data-section') && location.hash !== id) history.pushState(null, '', id);
-        lenis.scrollTo(t, { offset: sectionOffset(t.id), duration: 1 });
+        glideTo(t, sectionOffset(t.id));
       });
     });
   }

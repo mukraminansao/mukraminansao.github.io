@@ -18,8 +18,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261109-native-cursor">
-<link rel="stylesheet" href="css/interior.css?v=20261110-chrome2">
+<link rel="stylesheet" href="css/style.css?v=20261110-smooth2">
+<link rel="stylesheet" href="css/interior.css?v=20261110-smooth">
 <link rel="stylesheet" href="css/mobile-editorial.css?v=20261109-mobile-detail">
 <link rel="stylesheet" href="css/readability.css?v=20261110-1">
 <link rel="stylesheet" href="css/contact.css?v=20261110-4">
@@ -64,7 +64,7 @@
 <div class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Screenshot viewer">
   <button type="button" class="lightbox__close" aria-label="Close viewer"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   <button type="button" class="lightbox__nav lightbox__prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-  <figure class="lightbox__fig"><img alt=""><figcaption><span class="lightbox__name"></span><span class="lightbox__label"></span><span class="lightbox__count"></span></figcaption></figure>
+  <figure class="lightbox__fig"><img decoding="async" alt=""><figcaption><span class="lightbox__name"></span><span class="lightbox__label"></span><span class="lightbox__count"></span></figcaption></figure>
   <button type="button" class="lightbox__nav lightbox__next" aria-label="Next screenshot"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
 </div>
 
@@ -155,7 +155,7 @@
   </h1>
 
   <div class="hero__figure">
-    <img src="assets/img/hero-graphite-portrait-v2.webp" alt="Mukramin Ansao wearing a graphite jacket and cyber-tech glasses" width="1024" height="1536" fetchpriority="high">
+    <img decoding="async" src="assets/img/hero-graphite-portrait-v2.webp" alt="Mukramin Ansao wearing a graphite jacket and cyber-tech glasses" width="1024" height="1536" fetchpriority="high">
   </div>
 
   <svg class="phone-only hero__phone-trace" viewBox="0 0 96 132" aria-hidden="true">
@@ -233,7 +233,7 @@
     </div>
     <figure class="about-portrait">
       <div class="about-portrait__crop">
-        <img src="assets/img/about-editorial-portrait.webp" alt="Editorial portrait of Mukramin Ansao in a black three-piece suit" width="1024" height="1536" loading="lazy">
+        <img decoding="async" src="assets/img/about-editorial-portrait.webp" alt="Editorial portrait of Mukramin Ansao in a black three-piece suit" width="1024" height="1536" loading="lazy">
       </div>
     </figure>
     <div class="about-hero__copy">
@@ -465,7 +465,7 @@
     ['js/vendor/gsap.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'],
     ['js/vendor/ScrollTrigger.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js'],
     ['js/vendor/lenis.min.js', 'https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js'],
-    ['js/data.js?v=20261110-chat-live'], ['js/main.js?v=20261110-contact'], ['js/chat.js?v=20261110-2']
+    ['js/data.js?v=20261110-chat-live'], ['js/main.js?v=20261110-smooth2'], ['js/chat.js?v=20261110-2']
   ];
   function add(src, ok, fail) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.body.appendChild(s); }
   function next(i) {

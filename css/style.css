@@ -854,7 +854,7 @@ a.cert:hover{border-color:var(--acc-30);background:var(--acc-10)}
 }
 /* back to top */
 .totop{position:fixed;right:22px;bottom:22px;z-index:60;width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--acc-30);border-radius:50%;
-  background:var(--glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--acc);cursor:pointer;
+  background:#111116;color:var(--acc);cursor:pointer;
   opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s var(--ease),background .2s,box-shadow .2s}
 .totop.is-on{opacity:1;transform:none;pointer-events:auto}
 .totop:hover,.totop:focus-visible{background:var(--acc-10);box-shadow:0 0 18px var(--acc-glow)}
@@ -870,7 +870,7 @@ html{scrollbar-color:rgba(var(--acc-rgb),.45) var(--bg);scrollbar-width:thin}
 ::-webkit-scrollbar-thumb{background:rgba(var(--acc-rgb),.35);border:3px solid var(--bg);border-radius:10px}
 ::-webkit-scrollbar-thumb:hover{background:rgba(var(--acc-rgb),.6)}
 /* loading shimmer behind screenshots and certificates */
-.frame__screen,.app .cut__in,.certcard__img,.thumb{background-image:linear-gradient(100deg,transparent 30%,rgba(var(--acc-rgb),.06) 50%,transparent 70%);background-size:220% 100%;animation:shimmer 1.6s linear infinite}
+.frame__screen:not(.is-loaded),.app .cut__in:not(.is-loaded),.certcard__img:not(.is-loaded),.thumb:not(.is-loaded){background-image:linear-gradient(100deg,transparent 30%,rgba(var(--acc-rgb),.06) 50%,transparent 70%);background-size:220% 100%;animation:shimmer 1.6s linear infinite}
 @keyframes shimmer{from{background-position:120% 0}to{background-position:-120% 0}}
 @media print{
   .totop,.nav__hire{display:none!important}
