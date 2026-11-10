@@ -14,5 +14,8 @@
   "killRampage": "announcer-rampage.mp3",
   "virusDie": "virus-explode.mp3",
   "chibaku": "chibaku-tensei.mp3",
-  "chibakuBoom": "chibaku-explosion.mp3"
+  "chibakuBoom": "chibaku-explosion.mp3",
+  "odamaVoice": "odama-rasengan.mp3",
+  "shurikenVoice": "rasenshuriken-voice.mp3",
+  "shuriken": "rasenshuriken.mp3"
 }
