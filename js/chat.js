@@ -1,5 +1,5 @@
 /* =========================================================
-   Portfolio assistant — chat widget
+   Mini-X — portfolio chat
    Talks to the Cloudflare Worker in worker/portfolio-chat.js.
    Stays hidden until contact.chatEndpoint is set in js/data.js.
    ========================================================= */
@@ -16,15 +16,73 @@
     'Tell me about FAIRY',
     'What certificates does he have?'
   ];
-  var GREETING = 'Hi! I can answer questions about Mukramin: his projects, skills, education and how to reach him. What would you like to know?';
+  var GREETING = 'Hi, I’m Mini-X! Ask me about Mukramin’s projects, skills, education, or how to reach him.';
   var KEY = 'mk-chat';
 
   var history = [];
   try { history = JSON.parse(sessionStorage.getItem(KEY) || '[]') || []; } catch (e) { history = []; }
-  var busy = false, ctrl = null;
+  var busy = false, current = null;      // current = the question being answered (null when idle)
 
   var esc = function (t) { return String(t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   var save = function () { try { sessionStorage.setItem(KEY, JSON.stringify(history.slice(-16))); } catch (e) {} };
+
+  /* Answers built from the portfolio data already on the page (js/data.js).
+     Used whenever the live assistant can't be reached, so a visitor always gets a real answer. */
+  function portfolioAnswer(question) {
+    var query = ' ' + question.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim() + ' ';
+    var has = function (re) { return re.test(query); };
+    var projects = D.projects || [], edu = D.education, certs = D.certifications || [], journey = D.journey || [];
+    var project = projects.find(function (p) {
+      return query.includes(' ' + p.name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim() + ' ');
+    });
+    if (project) {
+      return '**' + project.name + '** · ' + project.kind + '\n' + project.desc + '\nBuilt with ' + project.tags.join(', ') + '.';
+    }
+    if (has(/\b(remote|availability|available|hire|hiring|freelance|hybrid|on site|onsite|start)\b/) && D.availability) {
+      return '**Availability**\n' + D.availability + '.' + (C.email ? '\nYou can reach Mukramin at ' + C.email + '.' : '');
+    }
+    if (has(/\b(tech stack|stack|skills?|tools?|technologies|frameworks?|programming)\b/) && D.toolkitGroups) {
+      return D.toolkitGroups.filter(function (group) { return group.items.length; }).map(function (group) {
+        return '- **' + group.name + '**: ' + group.items.join(', ');
+      }).join('\n');
+    }
+    if (has(/\b(certificates?|certifications?|certs?|security|cybersecurity|soc|siem)\b/) && certs.length) {
+      return 'Mukramin’s certificates:\n' + certs.map(function (cert) { return '- **' + cert.title + '** · ' + cert.issuer + (cert.date ? ' · ' + cert.date : ''); }).join('\n');
+    }
+    if (has(/\b(education|school|degree|study|studied|graduate|graduated|college|university|course|honou?rs?|cum laude|awards?)\b/) && edu) {
+      return '**Education**\n' + edu.degree + (edu.major ? ', ' + edu.major : '') + ' · ' + edu.school + ' (' + edu.years + ')'
+        + (edu.honor ? '\n' + edu.honor + (edu.honorNote ? ' · ' + edu.honorNote : '') : '')
+        + (edu.awards || []).map(function (award) { return '\n- ' + award; }).join('');
+    }
+    if (has(/\b(experience|ojt|intern|internship|work history|worked|journey|background|career)\b/) && journey.length) {
+      return 'Mukramin’s experience so far:\n' + journey.slice(0, 5).map(function (j) { return '- **' + j.title + '** · ' + j.org + ' (' + j.when + ')'; }).join('\n');
+    }
+    if (has(/\b(projects?|built|build|builds|portfolio|apps?|websites?|systems?|work)\b/) && projects.length) {
+      return 'Here are Mukramin’s projects:\n' + projects.map(function (p) { return '- **' + p.name + '** · ' + p.kind; }).join('\n');
+    }
+    if (has(/\b(linkedin|github|facebook|cv|resume|socials?|links?)\b/)) {
+      return [C.linkedin && '- LinkedIn: ' + C.linkedin, C.github && '- GitHub: ' + C.github, '- CV: ' + location.origin + '/assets/Mukramin_Ansao_CV.pdf', C.email && '- Email: ' + C.email]
+        .filter(Boolean).join('\n');
+    }
+    if (has(/\b(email|contact|reach|message|talk)\b/) && C.email) return 'You can reach Mukramin at ' + C.email + ', or use the contact form at the bottom of this page.';
+    if (has(/\b(where|location|based|lives?|city|country|from)\b/) && C.location) return 'Mukramin is based in ' + C.location + ', Philippines (originally from Jolo, Sulu).';
+    if (has(/\b(languages?|speaks?|english|tagalog|filipino)\b/) && D.languages) return 'Mukramin speaks ' + D.languages.replace(' · ', ' and ') + '.';
+    if (has(/\b(why|strengths?|good fit|stand out|best)\b/) && (D.why || []).length) {
+      return 'Why work with Mukramin:\n' + D.why.map(function (w) { return '- **' + w.title + '**: ' + w.text; }).join('\n');
+    }
+    if (has(/\b(who are you|your name|what are you|mini x|minix)\b/)) return 'I’m Mini-X, the robot companion on Mukramin’s portfolio. Ask me about his projects, skills, education or how to reach him.';
+    return '';
+  }
+  // Nothing matched: a short overview, so the visitor still leaves with something useful.
+  function overview() {
+    var projects = D.projects || [], edu = D.education;
+    return 'Mukramin Ansao is a web and app developer' + (C.location ? ' based in ' + C.location : '') + '.'
+      + (edu ? '\n- ' + edu.degree + ', ' + edu.school + (edu.honor ? ' · ' + edu.honor : '') : '')
+      + (projects.length ? '\n- ' + projects.length + ' projects: ' + projects.map(function (p) { return p.name; }).join(', ') : '')
+      + (D.availability ? '\n- ' + D.availability : '')
+      + '\nAsk me about a project by name, his skills, certificates, education or availability.'
+      + (C.email ? ' For anything else, email ' + C.email + '.' : '');
+  }
 
   // simple, safe formatting: bullets, **bold**, links and emails
   function format(text) {
@@ -51,14 +109,10 @@
   var root = document.createElement('div');
   root.className = 'aichat';
   root.innerHTML =
-    '<button type="button" class="aichat__launch" aria-expanded="false" aria-controls="aichat-panel">' +
-      '<span class="aichat__spark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>' +
-      '<span class="aichat__launch-txt">Ask about me</span>' +
-    '</button>' +
     '<section class="aichat__panel" id="aichat-panel" role="dialog" aria-modal="false" aria-labelledby="aichat-title" hidden>' +
       '<header class="aichat__head">' +
-        '<span class="aichat__avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></span>' +
-        '<div class="aichat__title"><h2 id="aichat-title">Portfolio assistant</h2><p><i aria-hidden="true"></i>Answers from Mukramin’s portfolio</p></div>' +
+        '<span class="aichat__avatar" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a9 9 0 0 0-9 9v4a7 7 0 0 0 7 7h4a7 7 0 0 0 7-7v-4a9 9 0 0 0-9-9Z" fill="#343d48"/><rect x="5" y="9" width="14" height="10" rx="4" fill="#05090d"/><path d="M9 12v2m6-2v2m-5 2q2 2 4 0M11 5l2 2m0-2-2 2" stroke="#22e5ff" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg></span>' +
+        '<div class="aichat__title"><h2 id="aichat-title">Mini-X</h2><p><i aria-hidden="true"></i>Ask me about Mukramin</p></div>' +
         '<button type="button" class="aichat__icon" data-chat-reset aria-label="Start a new chat" title="New chat"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>' +
         '<button type="button" class="aichat__icon" data-chat-close aria-label="Close chat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>' +
       '</header>' +
@@ -72,9 +126,9 @@
       '<p class="aichat__foot">AI can make mistakes. For anything important, email <a href="mailto:' + esc(C.email || '') + '">' + esc(C.email || '') + '</a>.</p>' +
     '</section>';
   document.body.appendChild(root);
-  document.body.classList.add('has-aichat');
+  document.body.classList.add('has-minix-chat');
 
-  var launch = root.querySelector('.aichat__launch'), panel = root.querySelector('.aichat__panel');
+  var panel = root.querySelector('.aichat__panel'), opener = null;
   var log = root.querySelector('.aichat__log'), form = root.querySelector('.aichat__form');
   var input = root.querySelector('textarea'), send = root.querySelector('.aichat__send'), chips = root.querySelector('[data-chat-chips]');
 
@@ -104,27 +158,33 @@
     renderChips();
   }
 
-  function open() {
+  function open(trigger) {
+    if (root.classList.contains('is-open')) return;
+    opener = trigger;
     panel.hidden = false;
-    requestAnimationFrame(function () { root.classList.add('is-open'); });
-    launch.setAttribute('aria-expanded', 'true');
+    root.classList.add('is-open');
     document.body.classList.add('aichat-open');
     log.scrollTop = log.scrollHeight;
-    setTimeout(function () { input.focus({ preventScroll: true }); }, 60);
-    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'chat-open', title: 'Opened the portfolio assistant', event: true }); } catch (e) {}
+    input.focus({ preventScroll: true });
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: 'chat-open', title: 'Opened Mini-X chat', event: true }); } catch (e) {}
   }
   function close() {
     root.classList.remove('is-open');
-    launch.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('aichat-open');
-    setTimeout(function () { if (!root.classList.contains('is-open')) panel.hidden = true; }, 260);
-    launch.focus({ preventScroll: true });
+    panel.hidden = true;
+    var target = opener && opener.getClientRects().length ? opener : document.querySelector('.minix-dock');
+    if (target) target.focus({ preventScroll: true });
+    opener = null;
   }
-  launch.addEventListener('click', function () { root.classList.contains('is-open') ? close() : open(); });
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('button[data-mini-x-chat]');
+    if (trigger) open(trigger);
+  });
   root.querySelector('[data-chat-close]').addEventListener('click', close);
   root.querySelector('[data-chat-reset]').addEventListener('click', function () {
-    if (ctrl) ctrl.abort();
-    history = []; save(); busy = false; setBusy(false); renderAll(); input.focus();
+    var active = current; current = null;
+    if (active && active.ctrl) active.ctrl.abort();
+    history = []; save(); setBusy(false); renderAll(); input.focus();
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('is-open')) close(); });
 
@@ -135,7 +195,55 @@
 
   function setBusy(b) { busy = b; send.disabled = b; root.classList.toggle('is-busy', b); }
 
-  function ask(q) {
+  function problem(kind, note) { var e = new Error(kind); e.kind = kind; e.note = note || ''; return e; }
+
+  /* One attempt at the live assistant. Calls paint(text) as the answer streams in and returns the full text.
+     Gives up only when nothing arrives for a while (not after a fixed total time, so long answers are never cut off). */
+  async function live(job, paint) {
+    var request = new AbortController(), idle = 0, text = '';
+    job.ctrl = request;
+    var wait = function (ms) { clearTimeout(idle); idle = setTimeout(function () { request.abort(); }, ms); };
+    wait(25000);                                    // the first words can take a while when the model is waking up
+    try {
+      var r = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history.slice(-8) }),
+        signal: request.signal
+      });
+      var type = r.headers.get('Content-Type') || '';
+      if (!r.ok || !type.includes('event-stream') || !r.body) {
+        var note = '';
+        try { note = String((await r.json()).error || ''); } catch (e) { /* not JSON */ }
+        throw problem(r.status === 429 ? 'busy' : r.status === 403 ? 'blocked' : 'down', note);
+      }
+      var reader = r.body.getReader(), dec = new TextDecoder(), buf = '';
+      var readLine = function (line) {
+        if (!line.startsWith('data:')) return;
+        var data = line.slice(5).trim();
+        if (!data || data === '[DONE]') return;
+        try {
+          var j = JSON.parse(data), piece = j.response || (j.choices && j.choices[0] && j.choices[0].delta && j.choices[0].delta.content);
+          if (typeof piece === 'string') text += piece;
+        } catch (e) { /* ignore malformed events */ }
+      };
+      while (current === job) {
+        var res;
+        try { res = await reader.read(); }
+        catch (e) { if (text.trim()) break; throw e; }           // the stream was cut: keep what already arrived
+        if (res.done) { readLine((buf + dec.decode()).trim()); break; }
+        wait(15000);
+        buf += dec.decode(res.value, { stream: true });
+        var parts = buf.split('\n'); buf = parts.pop();
+        parts.forEach(readLine);
+        if (text) paint(text);
+      }
+      if (!text.trim()) throw problem('down');
+      return text.trim();
+    } finally { clearTimeout(idle); }
+  }
+
+  async function ask(q) {
     q = String(q || '').trim();
     if (!q || busy) return;
     input.value = ''; input.style.height = 'auto';
@@ -144,51 +252,38 @@
     bubble('user', '<p>' + esc(q) + '</p>');
     var out = bubble('bot', '<span class="aichat__typing" aria-label="Thinking"><i></i><i></i><i></i></span>', 'is-pending');
     setBusy(true);
-    ctrl = window.AbortController ? new AbortController() : null;
-    var text = '';
+    var job = { ctrl: null };
+    current = job;
 
-    fetch(ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: history.slice(-8) }),
-      signal: ctrl ? ctrl.signal : undefined
-    }).then(function (r) {
-      var type = r.headers.get('Content-Type') || '';
-      if (!r.ok || type.indexOf('event-stream') < 0) {
-        return r.json().catch(function () { return {}; }).then(function (j) { throw new Error(j.error || 'The assistant is unavailable right now.'); });
+    function paint(value) { out.classList.remove('is-pending'); out.innerHTML = format(value); log.scrollTop = log.scrollHeight; }
+    function answer(value) { paint(value); history.push({ role: 'assistant', content: value }); save(); }
+    try {
+      var reply = '', why = null;
+      if (location.protocol === 'file:') why = problem('local');
+      else {
+        try { reply = await live(job, paint); }
+        catch (first) {
+          if (current !== job) return;
+          why = first;
+          // a dropped connection or a hiccup on the server: wait a moment and try once more before falling back
+          if (first.kind !== 'busy' && first.kind !== 'blocked') {
+            await new Promise(function (done) { setTimeout(done, 900); });
+            if (current !== job) return;
+            try { reply = await live(job, paint); why = null; } catch (second) { why = second; }
+          }
+        }
       }
-      var reader = r.body.getReader(), dec = new TextDecoder(), buf = '';
-      function pump() {
-        return reader.read().then(function (res) {
-          if (res.done) return;
-          buf += dec.decode(res.value, { stream: true });
-          var parts = buf.split('\n'); buf = parts.pop();
-          parts.forEach(function (line) {
-            line = line.trim();
-            if (line.indexOf('data:') !== 0) return;
-            var data = line.slice(5).trim();
-            if (!data || data === '[DONE]') return;
-            try {
-              var j = JSON.parse(data), piece = j.response;
-              if (piece == null && j.choices && j.choices[0]) piece = (j.choices[0].delta && j.choices[0].delta.content) || '';
-              if (piece) { text += piece; out.classList.remove('is-pending'); out.innerHTML = format(text); log.scrollTop = log.scrollHeight; }
-            } catch (e) {}
-          });
-          return pump();
-        });
-      }
-      return pump();
-    }).then(function () {
-      text = text.trim();
-      if (!text) throw new Error('I couldn’t find an answer to that. You can email Mukramin at ' + (C.email || '') + '.');
-      out.innerHTML = format(text);
-      history.push({ role: 'assistant', content: text }); save();
-    }).catch(function (err) {
-      if (err && err.name === 'AbortError') { out.remove(); return; }
-      history.pop(); save();
-      out.classList.remove('is-pending'); out.classList.add('is-error');
-      out.innerHTML = format((err && err.message) || 'Something went wrong. Please try again.');
-    }).then(function () { setBusy(false); ctrl = null; log.scrollTop = log.scrollHeight; });
+      if (current !== job) return;
+      if (reply) { answer(reply); return; }
+      // Live chat is unavailable: answer from the portfolio data instead of showing an error.
+      var lead = why && why.kind === 'local' ? 'Live answers switch on when the site is opened from its web address instead of a file on this computer. From the portfolio:'
+        : why && why.kind === 'busy' ? (why.note || 'I’ve answered a lot of questions today.') + ' Meanwhile, from the portfolio:'
+        : 'My live connection dropped just now, so this comes straight from the portfolio:';
+      try { console.warn('[Mini-X chat] live answer unavailable:', why && (why.kind || why.name), why && (why.note || why.message)); } catch (e) { /* noop */ }
+      answer(lead + '\n' + (portfolioAnswer(q) || overview()));
+    } finally {
+      if (current === job) { setBusy(false); current = null; log.scrollTop = log.scrollHeight; }
+    }
   }
 
   renderAll();

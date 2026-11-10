@@ -1,3 +1,8 @@
 # local undo copies, never publish these
 _backups/
 _backup*/
+
+# Mini-X 3D source, Blender files and handoff package: kept locally, not needed by the live site
+mini-x-3d/
+mini-x-3d-handoff/
+mini-x-3d-handoff.zip

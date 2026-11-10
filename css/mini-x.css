@@ -1,0 +1,108 @@
+/* =========================================================
+   MINI-X — 3D companion overlay (canvas never takes pointer events)
+   ========================================================= */
+.minix-canvas{position:fixed;inset:0;pointer-events:none;z-index:50;display:block;contain:strict}
+
+.minix-ui{position:fixed;right:22px;bottom:82px;z-index:962;font-family:var(--hud,system-ui);color:var(--ink,#E9DDE4)}
+.minix-dock{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px 0 6px;border:1px solid var(--acc-30,rgba(34,229,255,.3));
+  border-radius:999px;background:var(--glass-2,rgba(11,10,15,.95));color:inherit;font:600 11px/1 var(--hud,system-ui);letter-spacing:.2em;cursor:pointer;
+  box-shadow:0 0 18px rgba(var(--acc-rgb,34,229,255),.10);transition:border-color .2s,transform .2s}
+.minix-dock svg{width:28px;height:28px;display:block}
+.minix-dock:hover,.minix-dock:focus-visible{border-color:rgba(var(--acc-rgb,34,229,255),.7);transform:translateY(-1px)}
+.minix-dock:focus-visible{outline:2px solid var(--acc,#22E5FF);outline-offset:3px}
+.minix-menu{position:absolute;right:0;bottom:50px;width:min(300px,calc(100vw - 32px));padding:16px;border:1px solid var(--acc-30,rgba(34,229,255,.3));
+  background:var(--glass-2,rgba(11,10,15,.96));backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.minix-menu[hidden]{display:none}
+.minix-menu__title{margin:0 0 12px;font-weight:700;font-size:12px;letter-spacing:.24em;color:var(--acc,#22E5FF)}
+.minix-menu__title span{margin-left:6px;color:var(--muted,#A99CA6);letter-spacing:.08em;font-weight:500;text-transform:none}
+.minix-sw{display:flex;align-items:center;gap:10px;margin:0 0 10px;font:500 13px/1.3 var(--text,system-ui);cursor:pointer}
+.minix-sw input{width:16px;height:16px;accent-color:var(--acc,#22E5FF);margin:0}
+.minix-menu__row{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 10px}
+.minix-menu__row button{flex:1 1 auto;min-height:34px;padding:0 10px;border:1px solid var(--line-2,rgba(255,255,255,.12));background:transparent;color:inherit;
+  font:600 11px/1 var(--hud,system-ui);letter-spacing:.08em;cursor:pointer}
+.minix-menu__row button:hover,.minix-menu__row button:focus-visible{border-color:var(--acc,#22E5FF);color:var(--acc,#22E5FF)}
+.minix-menu__row button:focus-visible,.minix-sw input:focus-visible{outline:2px solid var(--acc,#22E5FF);outline-offset:2px}
+.minix-menu__hint{margin:0;font:400 12px/1.5 var(--text,system-ui);color:var(--muted,#A99CA6)}
+
+.minix-hit{position:fixed;left:0;top:0;z-index:51;padding:0;border:0;border-radius:40%;background:transparent;cursor:pointer;
+  -webkit-tap-highlight-color:transparent}
+.minix-hit[hidden],body:not(.has-minix-chat) .minix-hit,body:not(.has-minix-chat) .minix-menu__chat,body.aichat-open .minix-hit{display:none}
+.minix-hit:focus-visible{outline:2px dashed var(--acc,#22E5FF);outline-offset:6px}
+
+.minix-bubble{position:fixed;left:0;top:0;z-index:62;max-width:min(220px,calc(100vw - 90px));padding:9px 12px;border:1px solid var(--acc-30,rgba(34,229,255,.3));
+  background:var(--glass-2,rgba(11,10,15,.95));color:var(--ink,#E9DDE4);font:500 12.5px/1.4 var(--text,system-ui);pointer-events:none;
+  opacity:0;translate:0 6px;transition:opacity .25s,translate .25s;box-shadow:0 0 16px rgba(var(--acc-rgb,34,229,255),.12)}
+.minix-bubble.is-on{opacity:1;translate:0 0}
+.minix-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+@media (max-width:700px){
+  .minix-ui{right:14px;bottom:68px}
+  .minix-dock{height:36px;padding:0 6px}
+  .minix-dock__txt{display:none}
+}
+.minix-canvas.is-slowmo{animation:minix-slowmo .6s ease-out}
+@keyframes minix-slowmo{0%,100%{filter:none}25%{filter:drop-shadow(0 0 9px rgba(34,229,255,.55))}}
+@media (prefers-reduced-motion:reduce){.minix-canvas.is-slowmo{animation:none}}
+@media print{.minix-canvas,.minix-ui,.minix-hit,.minix-bubble{display:none!important}}
+
+.minix-bubble--foe{border-color:rgba(255,42,85,.55);color:#FFD9E1;box-shadow:0 0 16px rgba(255,42,85,.18);z-index:53}
+
+/* Amenotejikara swap (all skipped for reduced motion): the page flips to a black-and-white negative for a beat,
+   and both bodies resolve out of a dark motion blur. The blur sits above the negative layer so it stays dark. */
+.minix-swapfx{position:fixed;inset:0;z-index:2147483000;pointer-events:none;display:none;-webkit-backdrop-filter:invert(1) grayscale(1) contrast(1.35);backdrop-filter:invert(1) grayscale(1) contrast(1.35)}
+.minix-warp{position:fixed;left:0;top:0;width:0;height:0;z-index:2147483001;pointer-events:none}
+.minix-warp i{position:absolute;display:block;pointer-events:none;opacity:0}
+.minix-warp__blot{border-radius:50%;translate:-50% -50%;filter:blur(10px);
+  background:radial-gradient(closest-side,rgba(2,2,6,.97) 0,rgba(6,6,14,.86) 36%,rgba(12,12,24,.45) 60%,rgba(12,12,24,0) 80%)}
+.minix-warp__ring{border-radius:50%;translate:-50% -50%;border:2px solid rgba(214,222,236,.55);filter:blur(1.5px);box-shadow:0 0 22px 6px rgba(4,4,10,.7),inset 0 0 22px 6px rgba(4,4,10,.7)}
+.minix-warp__smear{border-radius:999px;transform-origin:0 50%;filter:blur(9px);
+  background:linear-gradient(90deg,rgba(4,4,10,0),rgba(4,4,10,.92) 14%,rgba(10,10,20,.7) 50%,rgba(4,4,10,.92) 86%,rgba(4,4,10,0))}
+@media (prefers-reduced-motion:no-preference){
+  .minix-swapfx.is-on{display:block;animation:minix-negative .7s linear forwards}
+  .minix-canvas.is-swapblur{animation:minix-swapblur .95s cubic-bezier(.3,.6,.3,1)}
+  .minix-warp__blot{animation:minix-blot 1.15s cubic-bezier(.2,.7,.25,1) forwards}
+  .minix-warp__ring{animation:minix-warpring 1s cubic-bezier(.15,.7,.3,1) .05s forwards}
+  .minix-warp__smear{animation:minix-smear .75s ease-out forwards}
+}
+@keyframes minix-negative{0%,50%{opacity:1}100%{opacity:0}}
+@keyframes minix-swapblur{0%{filter:blur(11px) brightness(.45) saturate(.4)}35%{filter:blur(6px) brightness(.7) saturate(.7)}100%{filter:blur(0) brightness(1) saturate(1)}}
+@keyframes minix-blot{0%{opacity:.96;scale:2.3 .55}22%{opacity:.9;scale:1.25 .95}55%{opacity:.55;scale:1.2 1.2}100%{opacity:0;scale:1.7 1.7}}
+@keyframes minix-warpring{0%{opacity:.85;scale:.35}60%{opacity:.5}100%{opacity:0;scale:1.9}}
+@keyframes minix-smear{0%{opacity:.95;scale:1 1}45%{opacity:.6;scale:1 .7}100%{opacity:0;scale:1 .15}}
+
+/* Amaterasu: the same black-and-white negative as Amenotejikara, held a little longer (no swap, no blur) */
+@media (prefers-reduced-motion:no-preference){
+  .minix-swapfx.is-on.is-ama{animation:minix-negative-ama 1s linear forwards}
+}
+@keyframes minix-negative-ama{0%,60%{opacity:1}100%{opacity:0}}
+
+/* Multi-kill announcer banner (the voice is a background sound effect, not Mini-X speaking) */
+.minix-announce{position:fixed;left:50%;top:84px;z-index:63;translate:-50% 0;pointer-events:none;opacity:0;white-space:nowrap;
+  padding:10px 22px 11px;background:rgba(8,8,12,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(255,42,85,.35);
+  font:800 clamp(18px,2.5vw,32px)/1 var(--hud,system-ui);letter-spacing:.16em;font-style:italic;color:#F4ECEF;
+  text-shadow:0 2px 0 rgba(0,0,0,.6),0 0 16px rgba(255,42,85,.5)}
+.minix-announce[data-n="4"],.minix-announce[data-n="5"]{border-color:rgba(255,140,40,.45)}
+.minix-announce[data-n="4"],.minix-announce[data-n="5"]{color:#FFE2A0;text-shadow:0 2px 0 rgba(0,0,0,.6),0 0 22px rgba(255,90,20,.7)}
+.minix-announce.is-on{animation:minix-announce 1.9s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes minix-announce{0%{opacity:0;scale:1.6}12%{opacity:1;scale:1}80%{opacity:1;scale:1}100%{opacity:0;scale:.96}}
+@media (prefers-reduced-motion:reduce){.minix-announce.is-on{animation:none;opacity:1}}
+@media print{.minix-announce{display:none!important}}
+
+/* Amaterasu cut-in: a negative glimpse with speed lines and Mini-X's red eye sigil (skipped for reduced motion) */
+.minix-amacut{position:fixed;inset:0;z-index:2147483002;pointer-events:none;display:none;place-items:center;overflow:hidden}
+.minix-amacut.is-on{display:grid}
+.minix-amacut__lines{position:absolute;inset:-25%;
+  background:repeating-conic-gradient(from 0deg,rgba(255,255,255,0) 0deg 2.4deg,rgba(255,255,255,.75) 2.4deg 2.9deg,rgba(255,255,255,0) 2.9deg 5.1deg,rgba(16,16,20,.55) 5.1deg 5.7deg);
+  -webkit-mask:radial-gradient(circle at 50% 50%,transparent 0 20%,#000 52%);mask:radial-gradient(circle at 50% 50%,transparent 0 20%,#000 52%);filter:blur(1.4px)}
+.minix-amacut__eye{position:relative;width:min(62vw,600px);height:auto;filter:drop-shadow(0 0 28px rgba(255,20,50,.55))}
+.minix-amacut__sigil{transform-box:fill-box;transform-origin:center}
+.minix-swapfx.is-on.is-cut{animation:minix-negative-cut 1s linear forwards}
+@keyframes minix-negative-cut{0%,72%{opacity:1}100%{opacity:0}}
+.minix-amacut.is-on .minix-amacut__lines{animation:minix-cut-lines 1s linear forwards}
+.minix-amacut.is-on .minix-amacut__eye{animation:minix-cut-eye 1s cubic-bezier(.2,.9,.2,1) forwards}
+.minix-amacut.is-on .minix-amacut__sigil{animation:minix-cut-sigil 1s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes minix-cut-lines{0%{opacity:0;scale:1.35;rotate:0deg}10%{opacity:1}78%{opacity:.85}100%{opacity:0;scale:1;rotate:5deg}}
+@keyframes minix-cut-eye{0%{opacity:0;scale:1.35 .06}14%{opacity:1;scale:1 1}80%{opacity:1;scale:1.04 1.04}100%{opacity:0;scale:1.12 1.12}}
+@keyframes minix-cut-sigil{0%{rotate:60deg;scale:.6}22%{rotate:0deg;scale:1.06}35%{scale:1}100%{rotate:-25deg;scale:1}}
+@media (prefers-reduced-motion:reduce){.minix-amacut{display:none!important}}
+@media print{.minix-amacut{display:none!important}}

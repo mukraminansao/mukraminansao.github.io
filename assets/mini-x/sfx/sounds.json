@@ -1,0 +1,18 @@
+{
+  "charge": "kamehameha.mp3",
+  "boltCharge": "chidori.mp3",
+  "rasengan": "rasengan.mp3",
+  "rasenganVoice": "rasengan-voice.mp3",
+  "swap": "amenotejikara.mp3",
+  "teleport": "teleport.mp3",
+  "amaterasu": "amaterasu.mp3",
+  "katonSeal": "katon-handsign.mp3",
+  "katonShout": "katon-shout.mp3",
+  "killDouble": "announcer-double.mp3",
+  "killTriple": "announcer-triple.mp3",
+  "killUltra": "announcer-ultra.mp3",
+  "killRampage": "announcer-rampage.mp3",
+  "virusDie": "virus-explode.mp3",
+  "chibaku": "chibaku-tensei.mp3",
+  "chibakuBoom": "chibaku-explosion.mp3"
+}

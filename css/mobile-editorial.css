@@ -109,7 +109,7 @@
   .hero__intro::before {
     content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
     clip-path:polygon(20px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,8px 100%,0 calc(100% - 8px),0 20px);
-    background:linear-gradient(130deg,var(--phone-cyan),var(--phone-stroke) 60%);
+    background:linear-gradient(130deg,rgba(224,232,235,.34),rgba(224,232,235,.14) 60%);
   }
   .hero__intro::after {
     content:"";position:absolute;inset:1px;z-index:-1;pointer-events:none;
@@ -128,11 +128,11 @@
     font:700 clamp(18px,6.45vw,46px)/1.03 var(--hud);letter-spacing:.025em;
   }
   .hero__intro .hero__phone-kicker,.hero__intro .hero__phone-role {
-    margin:0;color:var(--phone-cyan);font:700 clamp(9px,2.15vw,16px)/1.2 var(--hud);letter-spacing:.22em;
+    margin:0;color:#aab3b7;font:700 clamp(9px,2.15vw,16px)/1.2 var(--hud);letter-spacing:.22em;
   }
-  .hero__intro .hero__phone-role { margin-top:4px;font-size:clamp(11px,2.85vw,21px); }
+  .hero__intro .hero__phone-role { margin-top:4px;font-size:clamp(11px,2.85vw,21px);color:#e4e8ea; }
   .hero__intro p:last-child {
-    margin:6px 0 0;color:#edf0f2;font-size:clamp(12px,2.95vw,19px);line-height:1.32;letter-spacing:0;
+    margin:6px 0 0;color:#d6d7d9;font-size:clamp(12px,2.95vw,19px);line-height:1.32;letter-spacing:0;
   }
   .hero__intro p:last-child { max-width:19em; }
 
@@ -140,18 +140,15 @@
   .hero .hero__button {
     --phone-button-bg:#10171b;
     isolation:isolate;min-width:0;width:100%;min-height:44px;padding:0 clamp(6px,1.75vw,13px);
-    gap:clamp(4px,1.1vw,8px);clip-path:var(--phone-cut);background:#d8dfe2;
+    gap:clamp(4px,1.1vw,8px);clip-path:var(--phone-cut);background:var(--hero-cyan,var(--phone-cyan));
     color:#f2f5f6;font-size:clamp(9px,3.05vw,19px);letter-spacing:.095em;
   }
   .hero .hero__button::before {
     clip-path:var(--phone-cut);background:var(--phone-button-bg);
   }
-  .hero .hero__actions .hero__button {
-    --phone-button-bg:var(--phone-cyan);background:var(--phone-cyan);color:#021014;
-  }
-  .hero .hero__actions .hero__button:focus-visible {
-    background:#f5f5f7;color:#021014;
-  }
+  .hero .hero__actions .hero__button { --phone-button-bg:#101517;color:#f5f5f7; }
+  .hero .hero__button { --phone-button-bg:#101517; }
+  .hero .hero__button:is(:hover,:focus-visible) { color:var(--hero-cyan,var(--phone-cyan)); }
   .hero .hero__button--cv { z-index:4;align-self:stretch;margin:12px 0 0; }
   .hero .hero__button .btn__ico {
     width:auto;height:auto;padding:0;border:0;flex:none;

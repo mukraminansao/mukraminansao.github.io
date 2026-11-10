@@ -13,7 +13,7 @@ js/main.js            renders data.js + animations
 assets/img/           photos and project screenshots (WebP)
 assets/video/         short live-preview clips of each project (MP4)
 assets/Mukramin_Ansao_CV.pdf   the "Download CV" file
-js/chat.js, css/chat.css       the "Ask about me" AI assistant
+js/chat.js, css/chat.css       Mini-X’s portfolio chat
 ai/knowledge.md       facts the assistant may use (built by scripts/build-knowledge.mjs)
 worker/               the Cloudflare Worker behind the assistant (setup: worker/README.md)
 ```
@@ -69,6 +69,23 @@ ffmpeg -i raw.mp4 -t 10 -vf "scale=1280:-2,fps=30" -an -c:v libx264 -crf 28 -pre
 
 For Padala use `scale=600:-2`. Keep the file names exactly as in the table.
 To show a clip in a different Padala phone window, change `previewShot` (0, 1 or 2) in `js/data.js`.
+
+## Mini-X (3D robot companion)
+
+A real rigged 3D character that flies over the page, boosts ahead during sustained scrolling, and fights viruses.
+Click empty space to spawn a virus at that exact point, or press and hold for a boss.
+Mini-X stays on the right between fights. During a battle he mixes ranged fire and retreats with brief approaches, slow-motion dodges, and a charged two-hand blast.
+He can also trade places with a virus (Amenotejikara: a plain cast, then a held slow-motion beat with a negative flash and a dark blur), and blink above or behind a virus to land a Rasengan in slow motion.
+Other skills: Katon: Goukakyuu no Jutsu (hand seals, a deep breath, then a fireball from his mouth), Amaterasu (his eyes turn red and a red eye sigil flashes over a negative of the page, then inked black flames burn the virus until it is destroyed),
+and a Kamehameha fired into a virus' back after teleporting behind it. A dodged lunge carries on past its target instead of pulling back.
+Chibaku Tensei: when a crowd closes in on him (or when he feels like it) he throws a gravity core into the middle of the viruses,
+drags them into a sphere of rock that crushes them, and the sphere bursts after a few seconds; he either waits for it, Kamehamehas it from where he is, or teleports to the far side of the screen and Kamehamehas it from there, which sets it off early and much harder.
+Up to 5 viruses (plus one boss) can be on screen at once, and Mini-X has 30 health so he can hold out against a full crowd. Kills in quick succession trigger a DOUBLE KILL / TRIPLE KILL / ULTRA KILL / RAMPAGE announcer (sound + banner).
+Click Mini-X to ask about Mukramin. Open the **MINI-X** menu on the right to chat, hide the character, adjust battles or motion, or enable sound effects.
+
+- Runtime: `js/mini-x/mini-x.js`, `css/mini-x.css`, models in `assets/mini-x/`
+- Source, Blender files, review renders, status and rebuild steps: `mini-x-3d/README.md`
+- 3D inspection page: `mini-x-3d/preview.html`
 
 ## Animation libraries
 

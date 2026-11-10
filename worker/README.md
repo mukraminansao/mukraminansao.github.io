@@ -1,6 +1,6 @@
-# Portfolio assistant (AI chatbot)
+# Mini-X portfolio chat
 
-The "Ask about me" chat on the portfolio. It answers questions about Mukramin using
+Mini-X answers questions about Mukramin using
 **only** the facts in [`ai/knowledge.md`](../ai/knowledge.md), with a free
 [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/) model.
 
@@ -14,6 +14,8 @@ visitor ──► js/chat.js (on GitHub Pages) ──► Cloudflare Worker (work
 - Free: Workers AI includes 10,000 Neurons a day. One answer uses roughly 190, so about 50 chats a day.
 - Only your site (and local testing) can call the Worker. Each visitor is limited to 8 questions a minute.
 - The chat button stays hidden until `contact.chatEndpoint` is set in `js/data.js`.
+- If the Worker is unreachable, busy or over its daily limit, Mini-X retries once and then answers from the portfolio data already loaded on the page (projects, skills, education, experience, certificates, contact), so visitors never see a dead end.
+- Live answers only work on the published site or a local server (`python -m http.server`), not when `index.html` is opened directly as a file.
 
 ## One-time setup (Cloudflare dashboard, about 5 minutes)
 
