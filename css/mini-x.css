@@ -92,16 +92,9 @@
 .minix-amacut{position:fixed;inset:0;z-index:2147483002;pointer-events:none;display:none;place-items:center;overflow:hidden}
 .minix-amacut.is-on{display:grid}
 .minix-amacut__lines{position:absolute;inset:-25%;
-  background:repeating-conic-gradient(from 0deg,rgba(255,255,255,0) 0deg 1.6deg,rgba(240,240,244,.6) 1.6deg 2.6deg,rgba(255,255,255,0) 2.6deg 4.3deg,rgba(10,10,14,.5) 4.3deg 5.4deg,rgba(255,255,255,0) 5.4deg 7deg);
-  -webkit-mask:radial-gradient(circle at 50% 50%,transparent 0 20%,#000 52%);mask:radial-gradient(circle at 50% 50%,transparent 0 20%,#000 52%);filter:blur(3px)}
-.minix-amacut__eye{position:relative;width:min(70vw,680px);height:auto;overflow:visible;filter:drop-shadow(0 0 22px rgba(255,40,70,.6)) drop-shadow(0 0 60px rgba(255,0,40,.35))}
-.minix-amacut::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at 50% 50%,rgba(0,0,0,.55),rgba(0,0,0,0) 70%)}
-.minix-amacut__bloom{transform-box:fill-box;transform-origin:center}
-.minix-amacut.is-on .minix-amacut__bloom{animation:minix-cut-bloom .5s ease-in-out .15s infinite alternate}
-.minix-amacut.is-on .minix-amacut__veins{animation:minix-cut-veins 1s ease-out forwards}
-@keyframes minix-cut-bloom{from{opacity:.75;scale:.94}to{opacity:1;scale:1.08}}
-@keyframes minix-cut-veins{0%{opacity:0}25%{opacity:.95}100%{opacity:.8}}
-.minix-swapfx.is-on.is-cut{-webkit-backdrop-filter:invert(1) grayscale(1) contrast(1.25) blur(3px);backdrop-filter:invert(1) grayscale(1) contrast(1.25) blur(3px)}
+  background:repeating-conic-gradient(from 0deg,rgba(255,255,255,0) 0deg 2.4deg,rgba(255,255,255,.75) 2.4deg 2.9deg,rgba(255,255,255,0) 2.9deg 5.1deg,rgba(16,16,20,.55) 5.1deg 5.7deg);
+  -webkit-mask:radial-gradient(circle at 50% 50%,transparent 0 20%,#000 52%);mask:radial-gradient(circle at 50% 50%,transparent 0 20%,#000 52%);filter:blur(1.4px)}
+.minix-amacut__eye{position:relative;width:min(62vw,600px);height:auto;filter:drop-shadow(0 0 28px rgba(255,20,50,.55))}
 .minix-amacut__sigil{transform-box:fill-box;transform-origin:center}
 .minix-swapfx.is-on.is-cut{animation:minix-negative-cut 1s linear forwards}
 @keyframes minix-negative-cut{0%,72%{opacity:1}100%{opacity:0}}
@@ -109,7 +102,9 @@
 .minix-amacut.is-on .minix-amacut__eye{animation:minix-cut-eye 1s cubic-bezier(.2,.9,.2,1) forwards}
 .minix-amacut.is-on .minix-amacut__sigil{animation:minix-cut-sigil 1s cubic-bezier(.2,.8,.3,1) forwards}
 @keyframes minix-cut-lines{0%{opacity:0;scale:1.35;rotate:0deg}10%{opacity:1}78%{opacity:.85}100%{opacity:0;scale:1;rotate:5deg}}
-@keyframes minix-cut-eye{0%{opacity:0;scale:1.35 .06}14%{opacity:1;scale:1 1}80%{opacity:1;scale:1.04 1.04}100%{opacity:0;scale:1.12 1.12}}
-@keyframes minix-cut-sigil{0%{rotate:60deg;scale:.6}22%{rotate:0deg;scale:1.06}35%{scale:1}100%{rotate:-25deg;scale:1}}
+@keyframes minix-cut-eye{0%{opacity:0;scale:1.35 .06;translate:0 0}14%{opacity:1;scale:1 1;filter:drop-shadow(0 0 28px rgba(255,20,50,.55))}22%{filter:drop-shadow(0 0 46px rgba(255,30,60,.95));translate:-3px 2px}30%{translate:2px -2px}40%{filter:drop-shadow(0 0 40px rgba(255,30,60,.85));translate:-1px 1px}48%{filter:drop-shadow(0 0 24px rgba(255,20,50,.5));translate:0 0}62%{filter:drop-shadow(0 0 46px rgba(255,30,60,.95))}77%{filter:drop-shadow(0 0 40px rgba(255,30,60,.85))}80%{opacity:1;scale:1.04 1.04}85%{filter:drop-shadow(0 0 24px rgba(255,20,50,.5))}100%{opacity:0;scale:1.12 1.12}}
+.minix-amacut.is-on .minix-amacut__veins{animation:minix-cut-veins 1s steps(1,end) forwards}
+@keyframes minix-cut-veins{0%{opacity:.4}20%{opacity:1}26%{opacity:.6}40%{opacity:1}55%{opacity:.7}62%{opacity:1}72%{opacity:.6}77%{opacity:1}100%{opacity:.8}}
+@keyframes minix-cut-sigil{0%{rotate:60deg;scale:.6}22%{rotate:0deg;scale:1.08}32%{scale:.98}40%{scale:1.05}48%{scale:1}62%{scale:1.08}70%{scale:.98}77%{scale:1.05}85%{scale:1}100%{rotate:-150deg;scale:1.02}}
 @media (prefers-reduced-motion:reduce){.minix-amacut{display:none!important}}
 @media print{.minix-amacut{display:none!important}}
