@@ -95,7 +95,7 @@
 .minix-amacut__lines{position:absolute;inset:-25%;
   background:repeating-conic-gradient(from 0deg,rgba(255,255,255,0) 0deg 1.8deg,rgba(255,255,255,.7) 1.8deg 2.6deg,rgba(255,255,255,0) 2.6deg 4.6deg,rgba(12,12,16,.5) 4.6deg 5.3deg,rgba(255,255,255,0) 5.3deg 7deg);
   -webkit-mask:radial-gradient(circle at 50% 50%,transparent 0 22%,#000 55%);mask:radial-gradient(circle at 50% 50%,transparent 0 22%,#000 55%);filter:blur(2px)}
-.minix-amacut__eye{position:relative;width:max(98vw,760px);max-width:1600px;aspect-ratio:1774/887}
+.minix-amacut__eye{position:absolute;inset:0;margin:auto;width:min(84vw,1400px);height:auto;aspect-ratio:1774/887}
 .minix-amacut__eye img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 18px rgba(0,0,0,.35))}
 .minix-amacut__iris{position:absolute;left:49.4%;top:49.9%;width:9%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;mix-blend-mode:screen;
   background:radial-gradient(circle,rgba(255,240,242,.85) 0,rgba(255,120,140,.6) 26%,rgba(255,20,60,.28) 48%,rgba(255,0,40,0) 70%)}
