@@ -43,7 +43,7 @@ window.PORTFOLIO = {
     { icon: 'front', title: 'Front-End & Mobile', text: 'Responsive interfaces that look right on phones and desktops, plus Android and web apps from one React Native codebase.', tags: ['HTML', 'CSS', 'React', 'React Native'] },
     { icon: 'back', title: 'Back-End & Databases', text: 'Server logic, user logins and data handling — built security-minded, backed by my networking and cybersecurity training.', tags: ['PHP', 'Laravel', 'MySQL', 'Node.js'] },
     { icon: 'system', title: 'Full Systems', text: 'Admin panels, dashboards and multi-user systems with real roles and data, like TeachWise, BookTrack and Servease.', tags: ['Laravel', 'PHP', 'MySQL', 'REST APIs'] },
-    { icon: 'ai', title: 'AI-Driven Development', text: 'I build with AI coding tools like Claude Code. I plan the system and its data, direct the AI, then review, test and fix every change before it ships.', tags: ['Claude Code', 'Code review', 'Automated tests'] }
+    { icon: 'ai', title: 'AI-Native Development', text: 'I am an AI-native developer: I build with AI coding tools like Claude Code. I plan the system and its data, direct the AI, then review, test and fix every change before it ships.', tags: ['Claude Code', 'Code review', 'Automated tests'] }
   ],
 
   security: {
@@ -294,7 +294,7 @@ window.PORTFOLIO = {
     { title: 'I build with AI and own the result', text: 'I use AI coding tools like Claude Code to move fast, but I plan each system, review and test every change, and can explain how it works. 251 automated tests across TeachWise, Dokyu and Padala back that up.', link: 'https://github.com/mukraminansao', linkText: 'See my GitHub' }
   ],
   journey: [
-    { when: 'Now', kind: 'Projects', title: 'Building projects with AI-driven development', org: 'Personal projects · ongoing', text: 'Eight projects so far: TeachWise, KATRIBO and BookTrack are complete; FORM/TECH is a release candidate with a live demo; FAIRY, Servease, Dokyu and Padala are in development. I plan, build with Claude Code, review and test each project.', live: true },
+    { when: 'Now', kind: 'Projects', title: 'Building projects as an AI-native developer', org: 'Personal projects · ongoing', text: 'Eight projects so far: TeachWise, KATRIBO and BookTrack are complete; FORM/TECH is a release candidate with a live demo; FAIRY, Servease, Dokyu and Padala are in development. I plan, build with Claude Code, review and test each project.', live: true },
     { when: 'Feb – May 2026', kind: 'OJT', title: 'On-the-Job Trainee', org: 'Department of Information and Communications Technology (DICT) · Jolo, Sulu', text: 'Hands-on work across deployment, networking and development:',
       bullets: [
         'Facilitated the rollout of a DICT free internet connectivity program to partner schools, coordinating on-site deployment and orienting students and staff',

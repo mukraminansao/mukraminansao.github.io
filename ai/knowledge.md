@@ -6,8 +6,8 @@ Everything below is verified information from Mukramin's portfolio website (http
 
 - Name: Mukramin Bariwa Ansao (goes by Mukramin)
 - Roles: Web & App Developer, UI/UX Designer, Blue Team / SOC Analyst Enthusiast
-- I'm Mukramin Ansao, a web and app developer and UI/UX designer based in Pasig City, originally from Jolo, Sulu. I design interfaces and build websites, full web systems and Android apps with Laravel, PHP, MySQL and React Native. I'm also a blue-team cybersecurity enthusiast, focused on SOC analysis, threat detection and incident response.
-- I graduated Cum Laude in BS Information Technology. I'm passionate about web and app development and love turning ideas into interactive software. I build with AI coding tools like Claude Code: I plan each system, guide the AI, then review, test and fix every change myself. My projects include TeachWise, BookTrack and the KATRIBO coffee shop website, all complete; FORM/TECH, an e-commerce release candidate with a live demo; and FAIRY, Servease, Dokyu and Padala, which are in active development.
+- I'm Mukramin Ansao, an AI-native web and app developer and UI/UX designer based in Pasig City, originally from Jolo, Sulu. I design interfaces and build websites, full web systems and Android apps with Laravel, PHP, MySQL and React Native, working AI-first with tools like Claude Code. I'm also a blue-team cybersecurity enthusiast, focused on SOC analysis, threat detection and incident response.
+- I graduated Cum Laude in BS Information Technology. I'm passionate about web and app development and love turning ideas into interactive software. As an AI-native developer, AI coding tools like Claude Code are built into how I work from the start: I plan each system, guide the AI, then review, test and fix every change myself. My projects include TeachWise, BookTrack and the KATRIBO coffee shop website, all complete; FORM/TECH, an e-commerce release candidate with a live demo; and FAIRY, Servease, Dokyu and Padala, which are in active development.
 - Location: Pasig City, Metro Manila, Philippines (originally from Jolo, Sulu)
 - Availability: Can start immediately · on-site, hybrid or remote
 - Languages: English · Tagalog
@@ -41,7 +41,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 - Front-End & Mobile: Responsive interfaces that look right on phones and desktops, plus Android and web apps from one React Native codebase. (HTML, CSS, React, React Native)
 - Back-End & Databases: Server logic, user logins and data handling — built security-minded, backed by my networking and cybersecurity training. (PHP, Laravel, MySQL, Node.js)
 - Full Systems: Admin panels, dashboards and multi-user systems with real roles and data, like TeachWise, BookTrack and Servease. (Laravel, PHP, MySQL, REST APIs)
-- AI-Driven Development: I build with AI coding tools like Claude Code. I plan the system and its data, direct the AI, then review, test and fix every change before it ships. (Claude Code, Code review, Automated tests)
+- AI-Native Development: I am an AI-native developer: I build with AI coding tools like Claude Code. I plan the system and its data, direct the AI, then review, test and fix every change before it ships. (Claude Code, Code review, Automated tests)
 - Security-minded development: My networking major and cybersecurity training shape how I build: school-by-school data separation in TeachWise, role-based access in Servease and BookTrack, and on-device encryption in Padala.
   - 3 security certificates: Google, Cisco, LetsDefend
   - SOC labs: Splunk, Wireshark, Nmap
@@ -176,7 +176,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 
 ## Experience and journey
 
-- Now — Building projects with AI-driven development (Projects), Personal projects · ongoing: Eight projects so far: TeachWise, KATRIBO and BookTrack are complete; FORM/TECH is a release candidate with a live demo; FAIRY, Servease, Dokyu and Padala are in development. I plan, build with Claude Code, review and test each project.
+- Now — Building projects as an AI-native developer (Projects), Personal projects · ongoing: Eight projects so far: TeachWise, KATRIBO and BookTrack are complete; FORM/TECH is a release candidate with a live demo; FAIRY, Servease, Dokyu and Padala are in development. I plan, build with Claude Code, review and test each project.
 - Feb – May 2026 — On-the-Job Trainee (OJT), Department of Information and Communications Technology (DICT) · Jolo, Sulu: Hands-on work across deployment, networking and development:
   - Facilitated the rollout of a DICT free internet connectivity program to partner schools, coordinating on-site deployment and orienting students and staff
   - Assisted with networking tasks during field deployments
