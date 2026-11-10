@@ -88,21 +88,29 @@
 @media (prefers-reduced-motion:reduce){.minix-announce.is-on{animation:none;opacity:1}}
 @media print{.minix-announce{display:none!important}}
 
-/* Amaterasu cut-in: a negative glimpse with speed lines and Mini-X's red eye sigil (skipped for reduced motion) */
-.minix-amacut{position:fixed;inset:0;z-index:2147483002;pointer-events:none;display:none;place-items:center;overflow:hidden}
-.minix-amacut.is-on{display:grid}
+/* Amaterasu cut-in: a dark crimson glimpse with speed lines and Mini-X's eye sigil, spinning and beating (skipped for reduced motion) */
+.minix-amacut{position:fixed;inset:0;z-index:2147483002;pointer-events:none;display:none;place-items:center;overflow:hidden;
+  background:radial-gradient(circle at 50% 50%,rgba(70,0,10,.55) 0,rgba(20,0,4,.82) 45%,rgba(4,0,1,.94) 100%)}
+.minix-amacut.is-on{display:grid;animation:minix-cut-bg 1.35s linear forwards}
 .minix-amacut__lines{position:absolute;inset:-25%;
-  background:repeating-conic-gradient(from 0deg,rgba(255,255,255,0) 0deg 2.4deg,rgba(255,255,255,.75) 2.4deg 2.9deg,rgba(255,255,255,0) 2.9deg 5.1deg,rgba(16,16,20,.55) 5.1deg 5.7deg);
-  -webkit-mask:radial-gradient(circle at 50% 50%,transparent 0 20%,#000 52%);mask:radial-gradient(circle at 50% 50%,transparent 0 20%,#000 52%);filter:blur(1.4px)}
-.minix-amacut__eye{position:relative;width:min(62vw,600px);height:auto;filter:drop-shadow(0 0 28px rgba(255,20,50,.55))}
-.minix-amacut__sigil{transform-box:fill-box;transform-origin:center}
-.minix-swapfx.is-on.is-cut{animation:minix-negative-cut 1s linear forwards}
-@keyframes minix-negative-cut{0%,72%{opacity:1}100%{opacity:0}}
-.minix-amacut.is-on .minix-amacut__lines{animation:minix-cut-lines 1s linear forwards}
-.minix-amacut.is-on .minix-amacut__eye{animation:minix-cut-eye 1s cubic-bezier(.2,.9,.2,1) forwards}
-.minix-amacut.is-on .minix-amacut__sigil{animation:minix-cut-sigil 1s cubic-bezier(.2,.8,.3,1) forwards}
-@keyframes minix-cut-lines{0%{opacity:0;scale:1.35;rotate:0deg}10%{opacity:1}78%{opacity:.85}100%{opacity:0;scale:1;rotate:5deg}}
-@keyframes minix-cut-eye{0%{opacity:0;scale:1.35 .06}14%{opacity:1;scale:1 1}80%{opacity:1;scale:1.04 1.04}100%{opacity:0;scale:1.12 1.12}}
-@keyframes minix-cut-sigil{0%{rotate:60deg;scale:.6}22%{rotate:0deg;scale:1.06}35%{scale:1}100%{rotate:-25deg;scale:1}}
+  background:repeating-conic-gradient(from 0deg,rgba(255,40,60,0) 0deg 2.4deg,rgba(255,60,80,.38) 2.4deg 2.8deg,rgba(255,40,60,0) 2.8deg 5.1deg,rgba(0,0,0,.6) 5.1deg 5.7deg);
+  -webkit-mask:radial-gradient(circle at 50% 50%,transparent 0 24%,#000 56%);mask:radial-gradient(circle at 50% 50%,transparent 0 24%,#000 56%);filter:blur(1.2px)}
+.minix-amacut__eye{position:relative;width:min(64vmin,560px);height:auto;overflow:visible}
+.minix-amacut__beat,.minix-amacut__ring1,.minix-amacut__ring2,.minix-amacut__ring3,.minix-amacut__core,.minix-amacut__halo{transform-box:fill-box;transform-origin:center}
+.minix-amacut.is-on .minix-amacut__lines{animation:minix-cut-lines 1.35s linear forwards}
+.minix-amacut.is-on .minix-amacut__eye{animation:minix-cut-eye 1.35s cubic-bezier(.2,.9,.2,1) forwards}
+.minix-amacut.is-on .minix-amacut__beat{animation:minix-cut-beat .62s ease-out .18s infinite}
+.minix-amacut.is-on .minix-amacut__halo{animation:minix-cut-halo .62s ease-out .18s infinite}
+.minix-amacut.is-on .minix-amacut__ring1{animation:minix-spin 5.5s linear infinite}
+.minix-amacut.is-on .minix-amacut__ring2{animation:minix-spin 3.2s linear infinite reverse}
+.minix-amacut.is-on .minix-amacut__ring3{animation:minix-spin 2.2s linear infinite}
+.minix-amacut.is-on .minix-amacut__core{animation:minix-cut-core 1.35s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes minix-cut-bg{0%{opacity:0}8%{opacity:1}80%{opacity:1}100%{opacity:0}}
+@keyframes minix-cut-lines{0%{opacity:0;scale:1.35;rotate:0deg}10%{opacity:1}78%{opacity:.8}100%{opacity:0;scale:1;rotate:6deg}}
+@keyframes minix-cut-eye{0%{opacity:0;scale:.35;rotate:-120deg}16%{opacity:1;scale:1.06;rotate:0deg}24%{scale:1}82%{opacity:1;scale:1.03}100%{opacity:0;scale:1.18}}
+@keyframes minix-cut-beat{0%{scale:1;filter:brightness(1)}12%{scale:1.07;filter:brightness(1.5)}26%{scale:1.01;filter:brightness(1.1)}38%{scale:1.045;filter:brightness(1.35)}100%{scale:1;filter:brightness(1)}}
+@keyframes minix-cut-halo{0%{opacity:.6;scale:.95}12%{opacity:1;scale:1.08}38%{opacity:.9;scale:1.04}100%{opacity:.6;scale:.95}}
+@keyframes minix-cut-core{0%{scale:.2 1}18%{scale:1.1 1}30%{scale:1}100%{scale:1}}
+@keyframes minix-spin{to{rotate:360deg}}
 @media (prefers-reduced-motion:reduce){.minix-amacut{display:none!important}}
 @media print{.minix-amacut{display:none!important}}
