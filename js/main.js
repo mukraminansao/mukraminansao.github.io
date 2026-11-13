@@ -265,6 +265,7 @@
     var action = live + (p.github
       ? '<a class="btn btn--ghost" href="' + esc(p.github) + '" target="_blank" rel="noopener">' + GH + ' SOURCE CODE</a>'
       : '<span class="soon">SOURCE CODE COMING SOON</span>');
+    if (p.ad) action += '<button type="button" class="btn btn--ghost" data-ad="' + i + '"><span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span> WATCH THE AD</button>';
     if (p.liveNote) action += '<span class="project__note">' + esc(p.liveNote) + '</span>';
     var statusClass = p.status === 'In development' ? 'development' : p.status === 'Local release candidate' ? 'local' : 'complete';
     return '<article class="project' + (p.layout === 'app' ? ' project--app' : '') + (p.featured ? ' project--featured' : '') + '" id="project-panel-' + i + '" data-project>' +
@@ -521,6 +522,36 @@
     else if (e.key === 'Tab') { var f = $$('button', lb), first = f[0], last = f[f.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
   });
+
+  /* ---------------- project ad player ---------------- */
+  var adm = $('.admodal');
+  if (adm) {
+    var adVid = $('video', adm), adFrom = null;
+    var closeAd = function () {
+      if (adm.hidden) return;
+      SFX.play('close'); adVid.pause(); adm.hidden = true; document.body.style.overflow = ''; if (lenis) lenis.start();
+      if (adFrom) adFrom.focus();
+    };
+    $$('[data-ad]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var p = D.projects[+b.getAttribute('data-ad')]; adFrom = b;
+        $('.admodal__name', adm).textContent = p.name;
+        if (adVid.getAttribute('src') !== p.ad) { adVid.setAttribute('src', p.ad); if (p.adPoster) adVid.setAttribute('poster', p.adPoster); }
+        $$('[data-preview]').forEach(function (v) { v.pause(); });
+        adm.hidden = false; document.body.style.overflow = 'hidden'; if (lenis) lenis.stop(); SFX.play('open');
+        adVid.currentTime = 0; var pr = adVid.play(); if (pr && pr.catch) pr.catch(function () {});
+        $('.admodal__close', adm).focus();
+        if (typeof track === 'function') track('project-ad', 'Watched project ad: ' + p.name);
+      });
+    });
+    $('.admodal__close', adm).addEventListener('click', closeAd);
+    adm.addEventListener('click', function (e) { if (e.target === adm || e.target.classList.contains('admodal__fig')) closeAd(); });
+    document.addEventListener('keydown', function (e) {
+      if (adm.hidden) return;
+      if (e.key === 'Escape') closeAd();
+      else if (e.key === 'Tab') { var f = [$('.admodal__close', adm), adVid]; if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[1].focus(); } else if (!e.shiftKey && document.activeElement === f[1]) { e.preventDefault(); f[0].focus(); } }
+    });
+  }
 
   /* ---------------- copy email + toast ---------------- */
   var toastEl = $('.toast'), toastT;
@@ -966,7 +997,7 @@
   });
 
   /* ---------------- general click / hover sounds ---------------- */
-  var SILENT = '[data-sound-toggle], .lightbox, .term, .burger, .menu a, .thumb, .frame__screen, .app__open, .preview__badge, .certcard__img, .copybtn, .form__submit';
+  var SILENT = '[data-sound-toggle], .lightbox, .admodal, .term, .burger, .menu a, .thumb, .frame__screen, .app__open, .preview__badge, .certcard__img, .copybtn, .form__submit';
   document.addEventListener('click', function (e) {
     var t = e.target.closest('a, button, .thumb, label.chip');
     if (t && !t.closest(SILENT)) SFX.play('click');

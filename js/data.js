@@ -87,6 +87,8 @@ window.PORTFOLIO = {
       tags: ['Next.js', 'React', 'TypeScript', 'CSS Modules', 'PostgreSQL', 'Prisma', 'Playwright'],
       github: 'https://github.com/mukraminansao/Fairy',
       live: 'https://fairy-demo.onrender.com', liveNote: 'Bag and saved looks stay in your browser, and checkout is a demo with no payment. Free hosting: the first visit can take about a minute to wake up.',
+      preview: 'assets/video/fairy.mp4',
+      ad: 'assets/video/fairy-ad.mp4', adPoster: 'assets/img/fy_ad-poster.jpg',
       learned: 'Building FAIRY taught me to map clickable hotspots onto product photos, keep one look in sync across scenes, the fitting room and the bag, and layer makeup effects on a face photo in the browser without sending images to a server.',
       shots: [
         { src: 'assets/img/fy_home.webp', label: 'Home' },
