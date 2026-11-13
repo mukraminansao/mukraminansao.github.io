@@ -113,6 +113,7 @@ window.PORTFOLIO = {
       github: 'https://github.com/mukraminansao/Katribo',
       live: 'https://katribo-demo.onrender.com', liveNote: 'Checkout is a demo: orders are checked on the server but never charged or sent. Free hosting: the first visit can take about a minute to wake up.',
       preview: 'assets/video/katribo.mp4',
+      ad: 'assets/video/katribo-ad.mp4', adPoster: 'assets/img/kt_ad-poster.jpg',
       learned: 'Rebuilding my first PHP version in React and TypeScript taught me to split a site into reusable components and never trust prices sent from the browser. Connecting it to a PHP and MySQL admin taught me order workflows with version checks, so two staff members can\'t overwrite each other\'s changes.',
       shots: [
         { src: 'assets/img/kt_home.webp', label: 'Home' },
