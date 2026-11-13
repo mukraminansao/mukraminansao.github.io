@@ -311,8 +311,20 @@
       });
       if (window.ScrollTrigger) window.ScrollTrigger.refresh();
     };
+    // After choosing a project, bring its panel up under the top menu (like a section jump).
+    var scrollToProject = function (index) {
+      var panel = projectPanels[index];
+      requestAnimationFrame(function () {
+        var nav = $('.nav'), navH = nav ? nav.getBoundingClientRect().height : 80;
+        var offset = -(navH + 24);
+        if (reduced || !lenis || !glideTo(panel, offset)) {
+          var y = window.scrollY + panel.getBoundingClientRect().top + offset;
+          window.scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' });
+        }
+      });
+    };
     projectTabs.forEach(function (b, i) {
-      b.addEventListener('click', function () { selectProject(i); });
+      b.addEventListener('click', function () { selectProject(i); scrollToProject(i); });
       b.addEventListener('keydown', function (e) {
         var next = e.key === 'ArrowRight' ? (i + 1) % projectTabs.length : e.key === 'ArrowLeft' ? (i + projectTabs.length - 1) % projectTabs.length : e.key === 'Home' ? 0 : e.key === 'End' ? projectTabs.length - 1 : -1;
         if (next < 0) return;
