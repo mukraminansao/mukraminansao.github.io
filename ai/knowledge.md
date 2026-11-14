@@ -60,91 +60,82 @@ Everything below is verified information from Mukramin's portfolio website (http
 
 ## Projects (8)
 
-### 1. FAIRY — Fashion & beauty store · virtual try-on
-- Status: In development
-- What it is: A fashion and beauty storefront where every product lives inside a styled photo. Visitors tap any item in a scene to see its details, build an outfit or makeup look from it, and try it on in a virtual fitting room or beauty studio before adding the whole look to the bag.
-- Key numbers: 110 products; 9 shoppable sets; 2 studios · fitting room + beauty; 75 automated tests
-- Features:
-  - Shoppable scenes: tap any of the 12 products in a set photo for a close-up, shade and finish options, then add it to your look
-  - Virtual fitting room with front and back views and head and hand close-ups; save outfits or add the whole outfit to the bag
-  - Virtual Beauty Studio: pick shades, intensity and matte, satin or gloss finish for lips, cheeks, eyes and skin, with a before/after slider
-  - Catalog with category filters, search, price and sort, with each product linking back to its spot in a shoppable set
-  - PostgreSQL back end with customer accounts and a staff admin for prices, stock and scenes; the free demo runs from the local catalog
-- Built with: Next.js, React, TypeScript, CSS Modules, PostgreSQL, Prisma, Playwright
-- What he learned: Building FAIRY taught me to map clickable hotspots onto product photos, keep one look in sync across scenes, the fitting room and the bag, and layer makeup effects on a face photo in the browser without sending images to a server.
-- Live demo: https://fairy-demo.onrender.com (Bag and saved looks stay in your browser, and checkout is a demo with no payment. Free hosting: the first visit can take about a minute to wake up.)
-- Source code: https://github.com/mukraminansao/Fairy
-
-### 2. KATRIBO — Website + admin · coffee shop
-- Status: Complete
-- What it is: A premium all-black website for KATRIBO Slow Coffee Bar, a café by the bay in Patikul, Sulu, built from my own UI design and the café's real photos. Customers browse the menu, customise a drink and place a pickup order, and the café runs its menu and orders from its own admin dashboard.
-- Key numbers: 8 pages; 26 menu items; 3 staff roles; 1 server-side price check
-- Features:
-  - Menu with category filters and search, plus drink pages with sizes and add-ons
-  - Pickup orders are saved to MySQL, with every price recalculated on the server so the browser can't change what an order costs
-  - Admin dashboard with sales, top sellers, order workflow (Pending → Processing → Completed), new-order alerts and printable prep slips
-  - Menu management: prices, photos, sold-out and hidden items, and featured drinks on the home page, with owner, manager and staff accounts
-  - App-style phone layout with a bottom tab bar, gallery with a lightbox, and fast page transitions
-- Built with: React, TypeScript, Tailwind CSS, Node.js, PHP, MySQL
-- What he learned: Rebuilding my first PHP version in React and TypeScript taught me to split a site into reusable components and never trust prices sent from the browser. Connecting it to a PHP and MySQL admin taught me order workflows with version checks, so two staff members can't overwrite each other's changes.
-- Live demo: https://katribo-demo.onrender.com (Checkout is a demo: orders are checked on the server but never charged or sent. Free hosting: the first visit can take about a minute to wake up.)
-- Source code: https://github.com/mukraminansao/Katribo
-
-### 3. FORM/TECH — E-commerce · technical apparel
-- Status: Release candidate
-- What it is: A full-stack storefront for a fictional technical-apparel brand. Customers browse curated Men and Women collections, search and filter products, choose size and color, and use a persistent shopping bag and guest demo checkout. A protected staff area manages the catalogue, inventory, demo orders and homepage content.
-- Key numbers: 30 products; 218 size & color variants; 8 collections; Staff protected management
-- Features:
-  - Search with keyboard suggestions, applied filter chips for size, color and price, and per-product size guides
-  - Every product comes in two real colorways with matching photos, a persistent bag and guest checkout with server-side price and stock checks
-  - Protected staff tools for products, collections, inventory, demo orders and editable storefront content
-  - Responsive editorial storefront with recently viewed items, accessible menus and reduced-motion support, tested in Chromium, Firefox and WebKit
-- Built with: Laravel, React, TypeScript, Inertia, PostgreSQL, Tailwind CSS, Docker
-- What he learned: Building a database-backed storefront taught me to keep product variants, prices and inventory consistent from the catalogue to checkout, separate staff permissions from guest sessions, and package a Laravel and React application with PostgreSQL in Docker.
-- Live demo: https://form-tech-demo.onrender.com (Staff area: sign in at /login with staff@formtech.demo and formtech-demo-staff. Checkout is a demo and takes no payments. Free hosting: the first visit can take about a minute to wake up.)
-- Source code: https://github.com/mukraminansao/form-tech-apparel
-
-### 4. TeachWise — Android + web app · 5 user roles · multi-school
+### 1. TeachWise — Android + web app · 5 user roles · multi-school
 - Status: Preparing for Google Play (featured project)
-- What it is: An anonymous teacher-evaluation app for schools, guided by Professor Wise, a friendly cartoon professor who can also answer questions as an AI assistant. Students rate their teachers in about three minutes per class, teachers get clear results and evaluate their colleagues, and admins run the whole process from one dashboard. One app serves many schools, with each school's data kept strictly separate.
+- What it is: An anonymous teacher-evaluation app for schools, on Android and the web. Students rate teachers in about three minutes; admins run everything from one dashboard.
 - Key numbers: 5 user roles; 120 API tests; 2 languages · EN / FIL; 1 codebase · Android + web
 - Features:
-  - Students see the classes they still need to rate and go through each one step by step, with drafts that survive going offline
-  - Teachers see their rating over time, response counts and anonymous comments, and rate colleagues in their department (peer evaluation)
-  - Admins track completion by section and faculty ratings, and manage classes, evaluation periods and questions in English and Filipino
-  - Professor Wise answers questions about the evaluation process with AI guidance (Ollama), never revealing who said what
-  - Privacy built in: answers stay anonymous, results hide below a minimum response count, Data Privacy Act ready
+  - One app for many schools, with each school's data kept strictly separate
+  - Teachers see results over time, peer evaluations and anonymous comments
+  - Privacy built in: anonymous answers, results hidden below a minimum response count, Data Privacy Act ready
 - Built with: Laravel, React Native, Expo, MySQL, TypeScript
-- What he learned: Building one app for many schools taught me multi-tenant design: every record carries a school ID and is filtered on every request, so one school can never see another's data. It also pushed me from PHP pages to a REST API with a React Native app on Android and the web from a single codebase.
-- Live demo: https://teachwise-demo.onrender.com (One-click demo accounts on the sign-in screen. Free hosting: the first visit can take about a minute to wake up.)
+- What he learned: Multi-tenant design: every record carries a school ID and is filtered on every request.
+- Live demo: https://teachwise-demo.onrender.com (One-click demo accounts on the sign-in screen.)
 - Source code: https://github.com/mukraminansao/TeachWise
+
+### 2. FAIRY — Fashion & beauty store · virtual try-on
+- Status: In development
+- What it is: A fashion and beauty store where every product sits inside a styled photo. Tap an item, build a look, and try it on before adding it to the bag.
+- Key numbers: 110 products; 9 shoppable sets; 75 automated tests
+- Features:
+  - Shoppable photo scenes: tap any product for details, shades and finishes
+  - Virtual fitting room and beauty studio with a before/after slider
+  - PostgreSQL back end with customer accounts and a staff admin for prices and stock
+- Built with: Next.js, React, TypeScript, CSS Modules, PostgreSQL, Prisma, Playwright
+- What he learned: Mapping clickable hotspots onto photos and layering makeup effects in the browser without uploading images.
+- Live demo: https://fairy-demo.onrender.com (Bag and saved looks stay in your browser; checkout is a demo with no payment.)
+- Source code: https://github.com/mukraminansao/Fairy
+
+### 3. KATRIBO — Website + admin · coffee shop
+- Status: Complete
+- What it is: Website and admin dashboard for KATRIBO Slow Coffee Bar in Patikul, Sulu. Customers order ahead for pickup; staff run the menu and orders.
+- Key numbers: 8 pages; 26 menu items; 3 staff roles
+- Features:
+  - Menu with filters, drink sizes, add-ons and pickup ordering
+  - Every price is recalculated on the server, so orders can't be changed in the browser
+  - Admin dashboard: sales, order workflow, prep slips, and owner, manager and staff roles
+- Built with: React, TypeScript, Tailwind CSS, Node.js, PHP, MySQL
+- What he learned: Never trust prices from the browser, and use version checks so two staff can't overwrite each other's changes.
+- Live demo: https://katribo-demo.onrender.com (Checkout is a demo: orders are checked on the server but never charged or sent.)
+- Source code: https://github.com/mukraminansao/Katribo
+
+### 4. FORM/TECH — E-commerce · technical apparel
+- Status: In development
+- What it is: A full-stack storefront for a fictional technical-apparel brand, with a protected staff area for products, inventory and orders.
+- Key numbers: 30 products; 218 size & color variants; 8 collections
+- Features:
+  - Search suggestions, size, color and price filters, and size guides
+  - Persistent bag and guest checkout with server-side price and stock checks
+  - Tested in Chromium, Firefox and WebKit; packaged with Docker
+- Built with: Laravel, React, TypeScript, Inertia, PostgreSQL, Tailwind CSS, Docker
+- What he learned: Keeping variants, prices and stock consistent from catalogue to checkout.
+- Live demo: https://form-tech-demo.onrender.com (Staff area: sign in at /login with staff@formtech.demo and formtech-demo-staff. Checkout is a demo with no payment.)
+- Source code: https://github.com/mukraminansao/form-tech-apparel
 
 ### 5. Servease — Web app · 3 user roles
 - Status: In development
-- What it is: A home-services marketplace that connects customers with ID-checked local pros for aircon, plumbing, cleaning and more. It works like an app on phones and can be installed on the home screen.
-- Key numbers: 3 user roles; 3 dashboards; 2 languages · EN / FIL; PWA installs like an app
+- What it is: A home-services marketplace connecting customers with ID-checked local pros. Installs on phones like an app.
+- Key numbers: 3 user roles; 2 languages · EN / FIL; PWA installs like an app
 - Features:
-  - Customers compare services with clear prices, book a time the pro is actually free, and follow each booking from Requested to Completed
-  - Post a job to get quotes, chat with pros, reschedule or cancel with a reason, and review only after a finished job
-  - Pros manage their services, working hours, quotes, bookings and earnings
-  - Admins verify pros' IDs, handle reported problems and track bookings, payments and ratings
+  - Book a time the pro is actually free, and track it from Requested to Completed
+  - Quotes, chat, rescheduling, and reviews only after a finished job
+  - Separate dashboards for customers, pros and admins
 - Built with: PHP, MySQL, JavaScript, PWA
-- What he learned: Designing role-based access so customers, pros and admins each see only their own data and actions, and keeping three different dashboards consistent in one system.
-- Live demo: https://servease-demo.onrender.com (One-click Customer, Pro and Admin demo accounts. Free hosting: the first visit can take about a minute to wake up.)
+- What he learned: Role-based access, so each user type sees only its own data and actions.
+- Live demo: https://servease-demo.onrender.com (One-click Customer, Pro and Admin demo accounts.)
 - Source code: https://github.com/mukraminansao/Servease
 
 ### 6. Dokyu — Android + web app · government documents guide
 - Status: In development
-- What it is: A guide that helps anyone in the Philippines get government papers in one trip instead of three: know exactly what to bring, do the online part at home, and go to the office only to submit and claim. Doki, an animated guide built in code, walks new users through the app.
+- What it is: A guide to getting Philippine government papers in one trip: what to bring, what to do online first, and which office to visit.
 - Key numbers: 8 document guides; 87 automated tests; 2 languages · EN / TL; 1 codebase · Android + web
 - Features:
-  - Step-by-step guides for the PSA birth certificate, National ID, NBI and police clearance, passport and more, with fees and official links only
-  - Office Finder with a map, hours, directions and "Closed today" on holidays
-  - My Docs tracks papers for you and your family, with appointment and expiry reminders
-  - Guests can read every guide without an account; signing in adds the tracker, reminders and saved offices
+  - Step-by-step guides (PSA, National ID, NBI, passport and more) with fees and official links
+  - Office finder with a map, hours and holiday closures
+  - My Docs tracker with appointment and expiry reminders
 - Built with: React Native, Expo, TypeScript, Node.js, PostgreSQL, Prisma
-- What he learned: Building Dokyu taught me to research and verify real-world content before shipping it, and to design one Expo codebase that works as a phone app and a desktop website, with an Express and Prisma API behind it.
-- Live demo: https://dokyu.onrender.com (Tap "Try the demo account" on the sign-in screen. Free hosting: the first visit can take about a minute to wake up. Not affiliated with any government agency.)
+- What he learned: Verifying real-world information before shipping it.
+- Live demo: https://dokyu.onrender.com (Tap "Try the demo account" on the sign-in screen. Not affiliated with any government agency.)
 - Source code: https://github.com/mukraminansao/Dokyu
 
 ### 7. BookTrack — Web system · 2 user roles
@@ -156,22 +147,21 @@ Everything below is verified information from Mukramin's portfolio website (http
   - Librarian overview with loans, overdue follow-ups and monthly charts
   - Full catalogue and member management with search and filters
 - Built with: PHP, MySQL, JavaScript, XAMPP
-- What he learned: Rebuilding my own capstone taught me to refactor older code, plan a cleaner relational database, and design for two very different users: members and librarians.
-- Live demo: https://booktrack-demo.onrender.com (One-click librarian and member demo accounts. Free hosting: the first visit can take about a minute to wake up.)
+- What he learned: Refactoring my own older code and designing for two very different users.
+- Live demo: https://booktrack-demo.onrender.com (One-click librarian and member demo accounts.)
 - Source code: https://github.com/mukraminansao/Booktrack
 
 ### 8. Padala — App · End-to-end encrypted
 - Status: In development
-- What it is: An installable app for delivering finished project folders to your team — locked so only your team can open them.
-- Key numbers: 44 automated tests; 0 dependencies; AES-256 encryption on the device
+- What it is: An app for delivering project folders to your team, encrypted so only your team can open them.
+- Key numbers: 44 automated tests; AES-256 encryption on the device
 - Features:
-  - Files and messages are encrypted on the device before they're sent
-  - Updates send only the changed files, so it works even on a weak signal
+  - Files are encrypted on the device before upload
+  - Sends only the files that changed, so it works on a weak signal
   - One-time team invite links that expire after 7 days
-  - Dala, a built-in assistant that guides new users step by step
 - Built with: Node.js, JavaScript, Encryption, Installable app
 - What he learned: Encrypting files on the device before upload, and sending only the files that changed, which taught me how sync tools save bandwidth on slow connections.
-- Live demo: https://padala-demo.onrender.com (Create a test account with any username. Demo data is erased whenever it restarts; the first visit can take about a minute to wake up.)
+- Live demo: https://padala-demo.onrender.com (Create a test account with any username. Demo data resets whenever it restarts.)
 - Source code: https://github.com/mukraminansao/Padala
 
 ## Experience and journey

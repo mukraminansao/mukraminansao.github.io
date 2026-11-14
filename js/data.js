@@ -74,22 +74,41 @@ window.PORTFOLIO = {
      For 'app' layouts, previewShot picks which phone window plays it (0, 1 or 2). */
   projects: [
     {
-      name: 'FAIRY', kind: 'Fashion & beauty store · virtual try-on', layout: 'desktop', path: 'fairy', status: 'In development',
-      facts: [['110', 'products'], ['9', 'shoppable sets'], ['2', 'studios · fitting room + beauty'], ['75', 'automated tests']],
-      desc: 'A fashion and beauty storefront where every product lives inside a styled photo. Visitors tap any item in a scene to see its details, build an outfit or makeup look from it, and try it on in a virtual fitting room or beauty studio before adding the whole look to the bag.',
+      name: 'TeachWise', kind: 'Android + web app · 5 user roles · multi-school', layout: 'desktop', path: 'teachwise', status: 'Preparing for Google Play', featured: true,
+      facts: [['5', 'user roles'], ['120', 'API tests'], ['2', 'languages · EN / FIL'], ['1', 'codebase · Android + web']],
+      desc: "An anonymous teacher-evaluation app for schools, on Android and the web. Students rate teachers in about three minutes; admins run everything from one dashboard.",
       features: [
-        'Shoppable scenes: tap any of the 12 products in a set photo for a close-up, shade and finish options, then add it to your look',
-        'Virtual fitting room with front and back views and head and hand close-ups; save outfits or add the whole outfit to the bag',
-        'Virtual Beauty Studio: pick shades, intensity and matte, satin or gloss finish for lips, cheeks, eyes and skin, with a before/after slider',
-        'Catalog with category filters, search, price and sort, with each product linking back to its spot in a shoppable set',
-        'PostgreSQL back end with customer accounts and a staff admin for prices, stock and scenes; the free demo runs from the local catalog'
+        "One app for many schools, with each school's data kept strictly separate",
+        "Teachers see results over time, peer evaluations and anonymous comments",
+        "Privacy built in: anonymous answers, results hidden below a minimum response count, Data Privacy Act ready"
+      ],
+      tags: ['Laravel', 'React Native', 'Expo', 'MySQL', 'TypeScript'],
+      github: 'https://github.com/mukraminansao/TeachWise',
+      live: 'https://teachwise-demo.onrender.com', liveNote: "One-click demo accounts on the sign-in screen.",
+      preview: 'assets/video/teachwise.mp4',
+      learned: "Multi-tenant design: every record carries a school ID and is filtered on every request.",
+      shots: [
+        { src: 'assets/img/tw_student.webp', label: 'Student home' },
+        { src: 'assets/img/tw_teacher.webp', label: 'Teacher dashboard' },
+        { src: 'assets/img/tw_admin.webp', label: 'School admin overview' },
+        { src: 'assets/img/tw_mobile.webp', label: 'Student home on a phone', tall: true }
+      ]
+    },
+    {
+      name: 'FAIRY', kind: 'Fashion & beauty store · virtual try-on', layout: 'desktop', path: 'fairy', status: 'In development',
+      facts: [["110", "products"], ["9", "shoppable sets"], ["75", "automated tests"]],
+      desc: "A fashion and beauty store where every product sits inside a styled photo. Tap an item, build a look, and try it on before adding it to the bag.",
+      features: [
+        "Shoppable photo scenes: tap any product for details, shades and finishes",
+        "Virtual fitting room and beauty studio with a before/after slider",
+        "PostgreSQL back end with customer accounts and a staff admin for prices and stock"
       ],
       tags: ['Next.js', 'React', 'TypeScript', 'CSS Modules', 'PostgreSQL', 'Prisma', 'Playwright'],
       github: 'https://github.com/mukraminansao/Fairy',
-      live: 'https://fairy-demo.onrender.com', liveNote: 'Bag and saved looks stay in your browser, and checkout is a demo with no payment. Free hosting: the first visit can take about a minute to wake up.',
+      live: 'https://fairy-demo.onrender.com', liveNote: "Bag and saved looks stay in your browser; checkout is a demo with no payment.",
       preview: 'assets/video/fairy.mp4',
       ad: 'assets/video/fairy-ad.mp4', adPoster: 'assets/img/fy_ad-poster.jpg',
-      learned: 'Building FAIRY taught me to map clickable hotspots onto product photos, keep one look in sync across scenes, the fitting room and the bag, and layer makeup effects on a face photo in the browser without sending images to a server.',
+      learned: "Mapping clickable hotspots onto photos and layering makeup effects in the browser without uploading images.",
       shots: [
         { src: 'assets/img/fy_home.webp', label: 'Home' },
         { src: 'assets/img/fy_look.webp', label: 'Shoppable look' },
@@ -100,21 +119,19 @@ window.PORTFOLIO = {
     },
     {
       name: 'KATRIBO', kind: 'Website + admin · coffee shop', layout: 'desktop', path: 'katribo',
-      facts: [['8', 'pages'], ['26', 'menu items'], ['3', 'staff roles'], ['1', 'server-side price check']],
-      desc: 'A premium all-black website for KATRIBO Slow Coffee Bar, a café by the bay in Patikul, Sulu, built from my own UI design and the café\'s real photos. Customers browse the menu, customise a drink and place a pickup order, and the café runs its menu and orders from its own admin dashboard.',
+      facts: [["8", "pages"], ["26", "menu items"], ["3", "staff roles"]],
+      desc: "Website and admin dashboard for KATRIBO Slow Coffee Bar in Patikul, Sulu. Customers order ahead for pickup; staff run the menu and orders.",
       features: [
-        'Menu with category filters and search, plus drink pages with sizes and add-ons',
-        'Pickup orders are saved to MySQL, with every price recalculated on the server so the browser can\'t change what an order costs',
-        'Admin dashboard with sales, top sellers, order workflow (Pending → Processing → Completed), new-order alerts and printable prep slips',
-        'Menu management: prices, photos, sold-out and hidden items, and featured drinks on the home page, with owner, manager and staff accounts',
-        'App-style phone layout with a bottom tab bar, gallery with a lightbox, and fast page transitions'
+        "Menu with filters, drink sizes, add-ons and pickup ordering",
+        "Every price is recalculated on the server, so orders can't be changed in the browser",
+        "Admin dashboard: sales, order workflow, prep slips, and owner, manager and staff roles"
       ],
       tags: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PHP', 'MySQL'],
       github: 'https://github.com/mukraminansao/Katribo',
-      live: 'https://katribo-demo.onrender.com', liveNote: 'Checkout is a demo: orders are checked on the server but never charged or sent. Free hosting: the first visit can take about a minute to wake up.',
+      live: 'https://katribo-demo.onrender.com', liveNote: "Checkout is a demo: orders are checked on the server but never charged or sent.",
       preview: 'assets/video/katribo.mp4',
       ad: 'assets/video/katribo-ad.mp4', adPoster: 'assets/img/kt_ad-poster.jpg',
-      learned: 'Rebuilding my first PHP version in React and TypeScript taught me to split a site into reusable components and never trust prices sent from the browser. Connecting it to a PHP and MySQL admin taught me order workflows with version checks, so two staff members can\'t overwrite each other\'s changes.',
+      learned: "Never trust prices from the browser, and use version checks so two staff can't overwrite each other's changes.",
       shots: [
         { src: 'assets/img/kt_home.webp', label: 'Home' },
         { src: 'assets/img/kt_menu.webp', label: 'Menu' },
@@ -124,20 +141,19 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'FORM/TECH', kind: 'E-commerce · technical apparel', layout: 'desktop', path: 'form-tech', status: 'Release candidate',
-      facts: [['30', 'products'], ['218', 'size & color variants'], ['8', 'collections'], ['Staff', 'protected management']],
-      desc: 'A full-stack storefront for a fictional technical-apparel brand. Customers browse curated Men and Women collections, search and filter products, choose size and color, and use a persistent shopping bag and guest demo checkout. A protected staff area manages the catalogue, inventory, demo orders and homepage content.',
+      name: 'FORM/TECH', kind: 'E-commerce · technical apparel', layout: 'desktop', path: 'form-tech', status: "In development",
+      facts: [["30", "products"], ["218", "size & color variants"], ["8", "collections"]],
+      desc: "A full-stack storefront for a fictional technical-apparel brand, with a protected staff area for products, inventory and orders.",
       features: [
-        'Search with keyboard suggestions, applied filter chips for size, color and price, and per-product size guides',
-        'Every product comes in two real colorways with matching photos, a persistent bag and guest checkout with server-side price and stock checks',
-        'Protected staff tools for products, collections, inventory, demo orders and editable storefront content',
-        'Responsive editorial storefront with recently viewed items, accessible menus and reduced-motion support, tested in Chromium, Firefox and WebKit'
+        "Search suggestions, size, color and price filters, and size guides",
+        "Persistent bag and guest checkout with server-side price and stock checks",
+        "Tested in Chromium, Firefox and WebKit; packaged with Docker"
       ],
       tags: ['Laravel', 'React', 'TypeScript', 'Inertia', 'PostgreSQL', 'Tailwind CSS', 'Docker'],
       github: 'https://github.com/mukraminansao/form-tech-apparel', live: 'https://form-tech-demo.onrender.com',
-      liveNote: 'Staff area: sign in at /login with staff@formtech.demo and formtech-demo-staff. Checkout is a demo and takes no payments. Free hosting: the first visit can take about a minute to wake up.',
+      liveNote: "Staff area: sign in at /login with staff@formtech.demo and formtech-demo-staff. Checkout is a demo with no payment.",
       preview: 'assets/video/formtech.mp4',
-      learned: 'Building a database-backed storefront taught me to keep product variants, prices and inventory consistent from the catalogue to checkout, separate staff permissions from guest sessions, and package a Laravel and React application with PostgreSQL in Docker.',
+      learned: "Keeping variants, prices and stock consistent from catalogue to checkout.",
       shots: [
         { src: 'assets/img/ft_home.webp', label: 'Storefront' },
         { src: 'assets/img/ft_shop.webp', label: 'Search and filters' },
@@ -147,43 +163,19 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'TeachWise', kind: 'Android + web app · 5 user roles · multi-school', layout: 'desktop', path: 'teachwise', status: 'Preparing for Google Play', featured: true,
-      facts: [['5', 'user roles'], ['120', 'API tests'], ['2', 'languages · EN / FIL'], ['1', 'codebase · Android + web']],
-      desc: 'An anonymous teacher-evaluation app for schools, guided by Professor Wise, a friendly cartoon professor who can also answer questions as an AI assistant. Students rate their teachers in about three minutes per class, teachers get clear results and evaluate their colleagues, and admins run the whole process from one dashboard. One app serves many schools, with each school\'s data kept strictly separate.',
-      features: [
-        'Students see the classes they still need to rate and go through each one step by step, with drafts that survive going offline',
-        'Teachers see their rating over time, response counts and anonymous comments, and rate colleagues in their department (peer evaluation)',
-        'Admins track completion by section and faculty ratings, and manage classes, evaluation periods and questions in English and Filipino',
-        'Professor Wise answers questions about the evaluation process with AI guidance (Ollama), never revealing who said what',
-        'Privacy built in: answers stay anonymous, results hide below a minimum response count, Data Privacy Act ready'
-      ],
-      tags: ['Laravel', 'React Native', 'Expo', 'MySQL', 'TypeScript'],
-      github: 'https://github.com/mukraminansao/TeachWise',
-      live: 'https://teachwise-demo.onrender.com', liveNote: 'One-click demo accounts on the sign-in screen. Free hosting: the first visit can take about a minute to wake up.',
-      preview: 'assets/video/teachwise.mp4',
-      learned: 'Building one app for many schools taught me multi-tenant design: every record carries a school ID and is filtered on every request, so one school can never see another\'s data. It also pushed me from PHP pages to a REST API with a React Native app on Android and the web from a single codebase.',
-      shots: [
-        { src: 'assets/img/tw_student.webp', label: 'Student home' },
-        { src: 'assets/img/tw_teacher.webp', label: 'Teacher dashboard' },
-        { src: 'assets/img/tw_admin.webp', label: 'School admin overview' },
-        { src: 'assets/img/tw_mobile.webp', label: 'Student home on a phone', tall: true }
-      ]
-    },
-    {
       name: 'Servease', kind: 'Web app · 3 user roles', layout: 'desktop', path: 'servease', status: 'In development',
-      facts: [['3', 'user roles'], ['3', 'dashboards'], ['2', 'languages · EN / FIL'], ['PWA', 'installs like an app']],
-      desc: 'A home-services marketplace that connects customers with ID-checked local pros for aircon, plumbing, cleaning and more. It works like an app on phones and can be installed on the home screen.',
+      facts: [["3", "user roles"], ["2", "languages · EN / FIL"], ["PWA", "installs like an app"]],
+      desc: "A home-services marketplace connecting customers with ID-checked local pros. Installs on phones like an app.",
       features: [
-        'Customers compare services with clear prices, book a time the pro is actually free, and follow each booking from Requested to Completed',
-        'Post a job to get quotes, chat with pros, reschedule or cancel with a reason, and review only after a finished job',
-        'Pros manage their services, working hours, quotes, bookings and earnings',
-        'Admins verify pros\' IDs, handle reported problems and track bookings, payments and ratings'
+        "Book a time the pro is actually free, and track it from Requested to Completed",
+        "Quotes, chat, rescheduling, and reviews only after a finished job",
+        "Separate dashboards for customers, pros and admins"
       ],
       tags: ['PHP', 'MySQL', 'JavaScript', 'PWA'],
       github: 'https://github.com/mukraminansao/Servease',
-      live: 'https://servease-demo.onrender.com', liveNote: 'One-click Customer, Pro and Admin demo accounts. Free hosting: the first visit can take about a minute to wake up.',
+      live: 'https://servease-demo.onrender.com', liveNote: "One-click Customer, Pro and Admin demo accounts.",
       preview: 'assets/video/servease.mp4',
-      learned: 'Designing role-based access so customers, pros and admins each see only their own data and actions, and keeping three different dashboards consistent in one system.',
+      learned: "Role-based access, so each user type sees only its own data and actions.",
       shots: [
         { src: 'assets/img/sv_home.webp', label: 'Customer home' },
         { src: 'assets/img/sv_admin.webp', label: 'Admin dashboard' },
@@ -194,18 +186,17 @@ window.PORTFOLIO = {
     {
       name: 'Dokyu', kind: 'Android + web app · government documents guide', layout: 'app', path: 'dokyu', status: 'In development',
       facts: [['8', 'document guides'], ['87', 'automated tests'], ['2', 'languages · EN / TL'], ['1', 'codebase · Android + web']],
-      desc: 'A guide that helps anyone in the Philippines get government papers in one trip instead of three: know exactly what to bring, do the online part at home, and go to the office only to submit and claim. Doki, an animated guide built in code, walks new users through the app.',
+      desc: "A guide to getting Philippine government papers in one trip: what to bring, what to do online first, and which office to visit.",
       features: [
-        'Step-by-step guides for the PSA birth certificate, National ID, NBI and police clearance, passport and more, with fees and official links only',
-        'Office Finder with a map, hours, directions and "Closed today" on holidays',
-        'My Docs tracks papers for you and your family, with appointment and expiry reminders',
-        'Guests can read every guide without an account; signing in adds the tracker, reminders and saved offices'
+        "Step-by-step guides (PSA, National ID, NBI, passport and more) with fees and official links",
+        "Office finder with a map, hours and holiday closures",
+        "My Docs tracker with appointment and expiry reminders"
       ],
       tags: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'PostgreSQL', 'Prisma'],
       github: 'https://github.com/mukraminansao/Dokyu',
-      live: 'https://dokyu.onrender.com', liveNote: 'Tap "Try the demo account" on the sign-in screen. Free hosting: the first visit can take about a minute to wake up. Not affiliated with any government agency.',
+      live: 'https://dokyu.onrender.com', liveNote: "Tap \"Try the demo account\" on the sign-in screen. Not affiliated with any government agency.",
       preview: 'assets/video/dokyu.mp4', previewShot: 0,
-      learned: 'Building Dokyu taught me to research and verify real-world content before shipping it, and to design one Expo codebase that works as a phone app and a desktop website, with an Express and Prisma API behind it.',
+      learned: "Verifying real-world information before shipping it.",
       shots: [
         { src: 'assets/img/dk_tour.webp', label: 'Doki\'s guided tour' },
         { src: 'assets/img/dk_guide.webp', label: 'Document guide' },
@@ -223,9 +214,9 @@ window.PORTFOLIO = {
       ],
       tags: ['PHP', 'MySQL', 'JavaScript', 'XAMPP'],
       github: 'https://github.com/mukraminansao/Booktrack',
-      live: 'https://booktrack-demo.onrender.com', liveNote: 'One-click librarian and member demo accounts. Free hosting: the first visit can take about a minute to wake up.',
+      live: 'https://booktrack-demo.onrender.com', liveNote: "One-click librarian and member demo accounts.",
       preview: 'assets/video/booktrack.mp4',
-      learned: 'Rebuilding my own capstone taught me to refactor older code, plan a cleaner relational database, and design for two very different users: members and librarians.',
+      learned: "Refactoring my own older code and designing for two very different users.",
       shots: [
         { src: 'assets/img/bt_discover.webp', label: 'Member · Discover' },
         { src: 'assets/img/bt_overview.webp', label: 'Librarian overview' },
@@ -235,17 +226,16 @@ window.PORTFOLIO = {
     },
     {
       name: 'Padala', kind: 'App · End-to-end encrypted', layout: 'app', status: 'In development',
-      facts: [['44', 'automated tests'], ['0', 'dependencies'], ['AES-256', 'encryption on the device']],
-      desc: 'An installable app for delivering finished project folders to your team — locked so only your team can open them.',
+      facts: [["44", "automated tests"], ["AES-256", "encryption on the device"]],
+      desc: "An app for delivering project folders to your team, encrypted so only your team can open them.",
       features: [
-        "Files and messages are encrypted on the device before they're sent",
-        'Updates send only the changed files, so it works even on a weak signal',
-        'One-time team invite links that expire after 7 days',
-        'Dala, a built-in assistant that guides new users step by step'
+        "Files are encrypted on the device before upload",
+        "Sends only the files that changed, so it works on a weak signal",
+        "One-time team invite links that expire after 7 days"
       ],
       tags: ['Node.js', 'JavaScript', 'Encryption', 'Installable app'],
       github: 'https://github.com/mukraminansao/Padala',
-      live: 'https://padala-demo.onrender.com', liveNote: 'Create a test account with any username. Demo data is erased whenever it restarts; the first visit can take about a minute to wake up.',
+      live: 'https://padala-demo.onrender.com', liveNote: "Create a test account with any username. Demo data resets whenever it restarts.",
       preview: 'assets/video/padala.mp4', previewShot: 1,
       learned: 'Encrypting files on the device before upload, and sending only the files that changed, which taught me how sync tools save bandwidth on slow connections.',
       shots: [

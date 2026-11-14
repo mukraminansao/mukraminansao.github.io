@@ -276,8 +276,8 @@
         '<h3 data-scramble-view>' + esc(p.name) + '</h3>' +
         '<p class="project__desc">' + esc(p.desc) + '</p>' +
         (p.facts ? '<ul class="pfacts">' + p.facts.map(function (f) { return '<li><b>' + esc(f[0]) + '</b><span>' + esc(f[1]) + '</span></li>'; }).join('') + '</ul>' : '') +
-        '<ul class="feats' + (p.features.length > 2 ? ' is-collapsed' : '') + '">' + p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' +
-        (p.features.length > 2 ? '<button type="button" class="feats__more" aria-expanded="false">SHOW ALL ' + p.features.length + ' FEATURES</button>' : '') +
+        '<ul class="feats' + (p.features.length > 3 ? ' is-collapsed' : '') + '">' + p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>' +
+        (p.features.length > 3 ? '<button type="button" class="feats__more" aria-expanded="false">SHOW ALL ' + p.features.length + ' FEATURES</button>' : '') +
         '<div class="project__foot"><div class="project__tags">' + tags(p.tags) + '</div><div class="project__actions">' + action + '</div></div>' +
       '</div>' +
       (p.learned ? '<div class="learned"><span>WHAT I LEARNED //</span><p>' + esc(p.learned) + '</p></div>' : '') +
