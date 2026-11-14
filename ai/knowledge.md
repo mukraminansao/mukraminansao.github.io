@@ -38,11 +38,11 @@ Everything below is verified information from Mukramin's portfolio website (http
 
 ## Skills
 
-- Front-End & Mobile: Responsive interfaces that look right on phones and desktops, plus Android and web apps from one React Native codebase. (HTML, CSS, React, React Native)
-- Back-End & Databases: Server logic, user logins and data handling — built security-minded, backed by my networking and cybersecurity training. (PHP, Laravel, MySQL, Node.js)
-- Full Systems: Admin panels, dashboards and multi-user systems with real roles and data, like TeachWise, BookTrack and Servease. (Laravel, PHP, MySQL, REST APIs)
-- AI-Native Development: I build with Claude Code and Codex, and I plan, review and test every change before it ships. (Claude Code, Codex, Code review, Automated tests)
-- Security-minded development: My networking major and cybersecurity training shape how I build: school-by-school data separation in TeachWise, role-based access in Servease and BookTrack, and on-device encryption in Padala.
+- Front-End & Mobile: Responsive web interfaces and Android apps from one React Native codebase. ()
+- Back-End & Databases: Server logic, sign-ins and data handling, built with security in mind. ()
+- Full Systems: Admin panels and multi-user systems with real roles and data, like TeachWise and Servease. ()
+- AI-Native Development: I build with Claude Code and Codex, and I plan, review and test every change. ()
+- Security-minded development: 
   - 3 security certificates: Google, Cisco, LetsDefend
   - SOC labs: Splunk, Wireshark, Nmap
   - CTF training & Capture the King

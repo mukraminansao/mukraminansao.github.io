@@ -155,11 +155,11 @@
   var html = '<div class="bento__grid">' + D.skills.map(function (s, i) {
     return '<article class="sk" data-card style="--i:' + i + '">' +
       '<div class="sk__top"><span class="sk__ico"><svg viewBox="0 0 24 24" aria-hidden="true">' + drawable(ICONS[s.icon] || ICONS.front) + '</svg></span><span class="sk__num" aria-hidden="true">' + pad(i + 1) + '</span></div>' +
-      '<h3>' + esc(s.title) + '</h3><p>' + esc(s.text) + '</p><div class="sk__foot">' + tags(s.tags) + '</div></article>';
+      '<h3>' + esc(s.title) + '</h3><p>' + esc(s.text) + '</p>' + (s.tags && s.tags.length ? '<div class="sk__foot">' + tags(s.tags) + '</div>' : '') + '</article>';
   }).join('') + '</div>';
   if (D.security) html += '<article class="sk sk--sec" data-card style="--i:' + D.skills.length + '"><span class="sk__scan" aria-hidden="true"></span>' +
     '<div class="sk__top"><span class="sk__ico sk__ico--lg"><i class="sk__pulse"></i><i class="sk__pulse"></i><svg viewBox="0 0 24 24" aria-hidden="true">' + drawable(SHIELD) + '</svg></span><span class="sk__badge">EDGE</span></div>' +
-    '<h3>' + esc(D.security.title) + '</h3><p>' + esc(D.security.text) + '</p>' +
+    '<h3>' + esc(D.security.title) + '</h3>' + (D.security.text ? '<p>' + esc(D.security.text) + '</p>' : '') +
     '<ul class="sk__checks">' + D.security.points.map(function (x, j) { return '<li style="--j:' + j + '">' + esc(x) + '</li>'; }).join('') + '</ul></article>';
   $('[data-skills]').innerHTML = html;
   (function () {

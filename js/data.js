@@ -40,15 +40,15 @@ window.PORTFOLIO = {
 
   /* ---------- What I Do ---------- */
   skills: [
-    { icon: 'front', title: 'Front-End & Mobile', text: 'Responsive interfaces that look right on phones and desktops, plus Android and web apps from one React Native codebase.', tags: ['HTML', 'CSS', 'React', 'React Native'] },
-    { icon: 'back', title: 'Back-End & Databases', text: 'Server logic, user logins and data handling — built security-minded, backed by my networking and cybersecurity training.', tags: ['PHP', 'Laravel', 'MySQL', 'Node.js'] },
-    { icon: 'system', title: 'Full Systems', text: 'Admin panels, dashboards and multi-user systems with real roles and data, like TeachWise, BookTrack and Servease.', tags: ['Laravel', 'PHP', 'MySQL', 'REST APIs'] },
-    { icon: 'ai', title: 'AI-Native Development', text: 'I build with Claude Code and Codex, and I plan, review and test every change before it ships.', tags: ['Claude Code', 'Codex', 'Code review', 'Automated tests'] }
+    { icon: 'front', title: 'Front-End & Mobile', text: 'Responsive web interfaces and Android apps from one React Native codebase.', tags: [] },
+    { icon: 'back', title: 'Back-End & Databases', text: 'Server logic, sign-ins and data handling, built with security in mind.', tags: [] },
+    { icon: 'system', title: 'Full Systems', text: 'Admin panels and multi-user systems with real roles and data, like TeachWise and Servease.', tags: [] },
+    { icon: 'ai', title: 'AI-Native Development', text: 'I build with Claude Code and Codex, and I plan, review and test every change.', tags: [] }
   ],
 
   security: {
     title: 'Security-minded development',
-    text: 'My networking major and cybersecurity training shape how I build: school-by-school data separation in TeachWise, role-based access in Servease and BookTrack, and on-device encryption in Padala.',
+    text: '',
     points: ['3 security certificates: Google, Cisco, LetsDefend', 'SOC labs: Splunk, Wireshark, Nmap', 'CTF training & Capture the King', 'Privacy by design: TeachWise is Data Privacy Act (RA 10173) ready']
   },
 
