@@ -96,7 +96,7 @@ window.PORTFOLIO = {
     },
     {
       name: 'FAIRY', kind: 'Fashion & beauty store · virtual try-on', layout: 'desktop', path: 'fairy', status: 'In development',
-      facts: [["110", "products"], ["9", "shoppable sets"], ["75", "automated tests"]],
+      facts: [["110", "products"], ["9", "shoppable sets"], ["94", "automated tests"]],
       desc: "A fashion and beauty store where every product sits inside a styled photo. Tap an item, build a look, and try it on before adding it to the bag.",
       features: [
         "Shoppable photo scenes: tap any product for details, shades and finishes",
@@ -119,7 +119,7 @@ window.PORTFOLIO = {
     },
     {
       name: 'KATRIBO', kind: 'Website + admin · coffee shop', layout: 'desktop', path: 'katribo',
-      facts: [["8", "pages"], ["26", "menu items"], ["3", "staff roles"]],
+      facts: [["8", "pages"], ["23", "menu items"], ["3", "staff roles"]],
       desc: "Website and admin dashboard for KATRIBO Slow Coffee Bar in Patikul, Sulu. Customers order ahead for pickup; staff run the menu and orders.",
       features: [
         "Menu with filters, drink sizes, add-ons and pickup ordering",
@@ -282,9 +282,9 @@ window.PORTFOLIO = {
 
   /* ---------- Why work with me: each point links to its proof ---------- */
   why: [
-    { title: 'I ship complete systems', text: 'Eight projects covering the full stack: the database, the API, the admin dashboards and the screens people use. TeachWise alone has 5 user roles, 120 API tests and runs on Android and the web.', link: '#projects', linkText: 'See the projects' },
-    { title: 'Security is built in, not added later', text: 'A networking major and three security certificates shape how I code: school-by-school data separation in TeachWise, role checks in every system and on-device encryption in Padala.', link: '#certifications', linkText: 'See the certificates' },
-    { title: 'I build with AI and own the result', text: 'I use AI coding tools like Claude Code and Codex to move fast, but I plan each system, review and test every change, and can explain how it works. 251 automated tests across TeachWise, Dokyu and Padala back that up.', link: 'https://github.com/mukraminansao', linkText: 'See my GitHub' }
+    { title: 'I ship complete systems', text: "8 full-stack projects with live demos. TeachWise alone has 5 user roles, 120 API tests, and runs on Android and the web.", link: '#projects', linkText: 'See the projects' },
+    { title: 'Security is built in, not added later', text: "A networking major and 3 security certificates: per-school data separation, role checks in every system, and on-device encryption in Padala.", link: '#certifications', linkText: 'See the certificates' },
+    { title: 'I build with AI and own the result', text: "Claude Code and Codex help me move fast; 251 automated tests show I check what ships.", link: 'https://github.com/mukraminansao', linkText: 'See my GitHub' }
   ],
   journey: [
     { when: 'Now', kind: 'Projects', title: 'Building and shipping personal projects', org: 'Personal projects · ongoing', text: 'Eight projects built, tested and deployed with live demos. See Projects for each one.', live: true },

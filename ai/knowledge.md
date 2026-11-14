@@ -76,7 +76,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 ### 2. FAIRY — Fashion & beauty store · virtual try-on
 - Status: In development
 - What it is: A fashion and beauty store where every product sits inside a styled photo. Tap an item, build a look, and try it on before adding it to the bag.
-- Key numbers: 110 products; 9 shoppable sets; 75 automated tests
+- Key numbers: 110 products; 9 shoppable sets; 94 automated tests
 - Features:
   - Shoppable photo scenes: tap any product for details, shades and finishes
   - Virtual fitting room and beauty studio with a before/after slider
@@ -89,7 +89,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 ### 3. KATRIBO — Website + admin · coffee shop
 - Status: Complete
 - What it is: Website and admin dashboard for KATRIBO Slow Coffee Bar in Patikul, Sulu. Customers order ahead for pickup; staff run the menu and orders.
-- Key numbers: 8 pages; 26 menu items; 3 staff roles
+- Key numbers: 8 pages; 23 menu items; 3 staff roles
 - Features:
   - Menu with filters, drink sizes, add-ons and pickup ordering
   - Every price is recalculated on the server, so orders can't be changed in the browser
@@ -186,8 +186,8 @@ Everything below is verified information from Mukramin's portfolio website (http
 
 ## Why work with him
 
-- I ship complete systems: Eight projects covering the full stack: the database, the API, the admin dashboards and the screens people use. TeachWise alone has 5 user roles, 120 API tests and runs on Android and the web.
-- Security is built in, not added later: A networking major and three security certificates shape how I code: school-by-school data separation in TeachWise, role checks in every system and on-device encryption in Padala.
-- I build with AI and own the result: I use AI coding tools like Claude Code and Codex to move fast, but I plan each system, review and test every change, and can explain how it works. 251 automated tests across TeachWise, Dokyu and Padala back that up.
+- I ship complete systems: 8 full-stack projects with live demos. TeachWise alone has 5 user roles, 120 API tests, and runs on Android and the web.
+- Security is built in, not added later: A networking major and 3 security certificates: per-school data separation, role checks in every system, and on-device encryption in Padala.
+- I build with AI and own the result: Claude Code and Codex help me move fast; 251 automated tests show I check what ships.
 
 _Last updated: November 2026_
