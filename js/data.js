@@ -74,7 +74,7 @@ window.PORTFOLIO = {
      For 'app' layouts, previewShot picks which phone window plays it (0, 1 or 2). */
   projects: [
     {
-      name: 'TeachWise', kind: 'Android + web app · 5 user roles · multi-school', layout: 'desktop', path: 'teachwise', status: 'Preparing for Google Play', featured: true,
+      name: 'TeachWise', kind: 'Android + web app · 5 user roles · multi-school', layout: 'desktop', path: 'teachwise', status: 'Preparing for Google Play', statusShort: 'Google Play soon', featured: true,
       facts: [['5', 'user roles'], ['120', 'API tests'], ['2', 'languages · EN / FIL'], ['1', 'codebase · Android + web']],
       desc: "An anonymous teacher-evaluation app for schools, on Android and the web. Students rate teachers in about three minutes; admins run everything from one dashboard.",
       features: [

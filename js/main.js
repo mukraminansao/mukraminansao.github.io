@@ -290,7 +290,7 @@
     var projectIndex = document.createElement('div');
     projectIndex.className = 'project-index';
     projectIndex.innerHTML = '<p class="project-index__label" id="project-index-label">SELECT A PROJECT <span aria-hidden="true">' + pad(projectPanels.length) + ' PROJECTS</span></p><div class="project-index__list" role="tablist" aria-labelledby="project-index-label">' + D.projects.map(function (p, i) {
-      return '<button type="button" class="project-index__item" role="tab" id="project-tab-' + i + '" aria-controls="project-panel-' + i + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? '0' : '-1') + '"><img decoding="async" src="' + esc(p.shots[0].src) + '" alt="" width="240" height="135" loading="lazy"><strong>' + esc(p.name) + '</strong><span>' + esc(p.kind) + '</span><small>' + esc(p.status || 'Complete') + '</small></button>';
+      return '<button type="button" class="project-index__item" role="tab" id="project-tab-' + i + '" aria-controls="project-panel-' + i + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? '0' : '-1') + '"><img decoding="async" src="' + esc(p.shots[0].src) + '" alt="" width="240" height="135" loading="lazy"><strong>' + esc(p.name) + '</strong><span>' + esc(p.kind) + '</span><small>' + esc(p.statusShort || p.status || 'Complete') + '</small></button>';
     }).join('') + '</div>';
     $('[data-projects]').insertAdjacentElement('beforebegin', projectIndex);
     var projectTabs = $$('.project-index__item', projectIndex);
