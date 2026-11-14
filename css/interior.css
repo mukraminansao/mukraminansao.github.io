@@ -88,7 +88,7 @@ html.has-page-scroll::-webkit-scrollbar { display:none; width:0; height:0; }
   content:"";position:absolute;inset:0 calc((100% - 100vw) / 2);z-index:-1;
   background:
     linear-gradient(180deg,rgba(9,14,17,.05) 22%,rgba(10,15,18,.43) 67%,#0b1013),
-    url("../assets/img/about-architecture-background.png") center / cover no-repeat;
+    url("../assets/img/about-architecture-background.webp") center / cover no-repeat;
   transform:scaleX(-1);
 }
 .about-hero__ghost {
@@ -200,7 +200,7 @@ body.about-active .totop { width:34px;height:34px;bottom:6px;right:22px; }
     transform:none;
     background:
       linear-gradient(180deg,transparent 25%,#0b1013 65%),
-      url("../assets/img/about-architecture-background.png") 62% top / auto 110vw no-repeat;
+      url("../assets/img/about-architecture-background.webp") 62% top / auto 110vw no-repeat;
   }
   .about-hero__copy { display:contents; }
   .about-hero__meta {
@@ -644,7 +644,7 @@ body .page-scroll:is(:hover,:focus-visible,.is-dragging) .page-scroll__track { o
 .section--chapter:is(.projects,.contact)::after {
   display:block;inset:0 0 auto;height:clamp(250px,35vw,430px);border:0;
   background:linear-gradient(180deg,rgba(12,18,22,.56),#10171b),
-    url("../assets/img/about-architecture-background.png") 60% center / cover no-repeat;
+    url("../assets/img/about-architecture-background.webp") 60% center / cover no-repeat;
   opacity:.45;
 }
 .section--chapter .eyebrow {
