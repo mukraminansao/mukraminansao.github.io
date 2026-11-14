@@ -37,8 +37,9 @@
 
 @media (max-width:700px){
   .minix-ui{right:14px;bottom:68px}
-  .minix-dock{height:36px;padding:0 6px}
-  .minix-dock__txt{display:none}
+  /* keep the MINI-X label on phones too: with Mini-X hidden by default, this pill is the only way to find him */
+  .minix-dock{height:36px;gap:6px;padding:0 10px 0 4px;letter-spacing:.14em}
+  .minix-dock svg{width:26px;height:26px}
 }
 .minix-canvas.is-slowmo{animation:minix-slowmo .6s ease-out}
 @keyframes minix-slowmo{0%,100%{filter:none}25%{filter:drop-shadow(0 0 9px rgba(34,229,255,.55))}}
@@ -119,3 +120,6 @@
 @media print{.minix-amaglow{display:none!important}}
 @media (prefers-reduced-motion:reduce){.minix-amacut{display:none!important}}
 @media print{.minix-amacut{display:none!important}}
+
+/* Mini-X engine downloading after a visitor turns him on */
+.minix-ui.is-loading .minix-dock{cursor:progress;opacity:.75}
