@@ -1272,3 +1272,13 @@
   // Keep Home animation above; hidden project panels must not receive reveal states.
   window.addEventListener('load', function () { ST.refresh(); });
 })();
+
+/* Hide the floating MINI-X pill while the hero is on screen (see css/mini-x.css: body.at-hero) */
+(function () {
+  var hero = document.getElementById('home');
+  if (!hero || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (entries) {
+    var e = entries[0];
+    document.body.classList.toggle('at-hero', e.isIntersecting && e.intersectionRatio > 0.35);
+  }, { threshold: [0, 0.35, 0.6, 1] }).observe(hero);
+})();
