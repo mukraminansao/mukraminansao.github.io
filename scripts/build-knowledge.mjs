@@ -32,7 +32,7 @@ add('# Mukramin Ansao — portfolio facts', '',
 
 add('## About', '',
   '- Name: Mukramin Bariwa Ansao (goes by Mukramin)',
-  '- Roles: Web & App Developer, UI/UX Designer, Blue Team / SOC Analyst Enthusiast',
+  '- Roles: Web & App Developer (AI-native, builds with Claude Code and Codex), Blue Team / SOC Analyst Enthusiast',
   `- ${lead}`, `- ${story}`,
   `- Location: ${C.location}, Philippines (originally from Jolo, Sulu)`,
   `- Availability: ${D.availability}`,
