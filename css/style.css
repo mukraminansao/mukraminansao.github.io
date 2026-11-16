@@ -734,30 +734,48 @@ main{margin-left:var(--rail)}
 @media print{
   .bento{grid-template-columns:repeat(2,1fr)!important}
 }
-/* ===== phone edge tab: the sidebar on small screens ===== */
+/* ===== small screens: the same sidebar as desktop, scaled down to fit the left gutter ===== */
 .rail__toggle{display:none}
 @media (max-width:980px){
-  .rail{display:flex;top:50%;bottom:auto;left:0;width:26px;transform:translateY(-50%);padding:12px 0;gap:12px;justify-content:flex-start;z-index:52;border:1px solid var(--acc-30);border-left:0;border-radius:0 10px 10px 0;background:var(--glass-2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 0 18px rgba(var(--acc-rgb),.12)}
-  .rail__dots,.rail__rule,.rail__label--desk,.rail__bottom .rail__label{display:none}
-  .rail__mid{gap:0;order:1}
-  .rail__bottom{order:0;gap:8px}
-  .rail__num{font-size:11px}
-  .rail__track{height:46px}
-  .rail__toggle{display:flex;flex-direction:column;align-items:center;gap:6px;width:26px;padding:4px 0;border:0;background:none;color:var(--acc);cursor:pointer;
-    font-family:var(--hud);font-size:9px;letter-spacing:.3em}
-  .rail__toggle span{writing-mode:vertical-rl;transform:rotate(180deg)}
-  .rail__toggle svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s var(--ease)}
-  .rail__icon{width:0;height:0;margin:0;opacity:0;overflow:hidden;pointer-events:none;color:var(--ink);transition:opacity .25s,height .3s var(--ease),width .3s var(--ease),margin .3s}
-  .rail.is-open{width:56px}
-  .rail.is-open .rail__toggle{width:56px}
-  .rail.is-open .rail__toggle svg{transform:rotate(180deg)}
-  .rail.is-open .rail__icon{width:40px;height:40px;margin:3px 0;opacity:1;pointer-events:auto;border:1px solid var(--acc-30);background:var(--acc-10)}
-  .rail.is-open .rail__icon:active{background:var(--acc);color:var(--on-acc)}
+  body .rail{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+    top:76px;bottom:0;left:0;width:30px;transform:none;padding:14px 0;gap:0;
+    border:0;border-right:1px solid rgba(255,255,255,.08);border-radius:0;
+    background:#0c1012;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none;
+    overflow-y:auto;scrollbar-width:none;z-index:52}
+  body .rail::-webkit-scrollbar{display:none}
+  body .rail__toggle{display:none}
+  body .rail__dots{display:grid;grid-template-columns:repeat(2,4px);gap:3px;margin-bottom:14px}
+  body .rail__dots i{width:4px;height:4px}
+  body .rail__tools{display:flex;flex-direction:column;align-items:center;gap:6px}
+  body .rail__tools a{display:grid;place-items:center;width:26px;height:26px;color:#d0cdd6}
+  body .rail__tools svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7}
+  body .rail__tools .rail__security{color:var(--acc)}
+  body .rail__energy{display:block;width:2px;height:22px;background:var(--acc);opacity:.8}
+  body .rail__mid{display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:12px}
+  body .rail__rule{display:none}
+  body .rail__label--desk{display:block;writing-mode:vertical-rl;transform:rotate(180deg);font-size:7px;letter-spacing:.18em;color:#b9b5c1;margin-bottom:4px}
+  body .rail__icon{width:26px;height:26px;margin:0;opacity:1;pointer-events:auto;border:0;background:none;color:#d2cfda}
+  body .rail__icon svg{width:15px;height:15px}
+  body .rail__route{display:flex;flex:1;min-height:12px;max-height:120px;flex-direction:column;align-items:center;margin:10px 0}
+  body .rail__route span{flex:1;width:1px;background:linear-gradient(#bab7c2,#393740)}
+  body .rail__route i{width:3px;height:3px;border-radius:50%;background:#c4c0cc}
+  body .rail__bottom{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;margin-top:auto}
+  body .rail__hatch{display:block;width:6px;height:18px;background:repeating-linear-gradient(135deg,transparent 0 3px,var(--acc) 3px 4px,transparent 4px 6px);opacity:.8}
+  body .rail__num{font-size:10px}
+  body .rail__track{height:22px}
+  body .rail__bottom>.rail__label{display:none}
+  body .rail__footmark{display:block;font:14px/1 var(--hud);color:var(--acc)}
   body.menu-open .rail{opacity:0;pointer-events:none}
-  /* keep text clear of the tab */
+  /* keep text clear of the sidebar */
   .hero{padding-left:38px}
   .section{padding-left:38px}
   .socials--hero{display:none}
+}
+@media (max-width:767px){
+  body .rail{top:var(--phone-header,60px)}
+}
+@media (max-width:980px) and (max-height:700px){
+  body .rail__label--desk,body .rail__route{display:none}
 }
 @media print{
   .rail{display:none!important}
