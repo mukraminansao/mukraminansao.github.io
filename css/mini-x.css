@@ -124,7 +124,6 @@
 /* Mini-X engine downloading after a visitor turns him on */
 .minix-ui.is-loading .minix-dock{cursor:progress;opacity:.75}
 
-/* Keep the MINI-X pill off the hero (it covered the hero buttons and stats bar); it fades in once the visitor scrolls past it */
+/* MINI-X pill stays visible on every section, Home included */
 .minix-ui{transition:opacity .3s ease,transform .3s ease}
-body.at-hero .minix-ui{opacity:0;transform:translateY(10px);pointer-events:none}
 @media (prefers-reduced-motion:reduce){.minix-ui{transition:none}}
