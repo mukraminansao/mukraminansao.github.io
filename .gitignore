@@ -6,3 +6,8 @@ _backup*/
 mini-x-3d/
 mini-x-3d-handoff/
 mini-x-3d-handoff.zip
+
+# working files, not part of the site
+Claude outputs/
+scripts/
+worker/
