@@ -31,7 +31,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 
 ## Currently working on
 
-- Preparing TeachWise for release on Google Play
+- Fixing and improving TeachWise
 - Building new web and app projects with Laravel, React Native, Claude Code and Codex
 - Practicing SOC investigations and CTF challenges
 - Applying for web and app developer roles
@@ -40,19 +40,19 @@ Everything below is verified information from Mukramin's portfolio website (http
 
 - Front-End & Mobile: Responsive web interfaces and Android apps from one React Native codebase. ()
 - Back-End & Databases: Server logic, sign-ins and data handling, built with security in mind. ()
-- Full Systems: Admin panels and multi-user systems with real roles and data, like TeachWise and Servease. ()
+- Full Systems: Admin panels and multi-user systems with working roles and databases, like TeachWise and Servease. ()
 - AI-Native Development: I build with Claude Code and Codex, and I plan, review and test every change. ()
 - Security-minded development: 
   - 3 security certificates: Google, Cisco, LetsDefend
   - SOC labs: Splunk, Wireshark, Nmap
   - CTF training & Capture the King
-  - Privacy by design: TeachWise is Data Privacy Act (RA 10173) ready
+  - Privacy by design: TeachWise follows Data Privacy Act (RA 10173) principles
 
 ## Toolkit
 
-- Front-end & mobile — used in his projects: HTML, CSS, JavaScript, TypeScript, React, React Native, Expo, Tailwind CSS, Vite, Chart.js
+- Front-end & mobile — used in his projects: HTML, CSS, JavaScript, TypeScript, React, React Native, Expo, Next.js, Tailwind CSS, Vite, Chart.js
 - Front-end & mobile — familiar / from training: Bootstrap, jQuery, GSAP
-- Back-end & data — used in his projects: PHP, Laravel, MySQL, PostgreSQL, Node.js, REST APIs
+- Back-end & data — used in his projects: PHP, Laravel, MySQL, PostgreSQL, Prisma, Node.js, REST APIs
 - Back-end & data — familiar / from training: phpMyAdmin
 - AI tools & workflow — used in his projects: Claude Code, Codex, Claude, Git, GitHub, VS Code, Docker, XAMPP, Netlify
 - AI tools & workflow — familiar / from training: Postman, Figma
@@ -60,8 +60,8 @@ Everything below is verified information from Mukramin's portfolio website (http
 
 ## Projects (8)
 
-### 1. TeachWise — Android + web app · 5 user roles · multi-school
-- Status: Preparing for Google Play (featured project)
+### 1. TeachWise — Android + web app · 5 user roles · built for multiple schools
+- Status: Working demo, not launched yet (still being improved; featured project)
 - What it is: An anonymous teacher-evaluation app for schools, on Android and the web. Students rate teachers in about three minutes; admins run everything from one dashboard.
 - Key numbers: 5 user roles; 120 API tests; 2 languages · EN / FIL; 1 codebase · Android + web
 - Features:
@@ -74,7 +74,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 - Source code: https://github.com/mukraminansao/TeachWise
 
 ### 2. FAIRY — Fashion & beauty store · virtual try-on
-- Status: In development
+- Status: Working demo, not launched yet (still being improved)
 - What it is: A fashion and beauty store where every product sits inside a styled photo. Tap an item, build a look, and try it on before adding it to the bag.
 - Key numbers: 110 products; 9 shoppable sets; 94 automated tests
 - Features:
@@ -87,8 +87,8 @@ Everything below is verified information from Mukramin's portfolio website (http
 - Source code: https://github.com/mukraminansao/Fairy
 
 ### 3. KATRIBO — Website + admin · coffee shop
-- Status: Complete
-- What it is: Website and admin dashboard for KATRIBO Slow Coffee Bar in Patikul, Sulu. Customers order ahead for pickup; staff run the menu and orders.
+- Status: Working demo, not launched yet
+- What it is: A personal concept project: a website and admin dashboard I designed for KATRIBO Slow Coffee Bar in Patikul, Sulu. It lets customers order ahead for pickup while staff run the menu and orders.
 - Key numbers: 8 pages; 23 menu items; 3 staff roles
 - Features:
   - Menu with filters, drink sizes, add-ons and pickup ordering
@@ -96,11 +96,11 @@ Everything below is verified information from Mukramin's portfolio website (http
   - Admin dashboard: sales, order workflow, prep slips, and owner, manager and staff roles
 - Built with: React, TypeScript, Tailwind CSS, Node.js, PHP, MySQL
 - What he learned: Never trust prices from the browser, and use version checks so two staff can't overwrite each other's changes.
-- Live demo: https://katribo-demo.onrender.com (Checkout is a demo: orders are checked on the server but never charged or sent.)
+- Live demo: https://katribo-demo.onrender.com (Personal project, not commissioned by or affiliated with the shop. Checkout is a demo: orders are checked on the server but never charged or sent.)
 - Source code: https://github.com/mukraminansao/Katribo
 
 ### 4. FORM/TECH — E-commerce · technical apparel
-- Status: In development
+- Status: Working demo, not launched yet (still being improved)
 - What it is: A full-stack storefront for a fictional technical-apparel brand, with a protected staff area for products, inventory and orders.
 - Key numbers: 30 products; 218 size & color variants; 8 collections
 - Features:
@@ -113,7 +113,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 - Source code: https://github.com/mukraminansao/form-tech-apparel
 
 ### 5. Servease — Web app · 3 user roles
-- Status: In development
+- Status: Working demo, not launched yet (still being improved)
 - What it is: A home-services marketplace connecting customers with ID-checked local pros. Installs on phones like an app.
 - Key numbers: 3 user roles; 2 languages · EN / FIL; PWA installs like an app
 - Features:
@@ -126,7 +126,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 - Source code: https://github.com/mukraminansao/Servease
 
 ### 6. Dokyu — Android + web app · government documents guide
-- Status: In development
+- Status: Working demo, not launched yet (still being improved)
 - What it is: A guide to getting Philippine government papers in one trip: what to bring, what to do online first, and which office to visit.
 - Key numbers: 8 document guides; 87 automated tests; 2 languages · EN / TL; 1 codebase · Android + web
 - Features:
@@ -139,7 +139,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 - Source code: https://github.com/mukraminansao/Dokyu
 
 ### 7. BookTrack — Web system · 2 user roles
-- Status: Complete
+- Status: Working demo, not launched yet
 - What it is: A library management system where members browse and borrow books, and librarians run the whole circulation. It started as my solo capstone project and was rebuilt into a full product.
 - Key numbers: 2 user roles; 1 month first version, built solo
 - Features:
@@ -152,7 +152,7 @@ Everything below is verified information from Mukramin's portfolio website (http
 - Source code: https://github.com/mukraminansao/Booktrack
 
 ### 8. Padala — App · End-to-end encrypted
-- Status: In development
+- Status: Working demo, not launched yet (still being improved)
 - What it is: An app for delivering project folders to your team, encrypted so only your team can open them.
 - Key numbers: 44 automated tests; AES-256 encryption on the device
 - Features:
@@ -175,7 +175,7 @@ Everything below is verified information from Mukramin's portfolio website (http
   - Trained in Capture the Flag (CTF) cybersecurity challenges
 - Dec 2025 — Library System Capstone → BookTrack (Capstone), Mindanao State University – Sulu: Built solo in one month (LibraSys): MySQL database, inventory, borrowing and returns with due dates, and reports. Later rebuilt into BookTrack.
 - Nov 2025 — Capture the King CTF (Competition), 11th Infantry (Alakdan) Division, Philippine Army · with DICT Sulu: Team cybersecurity competition held November 15–16, 2025.
-- May 2025 — TeachWise (Personal project), Personal project · independent developer: Anonymous teacher-evaluation system for schools, later rebuilt into a multi-school Android and web app (see Projects).
+- May 2025 — TeachWise (Personal project), Personal project · independent developer: Anonymous teacher-evaluation system for schools, later rebuilt into an Android and web app (see Projects).
 - Ongoing — SOC Labs (Cybersecurity), TryHackMe · LetsDefend · SecurityBlue.team: Splunk log analysis, phishing and brute-force investigations, and incident reports.
 
 ## Certificates

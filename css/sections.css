@@ -126,6 +126,8 @@
 #projects .project__status--development{color:#E6C98C;border-color:rgba(230,201,140,.35)}
 #projects .project__status--complete{color:var(--x-ok);border-color:rgba(124,224,179,.35)}
 #projects .project__status--complete i{background:var(--x-ok)}
+#projects .project__status--demo{color:#8FC7E8;border-color:rgba(143,199,232,.35)}
+#projects .project__status--demo i{background:#8FC7E8}
 #projects .project__feat{color:var(--x-ink);border-color:var(--x-line-3)}
 #projects .project h3{font-family:var(--text);font-weight:700;letter-spacing:-.025em;color:var(--x-ink)}
 

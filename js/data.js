@@ -32,7 +32,7 @@ window.PORTFOLIO = {
 
   /* ---------- Now: what I'm working on (About section + terminal) ---------- */
   now: [
-    'Preparing TeachWise for release on Google Play',
+    'Fixing and improving TeachWise',
     'Building new web and app projects with Laravel, React Native, Claude Code and Codex',
     'Practicing SOC investigations and CTF challenges',
     'Applying for web and app developer roles'
@@ -42,26 +42,26 @@ window.PORTFOLIO = {
   skills: [
     { icon: 'front', title: 'Front-End & Mobile', text: 'Responsive web interfaces and Android apps from one React Native codebase.', tags: [] },
     { icon: 'back', title: 'Back-End & Databases', text: 'Server logic, sign-ins and data handling, built with security in mind.', tags: [] },
-    { icon: 'system', title: 'Full Systems', text: 'Admin panels and multi-user systems with real roles and data, like TeachWise and Servease.', tags: [] },
+    { icon: 'system', title: 'Full Systems', text: 'Admin panels and multi-user systems with working roles and databases, like TeachWise and Servease.', tags: [] },
     { icon: 'ai', title: 'AI-Native Development', text: 'I build with Claude Code and Codex, and I plan, review and test every change.', tags: [] }
   ],
 
   security: {
     title: 'Security-minded development',
     text: '',
-    points: ['3 security certificates: Google, Cisco, LetsDefend', 'SOC labs: Splunk, Wireshark, Nmap', 'CTF training & Capture the King', 'Privacy by design: TeachWise is Data Privacy Act (RA 10173) ready']
+    points: ['3 security certificates: Google, Cisco, LetsDefend', 'SOC labs: Splunk, Wireshark, Nmap', 'CTF training & Capture the King', 'Privacy by design: TeachWise follows Data Privacy Act (RA 10173) principles']
   },
 
   /* Toolkit shown in the Skills section, grouped. */
   /* items = used in my own projects (solid chips); familiar = know the basics / from training (outlined chips) */
   toolkitGroups: [
-    { name: 'Front-end & mobile', items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'React Native', 'Expo', 'Tailwind CSS', 'Vite', 'Chart.js'], familiar: ['Bootstrap', 'jQuery', 'GSAP'] },
-    { name: 'Back-end & data', items: ['PHP', 'Laravel', 'MySQL', 'PostgreSQL', 'Node.js', 'REST APIs'], familiar: ['phpMyAdmin'] },
+    { name: 'Front-end & mobile', items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'React Native', 'Expo', 'Next.js', 'Tailwind CSS', 'Vite', 'Chart.js'], familiar: ['Bootstrap', 'jQuery', 'GSAP'] },
+    { name: 'Back-end & data', items: ['PHP', 'Laravel', 'MySQL', 'PostgreSQL', 'Prisma', 'Node.js', 'REST APIs'], familiar: ['phpMyAdmin'] },
     { name: 'AI tools & workflow', items: ['Claude Code', 'Codex', 'Claude', 'Git', 'GitHub', 'VS Code', 'Docker', 'XAMPP', 'Netlify'], familiar: ['Postman', 'Figma'] },
     { name: 'Security (training & labs)', items: [], familiar: ['Linux', 'Wireshark', 'Nmap', 'Splunk', 'Kali Linux', 'Burp Suite', 'Metasploit'] }
   ],
 
-  toolkit: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'React Native', 'Vite', 'jQuery', 'Bootstrap', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL', 'PostgreSQL', 'Node.js', 'Docker', 'XAMPP', 'Chart.js', 'GSAP', 'Git', 'GitHub', 'Postman', 'Figma', 'Netlify', 'Claude Code', 'Codex', 'Linux', 'Wireshark', 'Nmap', 'Splunk', 'Burp Suite', 'Metasploit'],
+  toolkit: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'React Native', 'Next.js', 'Vite', 'jQuery', 'Bootstrap', 'Tailwind CSS', 'PHP', 'Laravel', 'MySQL', 'PostgreSQL', 'Prisma', 'Node.js', 'Docker', 'XAMPP', 'Chart.js', 'GSAP', 'Git', 'GitHub', 'Postman', 'Figma', 'Netlify', 'Claude Code', 'Codex', 'Linux', 'Wireshark', 'Nmap', 'Splunk', 'Burp Suite', 'Metasploit'],
 
   /* ---------- Projects ----------
      layout: 'desktop' = browser-style gallery, 'app' = three phone/app windows.
@@ -74,7 +74,7 @@ window.PORTFOLIO = {
      For 'app' layouts, previewShot picks which phone window plays it (0, 1 or 2). */
   projects: [
     {
-      name: 'TeachWise', kind: 'Android + web app · 5 user roles · multi-school', layout: 'desktop', path: 'teachwise', status: 'Preparing for Google Play', statusShort: 'Google Play soon', featured: true,
+      name: 'TeachWise', kind: 'Android + web app · 5 user roles · built for multiple schools', layout: 'desktop', path: 'teachwise', status: 'Working demo · not launched', statusShort: 'Working demo', featured: true,
       facts: [['5', 'user roles'], ['120', 'API tests'], ['2', 'languages · EN / FIL'], ['1', 'codebase · Android + web']],
       desc: "An anonymous teacher-evaluation app for schools, on Android and the web. Students rate teachers in about three minutes; admins run everything from one dashboard.",
       features: [
@@ -95,7 +95,7 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'FAIRY', kind: 'Fashion & beauty store · virtual try-on', layout: 'desktop', path: 'fairy', status: 'In development',
+      name: 'FAIRY', kind: 'Fashion & beauty store · virtual try-on', layout: 'desktop', path: 'fairy', status: 'Working demo · not launched', statusShort: 'Working demo',
       facts: [["110", "products"], ["9", "shoppable sets"], ["94", "automated tests"]],
       desc: "A fashion and beauty store where every product sits inside a styled photo. Tap an item, build a look, and try it on before adding it to the bag.",
       features: [
@@ -118,9 +118,9 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'KATRIBO', kind: 'Website + admin · coffee shop', layout: 'desktop', path: 'katribo',
+      name: 'KATRIBO', kind: 'Website + admin · coffee shop', layout: 'desktop', path: 'katribo', status: 'Working demo · not launched', statusShort: 'Working demo',
       facts: [["8", "pages"], ["23", "menu items"], ["3", "staff roles"]],
-      desc: "Website and admin dashboard for KATRIBO Slow Coffee Bar in Patikul, Sulu. Customers order ahead for pickup; staff run the menu and orders.",
+      desc: "A personal concept project: a website and admin dashboard I designed for KATRIBO Slow Coffee Bar in Patikul, Sulu. It lets customers order ahead for pickup while staff run the menu and orders.",
       features: [
         "Menu with filters, drink sizes, add-ons and pickup ordering",
         "Every price is recalculated on the server, so orders can't be changed in the browser",
@@ -128,7 +128,7 @@ window.PORTFOLIO = {
       ],
       tags: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PHP', 'MySQL'],
       github: 'https://github.com/mukraminansao/Katribo',
-      live: 'https://katribo-demo.onrender.com', liveNote: "Checkout is a demo: orders are checked on the server but never charged or sent.",
+      live: 'https://katribo-demo.onrender.com', liveNote: "Personal project, not commissioned by or affiliated with the shop. Checkout is a demo: orders are checked on the server but never charged or sent.",
       preview: 'assets/video/katribo.mp4',
       ad: 'assets/video/katribo-ad.mp4', adPoster: 'assets/img/kt_ad-poster.jpg',
       learned: "Never trust prices from the browser, and use version checks so two staff can't overwrite each other's changes.",
@@ -141,7 +141,7 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'FORM/TECH', kind: 'E-commerce · technical apparel', layout: 'desktop', path: 'form-tech', status: "In development",
+      name: 'FORM/TECH', kind: 'E-commerce · technical apparel', layout: 'desktop', path: 'form-tech', status: 'Working demo · not launched', statusShort: 'Working demo',
       facts: [["30", "products"], ["218", "size & color variants"], ["8", "collections"]],
       desc: "A full-stack storefront for a fictional technical-apparel brand, with a protected staff area for products, inventory and orders.",
       features: [
@@ -163,7 +163,7 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'Servease', kind: 'Web app · 3 user roles', layout: 'desktop', path: 'servease', status: 'In development',
+      name: 'Servease', kind: 'Web app · 3 user roles', layout: 'desktop', path: 'servease', status: 'Working demo · not launched', statusShort: 'Working demo',
       facts: [["3", "user roles"], ["2", "languages · EN / FIL"], ["PWA", "installs like an app"]],
       desc: "A home-services marketplace connecting customers with ID-checked local pros. Installs on phones like an app.",
       features: [
@@ -184,7 +184,7 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'Dokyu', kind: 'Android + web app · government documents guide', layout: 'app', path: 'dokyu', status: 'In development',
+      name: 'Dokyu', kind: 'Android + web app · government documents guide', layout: 'app', path: 'dokyu', status: 'Working demo · not launched', statusShort: 'Working demo',
       facts: [['8', 'document guides'], ['87', 'automated tests'], ['2', 'languages · EN / TL'], ['1', 'codebase · Android + web']],
       desc: "A guide to getting Philippine government papers in one trip: what to bring, what to do online first, and which office to visit.",
       features: [
@@ -204,7 +204,7 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'BookTrack', kind: 'Web system · 2 user roles', layout: 'desktop', path: 'booktrack',
+      name: 'BookTrack', kind: 'Web system · 2 user roles', layout: 'desktop', path: 'booktrack', status: 'Working demo · not launched', statusShort: 'Working demo',
       facts: [['2', 'user roles'], ['1 month', 'first version, built solo']],
       desc: 'A library management system where members browse and borrow books, and librarians run the whole circulation. It started as my solo capstone project and was rebuilt into a full product.',
       features: [
@@ -225,7 +225,7 @@ window.PORTFOLIO = {
       ]
     },
     {
-      name: 'Padala', kind: 'App · End-to-end encrypted', layout: 'app', status: 'In development',
+      name: 'Padala', kind: 'App · End-to-end encrypted', layout: 'app', status: 'Working demo · not launched', statusShort: 'Working demo',
       facts: [["44", "automated tests"], ["AES-256", "encryption on the device"]],
       desc: "An app for delivering project folders to your team, encrypted so only your team can open them.",
       features: [
@@ -298,7 +298,7 @@ window.PORTFOLIO = {
       ] },
     { when: 'Dec 2025', kind: 'Capstone', title: 'Library System Capstone → BookTrack', org: 'Mindanao State University – Sulu', text: 'Built solo in one month (LibraSys): MySQL database, inventory, borrowing and returns with due dates, and reports. Later rebuilt into BookTrack.' },
     { when: 'Nov 2025', kind: 'Competition', title: 'Capture the King CTF', org: '11th Infantry (Alakdan) Division, Philippine Army · with DICT Sulu', text: 'Team cybersecurity competition held November 15–16, 2025.' },
-    { when: 'May 2025', kind: 'Personal project', title: 'TeachWise', org: 'Personal project · independent developer', text: 'Anonymous teacher-evaluation system for schools, later rebuilt into a multi-school Android and web app (see Projects).' },
+    { when: 'May 2025', kind: 'Personal project', title: 'TeachWise', org: 'Personal project · independent developer', text: 'Anonymous teacher-evaluation system for schools, later rebuilt into an Android and web app (see Projects).' },
     { when: 'Ongoing', kind: 'Cybersecurity', title: 'SOC Labs', org: 'TryHackMe · LetsDefend · SecurityBlue.team', text: 'Splunk log analysis, phishing and brute-force investigations, and incident reports.' }
   ]
 };

@@ -323,6 +323,8 @@ body.about-active .totop { width:34px;height:34px;bottom:6px;right:22px; }
 .section .project__status--development i { background:#ddc080; }
 .section .project__status--complete { color:#9bc9aa; border-color:rgba(155,201,170,.24); }
 .section .project__status--complete i { background:#9bc9aa; }
+.section .project__status--demo { color:#8fc7e8; border-color:rgba(143,199,232,.24); }
+.section .project__status--demo i { background:#8fc7e8; }
 .section .pfacts { grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; }
 .section .pfacts li { padding:8px 10px; }
 .section .pfacts b { font-size:19px; }

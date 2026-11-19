@@ -267,7 +267,7 @@
       : '<span class="soon">SOURCE CODE COMING SOON</span>');
     if (p.ad) action += '<button type="button" class="btn btn--ghost" data-ad="' + i + '"><span class="btn__ico"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span> WATCH THE AD</button>';
     if (p.liveNote) action += '<span class="project__note">' + esc(p.liveNote) + '</span>';
-    var statusClass = p.status === 'In development' ? 'development' : p.status === 'Local release candidate' ? 'local' : 'complete';
+    var statusClass = p.status === 'In development' ? 'development' : /^Working demo/.test(p.status || '') ? 'demo' : p.status === 'Local release candidate' ? 'local' : 'complete';
     return '<article class="project' + (p.layout === 'app' ? ' project--app' : '') + (p.featured ? ' project--featured' : '') + '" id="project-panel-' + i + '" data-project>' +
       '<div class="project__media">' + media + '</div>' +
       '<div class="project__body">' +
