@@ -1,6 +1,7 @@
 /* =========================================================
    MUKRAMIN.DEV — rendering + interactions + animations
    Content lives in js/data.js
+   Built from src/main/*.js: edit those files, then run  node src/build-main.mjs
    ========================================================= */
 (function () {
   'use strict';

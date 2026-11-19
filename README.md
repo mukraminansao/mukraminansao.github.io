@@ -1,7 +1,7 @@
 # MUKRAMIN.DEV — Portfolio
 
 Personal portfolio of **Mukramin B. Ansao**, web developer (BSIT Cum Laude 2026).
-Plain HTML, CSS and JavaScript, with GSAP for animation. No build step.
+Plain HTML, CSS and JavaScript, with GSAP for animation. The only build step is joining `src/main/` into `js/main.js` (see below).
 
 ## Folder layout
 
@@ -9,7 +9,9 @@ Plain HTML, CSS and JavaScript, with GSAP for animation. No build step.
 index.html            page structure
 css/style.css         all styling (colors are variables at the top)
 js/data.js            ALL editable content: projects, skills, toolkit, journey, contact
-js/main.js            renders data.js + animations
+js/main.js            renders data.js + animations (built from src/main/, don't edit it directly)
+src/main/             js/main.js split into numbered parts: sounds, content, terminal, contact form, animations…
+src/build-main.mjs    joins src/main/ into js/main.js
 assets/img/           photos and project screenshots (WebP)
 assets/video/         short live-preview clips of each project (MP4)
 assets/Mukramin_Ansao_CV.pdf   the "Download CV" file
@@ -17,6 +19,18 @@ js/chat.js, css/chat.css       Mini-X’s portfolio chat
 ai/knowledge.md       facts the assistant may use (built by scripts/build-knowledge.mjs)
 worker/               the Cloudflare Worker behind the assistant (setup: worker/README.md)
 ```
+
+## Editing the page code (js/main.js)
+
+`js/main.js` is built from the numbered files in `src/main/` (for example `09-contact-form.js` or `06-terminal.js`).
+Edit the part you need, then rebuild and check:
+
+```
+node src/build-main.mjs           # writes js/main.js
+node src/build-main.mjs --check   # says whether js/main.js matches src/main/
+```
+
+The parts share variables, so each one is not a complete script on its own; the number prefixes set the order.
 
 ## Updating content
 
@@ -104,8 +118,8 @@ After changing it, paste the site link into https://www.linkedin.com/post-inspec
 
 ## Interface sounds
 
-Interface sounds are **switched off** so the site stays quiet. The sound code is still in `js/main.js`:
-to bring it back, change `on = false;` to `on = true;` near the top of the file.
+Interface sounds are **switched off** so the site stays quiet. The sound code is in `src/main/01-sounds.js`:
+to bring it back, change `on = false;` to `on = true;` near the top of that file, then run `node src/build-main.mjs`.
 
 ## Contact form
 
